@@ -18,7 +18,6 @@ const {
 const canonical = new URL(Astro.url.pathname, Astro.site);
 
 const navProducts = [
-  { href: '/製品情報/', label: '製品情報' },
   { href: 'https://engawa-app.jp/', label: '緣側', external: true },
   { href: 'https://livein-japan.jp', label: '日本通', external: true },
   { href: 'https://siadt-video-studio.web.app/', label: 'SIA-studio', external: true },
@@ -112,7 +111,7 @@ const social = [
           <img src="/images/cropped-SIADT-白色LOGO-800x600-4.webp" alt="SIA Digital Technology" class="h-12 w-auto" width="96" height="72" />
         </a>
         <nav class="hidden items-center gap-6 text-sm lg:flex" aria-label="グローバルナビゲーション">
-          <a href="/" class="py-2 hover:text-accent">home</a>
+          <a href="/" class="py-2 hover:text-accent">HOME</a>
           <div class="group relative">
             <a href="/製品情報/" class="inline-flex items-center gap-1 py-2 hover:text-accent">
               製品情報
@@ -149,7 +148,7 @@ const social = [
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
           <nav class="absolute right-0 top-full z-50 mt-2 w-64 rounded-lg border border-white/10 bg-panel py-2 text-sm shadow-xl" aria-label="モバイルナビゲーション">
-            <a href="/" class="block px-4 py-2 hover:text-accent">home</a>
+            <a href="/" class="block px-4 py-2 hover:text-accent">HOME</a>
             <a href="/製品情報/" class="block px-4 py-2 hover:text-accent">製品情報</a>
             <a href="/ハードウェア製品/" class="block px-4 py-2 pl-8 hover:text-accent">AIエッジ計算製品</a>
             <a href="/人工知能アシスタント/" class="block px-4 py-2 pl-8 hover:text-accent">AIアシスタント</a>
