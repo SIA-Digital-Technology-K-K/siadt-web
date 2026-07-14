@@ -58,12 +58,55 @@ body {
   margin-bottom: 0.35rem;
 }
 .prose-body a {
-  color: #0369a1;
+  color: #0bbbb5;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 .prose-body a:hover {
-  color: #0bbbb5;
+  color: #066aab;
+}
+
+/* サイト共通ボタン（アクセント色を統一） */
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+.btn-accent {
+  border-radius: 9999px;
+  border: 1px solid #66fcf1;
+  color: #66fcf1;
+  background: transparent;
+  padding: 0.9rem 2rem;
+}
+.btn-accent:hover {
+  background: #66fcf1;
+  color: #04000b;
+}
+.btn-solid {
+  border-radius: 0.75rem;
+  background: #04000b;
+  color: #fff;
+  border: none;
+  padding: 0.85rem 2rem;
+}
+.btn-solid:hover {
+  background: #0bbbb5;
+  color: #fff;
+}
+.btn-download {
+  border-radius: 0.5rem;
+  background: #04000b;
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.btn-download:hover {
+  background: #0bbbb5;
+  color: #fff;
 }
 .prose-body blockquote {
   border-left: 4px solid #66fcf1;
@@ -147,18 +190,18 @@ body {
 }
 .form-submit {
   display: inline-block;
-  background: #066aab;
+  background: #04000b;
   color: #fff;
   font-weight: 700;
   border: none;
-  border-radius: 3px;
-  padding: 0.8rem 2.4rem;
+  border-radius: 0.75rem;
+  padding: 0.85rem 2.4rem;
   font-size: 1rem;
   cursor: pointer;
-  transition: filter 0.15s ease;
+  transition: background-color 0.15s ease;
 }
 .form-submit:hover {
-  filter: brightness(1.1);
+  background: #0bbbb5;
 }
 
 /* 会社沿革タイムライン（現行サイトのスタイルを移植） */

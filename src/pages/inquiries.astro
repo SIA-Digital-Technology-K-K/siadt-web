@@ -18,67 +18,46 @@ const products = [
 
 <Base title="お問い合わせ(Inquiries) – SIA Digital Technology">
   <PageHero title="お問い合わせ(Inquiries)" />
-  <main class="mx-auto max-w-4xl px-4 py-14">
-    <div class="grid gap-12 md:grid-cols-5">
-      <!-- お問い合わせフォーム（Netlify Forms: contact） -->
-      <div class="md:col-span-3">
-        <form
-          name="contact"
-          method="POST"
-          action="/thanks/"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          class="space-y-5"
-        >
-          <input type="hidden" name="form-name" value="contact" />
-          <p class="hidden">
-            <label>このフィールドには入力しないでください: <input name="bot-field" /></label>
-          </p>
-          <div>
-            <label class="form-label" for="contact-name">お名前<span class="form-required" aria-hidden="true">*</span></label>
-            <input class="form-input" type="text" id="contact-name" name="お名前" required maxlength="200" autocomplete="name" />
-          </div>
-          <div>
-            <label class="form-label" for="contact-email">メールアドレス<span class="form-required" aria-hidden="true">*</span></label>
-            <input class="form-input" type="email" id="contact-email" name="メールアドレス" required autocomplete="email" />
-          </div>
-          <div>
-            <label class="form-label" for="contact-email2">メールアドレス (確認用)<span class="form-required" aria-hidden="true">*</span></label>
-            <input class="form-input" type="email" id="contact-email2" name="メールアドレス確認用" required autocomplete="email" />
-          </div>
-          <div>
-            <label class="form-label" for="contact-product">製品<span class="form-required" aria-hidden="true">*</span></label>
-            <select class="form-input" id="contact-product" name="製品" required>
-              <option value=""></option>
-              {products.map((p) => <option value={p}>{p}</option>)}
-            </select>
-          </div>
-          <div>
-            <label class="form-label" for="contact-message">お問合せ内容<span class="form-required" aria-hidden="true">*</span></label>
-            <textarea class="form-input" id="contact-message" name="お問合せ内容" rows="7" required maxlength="5000"></textarea>
-          </div>
-          <button type="submit" class="form-submit">確認</button>
-        </form>
+  <main class="mx-auto max-w-2xl px-4 py-14">
+    <form
+      name="contact"
+      method="POST"
+      action="/thanks/"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      class="space-y-5"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden">
+        <label>このフィールドには入力しないでください: <input name="bot-field" /></label>
+      </p>
+      <div>
+        <label class="form-label" for="contact-name">お名前<span class="form-required" aria-hidden="true">*</span></label>
+        <input class="form-input" type="text" id="contact-name" name="お名前" required maxlength="200" autocomplete="name" />
       </div>
-
-      <!-- 連絡先（旧・連絡先ページの内容を統合） -->
-      <aside class="prose-body md:col-span-2">
-        <p><strong><em>Address</em></strong></p>
-        <p>〒559-0015 大阪府大阪市住之江区南加賀屋3-8-26 Y.S.ビル6B</p>
-        <ul>
-          <li>Osaka Metro四つ<em>橋線</em> / 住之江公园駅 徒歩7分</li>
-          <li>Osaka Metro南港港城线/ 住之江公园駅 徒歩7分</li>
-        </ul>
-        <p><em><strong>受付時間</strong></em></p>
-        <p>月曜日～金曜日 10:00-17:00 （祝日を除く）</p>
-        <p><b><i>Email</i></b></p>
-        <p>service@siadt.jp</p>
-        <p><b><i>Tel</i></b></p>
-        <p>06-4400-2968</p>
-        <p><em><strong>公式LINE</strong></em></p>
-        <p><img src="/images/S_gainfriends_2dbarcodes_GW-1.webp" alt="LINE公式アカウント 友だち追加QRコード" width="99" height="99" loading="lazy" /></p>
-        <p>当社のLINE公式アカウントを友だち追加していただければ、ご不明点やご相談などをいつでもお受けしております。</p>
-      </aside>
-    </div>
+      <div>
+        <label class="form-label" for="contact-email">メールアドレス<span class="form-required" aria-hidden="true">*</span></label>
+        <input class="form-input" type="email" id="contact-email" name="メールアドレス" required autocomplete="email" />
+      </div>
+      <div>
+        <label class="form-label" for="contact-email2">メールアドレス (確認用)<span class="form-required" aria-hidden="true">*</span></label>
+        <input class="form-input" type="email" id="contact-email2" name="メールアドレス確認用" required autocomplete="email" />
+      </div>
+      <div>
+        <label class="form-label" for="contact-product">製品<span class="form-required" aria-hidden="true">*</span></label>
+        <select class="form-input" id="contact-product" name="製品" required>
+          <option value=""></option>
+          {products.map((p) => <option value={p}>{p}</option>)}
+        </select>
+      </div>
+      <div>
+        <label class="form-label" for="contact-message">お問合せ内容<span class="form-required" aria-hidden="true">*</span></label>
+        <textarea class="form-input" id="contact-message" name="お問合せ内容" rows="7" required maxlength="5000"></textarea>
+      </div>
+      <button type="submit" class="form-submit">確認</button>
+    </form>
+    <p class="mt-8 text-center text-sm text-gray-500">
+      住所・電話番号は <a href="/連絡先/" class="text-[#0bbbb5] underline underline-offset-2">連絡先</a> をご覧ください。
+    </p>
   </main>
 </Base>

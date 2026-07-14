@@ -35,7 +35,7 @@ const services = [
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {
             services.map((s) => (
-              <label class="flex cursor-pointer flex-col rounded-xl border border-gray-200 p-3 transition hover:border-accent has-[:checked]:border-2 has-[:checked]:border-[#066aab]">
+              <label class="flex cursor-pointer flex-col rounded-xl border border-gray-200 p-3 transition hover:border-accent has-[:checked]:border-2 has-[:checked]:border-[#0bbbb5]">
                 <img src={s.img} alt={s.label} class="aspect-square w-full rounded-lg object-cover" width="300" height="300" loading="lazy" />
                 <span class="mt-3 flex items-start gap-2 text-sm">
                   <input type="checkbox" name="服務內容" value={`${s.label} – ${s.price}`} class="mt-1" />
@@ -67,7 +67,7 @@ const services = [
       </div>
 
       <p class="text-sm">
-        <a href="/1122/uncategorized/" class="font-semibold text-[#0369a1] underline underline-offset-2">サービス契約書</a>
+        <a href="/1122/uncategorized/" class="font-semibold text-[#0bbbb5] underline underline-offset-2">サービス契約書</a>
       </p>
 
       <div class="space-y-5">

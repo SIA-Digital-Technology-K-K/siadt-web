@@ -14,7 +14,7 @@ import products from '../data/products.json';
             <img src={p.image} alt={p.name} class="aspect-square w-full object-cover" width="600" height="600" loading="lazy" />
             <div class="flex flex-1 flex-col p-6">
               <h2 class="text-xl font-bold text-gray-900">{p.name}</h2>
-              <p class="mt-2 text-2xl font-bold text-[#066aab]">{p.priceDisplay}</p>
+              <p class="mt-2 text-2xl font-bold text-[#0bbbb5]">{p.priceDisplay}</p>
               <div class="mt-4">
                 <h3 class="text-sm font-bold text-gray-700">製品紹介</h3>
                 <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-gray-600">
@@ -36,7 +36,7 @@ import products from '../data/products.json';
                 ) : (
                   <a
                     href={p.stripePaymentLink}
-                    class="block rounded-xl bg-gradient-to-b from-[#005BAC] to-[#003F7D] py-3.5 text-center font-bold text-white shadow-lg shadow-[#005BAC]/25 transition hover:-translate-y-0.5 hover:shadow-xl"
+                    class="btn btn-solid block w-full text-center !rounded-xl"
                   >
                     購入する
                   </a>

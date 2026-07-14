@@ -1,9 +1,6 @@
 # siadt.jp 旧 URL → 新 URL の 301 リダイレクト（Netlify 標準機能）
 # 日本語パスは percent-encoding で記載
 
-# 連絡先 → 新・お問い合わせページ
-/%E9%80%A3%E7%B5%A1%E5%85%88/  /inquiries/  301!
-
 # サイトマップ（人間用）→ 自動生成 sitemap
 /%E3%82%B5%E3%82%A4%E3%83%88%E3%83%9E%E3%83%83%E3%83%97/  /sitemap-index.xml  301!
 
