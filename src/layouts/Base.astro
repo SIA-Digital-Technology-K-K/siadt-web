@@ -58,6 +58,7 @@ const social = [
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -164,8 +165,11 @@ const social = [
       <div class="mx-auto max-w-6xl px-4 py-14">
         <div class="grid gap-10 lg:grid-cols-[1.4fr_repeat(4,minmax(0,1fr))]">
           <div>
-            <a href="/" class="inline-flex items-center gap-2">
-              <img src="/images/cropped-SIADT-白色LOGO-800x600-4.webp" alt="SIA Digital Technology" class="h-14 w-auto" width="112" height="84" loading="lazy" />
+            <a href="/" class="inline-flex items-center gap-3">
+              <img src="/images/siadt-logo-mark.webp" alt="SIA Digital Technology" class="h-14 w-14" width="56" height="56" loading="lazy" />
+              <span class="text-left text-sm font-semibold leading-snug text-white">
+                ＳＩＡデジタルテクノロジー<br />株式会社
+              </span>
             </a>
             <p class="mt-4 text-sm leading-relaxed">日本の伝統を守り、日本の未来を創る</p>
             <div class="mt-5 flex items-center gap-4">
