@@ -1,0 +1,157 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+
+const services = [
+  { img: '/images/b1.webp', label: '服務定金', price: '¥3,000' },
+  { img: '/images/b2.webp', label: '網站製作(含5个页面)', price: '¥20,000' },
+  { img: '/images/b3.webp', label: '法人口座申請代填', price: '¥10,000' },
+  { img: '/images/b5.webp', label: '辦公電話申請', price: '¥10,000' },
+  { img: '/images/b4.webp', label: '網絡廣告設計與製作', price: '¥50,000' },
+  { img: '/images/443543-e1758289510496.webp', label: '追加網頁製作', price: '¥5,000' },
+  { img: '/images/u9455418563_Digital_transformation_of_retail_industry_-v_6.1_7b1ffc32-0dcf-4717-bd17-f85f31f8a23c_3-e1758866568726.webp', label: '合同尾款（請稍後輸入）', price: '¥0' },
+];
+---
+
+<Base title="ご注文を心よりお待ち申し上げます – SIA Digital Technology">
+  <PageHero title="ご注文を心よりお待ち申し上げます" />
+  <main class="mx-auto max-w-4xl px-4 py-14">
+    <!-- 企業服務訂單確認（Netlify Forms: enterprise-order） -->
+    <form
+      name="enterprise-order"
+      method="POST"
+      action="/thanks/"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      class="space-y-8"
+    >
+      <input type="hidden" name="form-name" value="enterprise-order" />
+      <p class="hidden">
+        <label>このフィールドには入力しないでください: <input name="bot-field" /></label>
+      </p>
+
+      <fieldset>
+        <legend class="form-label mb-3 text-lg">服務內容（サービス内容）<span class="form-required" aria-hidden="true">*</span></legend>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            services.map((s) => (
+              <label class="flex cursor-pointer flex-col rounded-xl border border-gray-200 p-3 transition hover:border-accent has-[:checked]:border-2 has-[:checked]:border-[#066aab]">
+                <img src={s.img} alt={s.label} class="aspect-square w-full rounded-lg object-cover" width="300" height="300" loading="lazy" />
+                <span class="mt-3 flex items-start gap-2 text-sm">
+                  <input type="checkbox" name="服務內容" value={`${s.label} – ${s.price}`} class="mt-1" />
+                  <span>
+                    {s.label} – <strong>{s.price}</strong>
+                  </span>
+                </span>
+              </label>
+            ))
+          }
+        </div>
+      </fieldset>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label class="form-label" for="order-pages">追加網頁製作的數量</label>
+          <select class="form-input" id="order-pages" name="追加網頁製作的數量">
+            <option value=""></option>
+            <option value="1-3頁面 – ¥5,000">1-3頁面 – ¥5,000</option>
+            <option value="4-6頁面 – ¥10,000">4-6頁面 – ¥10,000</option>
+            <option value="7-9頁面 – ¥15,000">7-9頁面 – ¥15,000</option>
+            <option value="10-12頁面 – ¥20,000">10-12頁面 – ¥20,000</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label" for="order-balance">尾款（残金支払い）</label>
+          <input class="form-input" type="text" id="order-balance" name="尾款" maxlength="200" />
+        </div>
+      </div>
+
+      <p class="text-sm">
+        <a href="/1122/uncategorized/" class="font-semibold text-[#0369a1] underline underline-offset-2">サービス契約書</a>
+      </p>
+
+      <div class="space-y-5">
+        <div>
+          <label class="form-label" for="order-company">企業名稱（会社名）<span class="form-required" aria-hidden="true">*</span></label>
+          <input class="form-input" type="text" id="order-company" name="企業名稱" required maxlength="200" autocomplete="organization" />
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label class="form-label" for="order-email">电邮<span class="form-required" aria-hidden="true">*</span></label>
+            <input class="form-input" type="email" id="order-email" name="电邮" required autocomplete="email" />
+          </div>
+          <div>
+            <label class="form-label" for="order-email2">确认邮件地址<span class="form-required" aria-hidden="true">*</span></label>
+            <input class="form-input" type="email" id="order-email2" name="确认邮件地址" required autocomplete="email" />
+          </div>
+        </div>
+        <div>
+          <label class="form-label" for="order-tel">電話<span class="form-required" aria-hidden="true">*</span></label>
+          <input class="form-input" type="tel" id="order-tel" name="電話" required maxlength="50" autocomplete="tel" />
+        </div>
+
+        <fieldset class="space-y-3">
+          <legend class="form-label">地址（住所）</legend>
+          <div>
+            <input class="form-input" type="text" id="order-address1" name="住所1" required maxlength="200" autocomplete="address-line1" />
+            <label class="mt-1 block text-xs text-gray-500" for="order-address1">Address Line 1</label>
+          </div>
+          <div>
+            <input class="form-input" type="text" id="order-address2" name="住所2" maxlength="200" autocomplete="address-line2" />
+            <label class="mt-1 block text-xs text-gray-500" for="order-address2">Address Line 2</label>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-3">
+            <div>
+              <input class="form-input" type="text" id="order-city" name="市" required maxlength="100" autocomplete="address-level2" />
+              <label class="mt-1 block text-xs text-gray-500" for="order-city">市</label>
+            </div>
+            <div>
+              <input class="form-input" type="text" id="order-state" name="都道府県" required maxlength="100" autocomplete="address-level1" />
+              <label class="mt-1 block text-xs text-gray-500" for="order-state">State / Province / Region</label>
+            </div>
+            <div>
+              <input class="form-input" type="text" id="order-postal" name="郵便番号" required maxlength="20" autocomplete="postal-code" />
+              <label class="mt-1 block text-xs text-gray-500" for="order-postal">Postal Code</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div>
+          <label class="form-label" for="order-note">備注說明（備考）</label>
+          <textarea class="form-input" id="order-note" name="備注說明" rows="5" maxlength="5000"></textarea>
+        </div>
+
+        <fieldset>
+          <legend class="form-label">支付方式（お支払い方法）<span class="form-required" aria-hidden="true">*</span></legend>
+          <div class="space-y-2">
+            <label class="flex items-center gap-2">
+              <input type="radio" name="支付方式" value="銀行卡支付" required />
+              <span>銀行卡支付</span>
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="radio" name="支付方式" value="匯款" required />
+              <span>匯款</span>
+            </label>
+          </div>
+          <div class="mt-4 rounded-lg bg-surface p-4 text-sm leading-relaxed">
+            <p>金融機関：GMOあおぞらネット銀行（金融機関コード：0310）
+              支店：法人営業部（支店コード：101）
+              科目：普通預金
+              口座番号：1888757
+              口座名義：SIAデジタルテクノロジー株式会社
+              口座名義カナ：エスアイエイデジタルテクノロジー（カ</p>
+            <p class="mt-2" lang="zh-Hant">請注意：如果您選擇匯款，則手續費由付款方支付</p>
+            <p class="mt-2" lang="zh-Hant">如選擇銀行卡支付，訂單確認後，我們將透過電子郵件向您發送付款連結。（銀行カード支払いをご選択の場合、ご注文確認後にお支払い用リンクをメールでご案内いたします。）</p>
+          </div>
+        </fieldset>
+
+        <label class="flex items-start gap-3 text-sm leading-relaxed">
+          <input type="checkbox" name="同意" value="同意" required class="mt-1" />
+          <span>我已經知曉並同意訂單對應的服務契約，並了解貴司的隱私保護政策。私は注文内容とそれに対応するサービス情報を理解し、同意し、貴社のプライバシー保護規則を理解しています。</span>
+        </label>
+      </div>
+
+      <button type="submit" class="form-submit">確認</button>
+    </form>
+  </main>
+</Base>

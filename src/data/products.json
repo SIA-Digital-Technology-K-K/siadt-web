@@ -1,0 +1,38 @@
+[
+  {
+    "id": "catfeeder-pro",
+    "name": "自動給餌器pro（税込）",
+    "price": 21000,
+    "priceDisplay": "¥21,000",
+    "image": "/images/catfeed-e1758616062160.webp",
+    "introImage": "/images/petfeed2.webp",
+    "features": [
+      "6つの注目ポイント",
+      "一体型・丸洗い可能",
+      "大容量タンク",
+      "AIがフード量を自動",
+      "AIカメラで猫を追跡",
+      "見やすい大型ディスプレイ",
+      "異常な自動で警告"
+    ],
+    "warranty": "1年間の保証",
+    "stripePaymentLink": "STRIPE_LINK_TODO"
+  },
+  {
+    "id": "catfeeder",
+    "name": "自動給餌器（税込）",
+    "price": 15689,
+    "priceDisplay": "¥15,689",
+    "image": "/images/pet2-e1758947569543.webp",
+    "introImage": null,
+    "features": [
+      "4つの注目ポイント",
+      "一体型・丸洗い可能",
+      "大容量タンク",
+      "見やすい大型ディスプレイ",
+      "異常な自動で警告"
+    ],
+    "warranty": "1年間の保証",
+    "stripePaymentLink": "STRIPE_LINK_TODO"
+  }
+]

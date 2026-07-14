@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<Base title="製品情報 – SIA Digital Technology">
+  <PageHero title="製品情報" />
+  <main class="mx-auto max-w-4xl px-4 py-14">
+    <div class="prose-body">
+      <h2>人工知能技術を搭載したハードウェア製品</h2>
+
+      <figure class="!my-8 rounded-xl border-l-4 border-accent bg-surface px-6 py-5">
+        <blockquote class="!m-0 !border-0 !bg-transparent !p-0">
+          <p class="!m-0 text-lg font-semibold">Rockchip RK3588 新世代エッジ コンピューティング ゲートウェイ</p>
+        </blockquote>
+      </figure>
+
+      <ul>
+        <li>RK3588 クアッドコア A76+クアッドコア A55</li>
+        <li>基板実装LPDDR4メモリチップ</li>
+        <li>ボードに取り付けられた EMMC ストレージ パーティクル</li>
+        <li>SSDおよびTF拡張ストレージをサポート</li>
+        <li>HDMI および DP ディスプレイ</li>
+        <li>デュアル ギガビット イーサネット ポート、オンボード WIFI+BT</li>
+        <li>MINI PCIE拡張lora/4G</li>
+        <li>USB×6、COM×4</li>
+        <li>TPM/TCM暗号化モジュールをサポート</li>
+        <li>Android12 システムをサポート</li>
+      </ul>
+
+      <h3 class="!mt-14">製品ラインアップ</h3>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/ハードウェア製品/" class="rounded-xl border border-gray-200 p-6 !no-underline transition hover:-translate-y-0.5 hover:shadow-lg">
+          <span class="font-bold !text-gray-900">AIエッジ計算製品</span>
+        </a>
+        <a href="/人工知能アシスタント/" class="rounded-xl border border-gray-200 p-6 !no-underline transition hover:-translate-y-0.5 hover:shadow-lg">
+          <span class="font-bold !text-gray-900">AIアシスタント</span>
+        </a>
+        <a href="/shop/" class="rounded-xl border border-gray-200 p-6 !no-underline transition hover:-translate-y-0.5 hover:shadow-lg">
+          <span class="font-bold !text-gray-900">小売店舗向けAIシステム</span>
+        </a>
+        <a href="/car/" class="rounded-xl border border-gray-200 p-6 !no-underline transition hover:-translate-y-0.5 hover:shadow-lg">
+          <span class="font-bold !text-gray-900">自動車向けAI分析システム</span>
+        </a>
+        <a href="/eshop-2/" class="rounded-xl border border-gray-200 p-6 !no-underline transition hover:-translate-y-0.5 hover:shadow-lg">
+          <span class="font-bold !text-gray-900">オンラインストア（個人向けAI製品）</span>
+        </a>
+        <a href="/post/" class="rounded-xl border border-gray-200 p-6 !no-underline transition hover:-translate-y-0.5 hover:shadow-lg">
+          <span class="font-bold !text-gray-900">企業金融技術服務</span>
+        </a>
+      </div>
+    </div>
+  </main>
+</Base>

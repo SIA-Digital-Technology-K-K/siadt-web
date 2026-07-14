@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import products from '../data/products.json';
+---
+
+<Base title="オンラインストア – SIA Digital Technology" description="ＳＩＡデジタルテクノロジー株式会社のオンラインストア。AI搭載の自動給餌器などの製品をご購入いただけます。">
+  <PageHero title="オンラインストア" />
+  <main class="mx-auto max-w-5xl px-4 py-14">
+    <div class="grid gap-8 md:grid-cols-2">
+      {
+        products.map((p) => (
+          <article class="flex flex-col overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
+            <img src={p.image} alt={p.name} class="aspect-square w-full object-cover" width="600" height="600" loading="lazy" />
+            <div class="flex flex-1 flex-col p-6">
+              <h2 class="text-xl font-bold text-gray-900">{p.name}</h2>
+              <p class="mt-2 text-2xl font-bold text-[#066aab]">{p.priceDisplay}</p>
+              <div class="mt-4">
+                <h3 class="text-sm font-bold text-gray-700">製品紹介</h3>
+                <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-gray-600">
+                  {p.features.map((f) => (
+                    <li>{f}</li>
+                  ))}
+                </ul>
+                <p class="mt-3 text-sm italic text-gray-600">{p.warranty}</p>
+              </div>
+              <div class="mt-auto pt-6">
+                {p.stripePaymentLink === 'STRIPE_LINK_TODO' ? (
+                  <span
+                    class="block cursor-not-allowed rounded-xl bg-gray-300 py-3.5 text-center font-bold text-gray-600"
+                    title="決済リンク準備中"
+                    data-stripe-link-placeholder={p.id}
+                  >
+                    購入する（準備中）
+                  </span>
+                ) : (
+                  <a
+                    href={p.stripePaymentLink}
+                    class="block rounded-xl bg-gradient-to-b from-[#005BAC] to-[#003F7D] py-3.5 text-center font-bold text-white shadow-lg shadow-[#005BAC]/25 transition hover:-translate-y-0.5 hover:shadow-xl"
+                  >
+                    購入する
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <section class="prose-body mt-16">
+      <h6>製品紹介</h6>
+      <figure><img src="/images/petfeed2.webp" alt="自動給餌器の製品紹介" class="mx-auto w-full max-w-sm" width="595" height="842" loading="lazy" /></figure>
+    </section>
+
+    <p class="mt-12 text-center text-sm text-gray-500">
+      お支払いはクレジットカード決済（Stripe）をご利用いただけます。ご購入前に<a href="/特定商取引法に基づく表記/" class="underline">特定商取引法に基づく表記</a>および<a href="/プライバシーポリシー/" class="underline">プライバシーポリシー</a>をご確認ください。
+    </p>
+  </main>
+</Base>

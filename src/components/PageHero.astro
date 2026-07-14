@@ -1,0 +1,13 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+const bg = '/images/u9455418563_Please_create_an_artificial_intelligence_product__271f944f-3f58-4d91-8ec4-59cf7cd11e18_0-e1727503718218.webp';
+---
+
+<div class="relative flex min-h-56 items-center justify-center overflow-hidden bg-ink md:min-h-72">
+  <img src={bg} alt="" class="absolute inset-0 h-full w-full object-cover opacity-50" width="1024" height="683" />
+  <div class="absolute inset-0 bg-gradient-to-b from-ink/40 to-ink/80" aria-hidden="true"></div>
+  <h1 class="relative z-10 px-4 text-center text-3xl font-bold text-white md:text-4xl">{title}</h1>
+</div>

@@ -1,0 +1,19 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# 現行サイトのミラーデータ（移行作業用、リポジトリには含めない）
+_mirror/
+
+# logs / env
+npm-debug.log*
+.env
+.env.*
+
+# macOS
+.DS_Store

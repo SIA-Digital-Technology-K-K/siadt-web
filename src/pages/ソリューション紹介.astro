@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ConsultButton from '../components/ConsultButton.astro';
+
+const gallery = [
+  { img: '/images/4.webp', href: '/1631/uncategorized/' },
+  { img: '/images/1.webp', href: '/class/' },
+  { img: '/images/2.webp', href: null },
+  { img: '/images/3.webp', href: '/shop/' },
+  { img: '/images/5.webp', href: '/人工知能アシスタント/' },
+  { img: '/images/6.webp', href: '/ハードウェア製品/' },
+];
+---
+
+<Base title="サービス分野 – SIA Digital Technology">
+  <PageHero title="サービス分野" />
+  <main class="mx-auto max-w-5xl px-4 py-14">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        gallery.map((g) =>
+          g.href ? (
+            <a href={g.href} class="block overflow-hidden rounded-xl transition hover:-translate-y-1 hover:shadow-lg">
+              <img src={g.img} alt="" class="aspect-[3/2] w-full object-cover" width="350" height="233" loading="lazy" />
+            </a>
+          ) : (
+            <div class="overflow-hidden rounded-xl">
+              <img src={g.img} alt="" class="aspect-[3/2] w-full object-cover" width="350" height="233" loading="lazy" />
+            </div>
+          ),
+        )
+      }
+    </div>
+    <ConsultButton />
+  </main>
+</Base>

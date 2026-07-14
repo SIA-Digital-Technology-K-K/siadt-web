@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<Base
+  title="聯繫我們 – SIA Digital Technology"
+  lang="zh-Hant"
+  description="ＳＩＡデジタルテクノロジー株式会社（SIA Digital Technology）華人服務聯繫窗口。歡迎透過表單與我們聯繫。"
+>
+  <PageHero title="聯繫我們" />
+  <main class="mx-auto max-w-3xl px-4 py-14">
+    <!-- 華人服務聯繫我們（Netlify Forms: contact-zh） -->
+    <form
+      name="contact-zh"
+      method="POST"
+      action="/thanks/"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      class="space-y-5"
+    >
+      <input type="hidden" name="form-name" value="contact-zh" />
+      <p class="hidden">
+        <label>請勿填寫此欄位: <input name="bot-field" /></label>
+      </p>
+      <div>
+        <span class="form-label">姓名<span class="form-required" aria-hidden="true">*</span></span>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <input class="form-input" type="text" id="zh-first" name="姓" required maxlength="100" />
+            <label class="mt-1 block text-xs text-gray-500" for="zh-first">姓</label>
+          </div>
+          <div>
+            <input class="form-input" type="text" id="zh-last" name="名" required maxlength="100" />
+            <label class="mt-1 block text-xs text-gray-500" for="zh-last">名</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <label class="form-label" for="zh-email">电邮<span class="form-required" aria-hidden="true">*</span></label>
+        <input class="form-input" type="email" id="zh-email" name="电邮" required autocomplete="email" />
+      </div>
+      <div>
+        <label class="form-label" for="zh-email2">确认邮件地址<span class="form-required" aria-hidden="true">*</span></label>
+        <input class="form-input" type="email" id="zh-email2" name="确认邮件地址" required autocomplete="email" />
+      </div>
+      <div>
+        <label class="form-label" for="zh-message">需求和問題<span class="form-required" aria-hidden="true">*</span></label>
+        <textarea class="form-input" id="zh-message" name="需求和問題" rows="7" required maxlength="5000"></textarea>
+      </div>
+      <button type="submit" class="form-submit">提交</button>
+    </form>
+  </main>
+</Base>
