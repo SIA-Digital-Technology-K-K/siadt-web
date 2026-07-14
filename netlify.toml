@@ -1,0 +1,7 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Netlify Forms 通知先は管理画面で設定:
+# Project → Forms → Form notifications → Email notification
+# 宛先: service@siadt.jp（contact / contact-zh / enterprise-order の 3 フォーム）
