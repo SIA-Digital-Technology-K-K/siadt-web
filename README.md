@@ -43,19 +43,21 @@ npm run images     # _mirror/media の画像を WebP 変換して public/images 
 - 送信成功後は `/thanks/` に遷移
 - 通知先メールは Netlify 管理画面 → Forms → Notifications で設定（発注者タスク）
 
-## デプロイ運用ルール（Netlify 無料プラン・クレジット節約）
+## デプロイ運用ルール（Netlify Personal プラン）
 
+- Netlify は Personal プラン（$9/月・1,000 クレジット、engawa-app.jp と共有）。本番デプロイ 1 回 = 15 クレジット
 - Production branch: `main` / Build command: `npm run build` / Publish directory: `dist`
-- 修正は PR に溜め、**main へのマージは週 1〜2 回のリリース枠にまとめる**
-- 動作確認は Deploy Preview（回数無制限・クレジット消費なし）で行う
-- engawa-app.jp と合計で**月 8 回以内**の本番デプロイを目安とする
-- **初回本番デプロイと DNS 切替は 2026 年 8 月 1 日のクレジット更新後**に実施
+- 動作確認は Deploy Preview（PR プレビュー。クレジット消費なし）で行う
+- 修正はなるべく PR に溜めてまとめてマージする（1 修正 1 デプロイの乱発は避ける）
+- **リリース時期の制約なし**: 検収完了次第、本番デプロイ → DNS 切替を実施してよい
+  （旧サーバーは日割りでコストが発生し続けるため、早いほど良い）
 - DNS 切替時、**MX / SPF / DKIM / DMARC レコードは絶対に変更しない**
 
 ## 発注者タスク（残作業）
 
-1. Stripe ダッシュボードで Payment Link 作成 → `src/data/products.json` の
-   `STRIPE_LINK_TODO` を差し替え（Product メタデータ `project: siadt-store` を付与）
+1. ~~Stripe Payment Link 作成・設定~~ → 全 2 商品設定済み。Stripe 側で決済完了後の
+   リダイレクト先を `https://siadt.jp/thanks/` に指定すること
 2. Netlify に GitHub リポジトリ `SIA-Digital-Technology-K-K/siadt-web` を連携
+   （Forms の「Enable form detection」を ON にすること）
 3. Netlify Forms の通知先メールアドレス設定（3 フォーム分）
 4. 検収後の DNS 切替と旧レンタルサーバー解約（解約前に WP 完全バックアップ取得）
