@@ -147,11 +147,21 @@ const social = [
           <summary class="flex cursor-pointer list-none items-center rounded border border-white/20 p-2" aria-label="メニュー">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
-          <nav class="absolute right-0 top-full z-50 mt-2 w-64 rounded-lg border border-white/10 bg-panel py-2 text-sm shadow-xl" aria-label="モバイルナビゲーション">
+          <nav class="absolute right-0 top-full z-50 mt-2 max-h-[70vh] w-64 overflow-y-auto rounded-lg border border-white/10 bg-panel py-2 text-sm shadow-xl" aria-label="モバイルナビゲーション">
             <a href="/" class="block px-4 py-2 hover:text-accent">HOME</a>
             <a href="/製品情報/" class="block px-4 py-2 hover:text-accent">製品情報</a>
-            <a href="/ハードウェア製品/" class="block px-4 py-2 pl-8 hover:text-accent">AIエッジ計算製品</a>
-            <a href="/人工知能アシスタント/" class="block px-4 py-2 pl-8 hover:text-accent">AIアシスタント</a>
+            {
+              navProducts.map((item) => (
+                <a
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener' : undefined}
+                  class="block px-4 py-2 pl-8 hover:text-accent"
+                >
+                  {item.label}
+                </a>
+              ))
+            }
             <a href="/ソリューション紹介/" class="block px-4 py-2 hover:text-accent">サービス分野</a>
             <a href="/企業理念・行動指針/" class="block px-4 py-2 hover:text-accent">企業理念・行動指針</a>
             <a href="/企業情報/" class="block px-4 py-2 hover:text-accent">会社概要</a>
