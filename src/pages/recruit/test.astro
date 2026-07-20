@@ -1,0 +1,284 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const services = [
+  {
+    no: '①',
+    name: '縁側（えんがわ）',
+    desc: '高齢者向けAI会話・見守りサービス',
+    href: 'https://engawa-app.jp/',
+  },
+  {
+    no: '②',
+    name: 'LIVE IN JAPAN',
+    desc: '外国人向け生活支援サービス',
+    href: 'https://livein-japan.jp/en',
+  },
+  {
+    no: '③',
+    name: 'AI Video Studio（任意）',
+    desc: 'AI動画・文案・画像生成ツール',
+    href: 'https://siadt-video-studio.web.app/',
+    note: true,
+  },
+];
+
+const scores = [
+  { item: 'AI活用能力', weight: '30%' },
+  { item: '課題解決力', weight: '25%' },
+  { item: '文章力', weight: '20%' },
+  { item: 'デザイン・表現力', weight: '15%' },
+  { item: '完成度', weight: '10%' },
+];
+---
+
+<Base
+  title="AI運営スタッフ選考課題 – SIA Digital Technology"
+  description="ＳＩＡデジタルテクノロジー株式会社 AI運営スタッフ選考課題のご案内。提出期限は2026年7月27日（月）23:59（日本時間）です。"
+>
+  <PageHero title="AI運営スタッフ選考課題" />
+  <main class="mx-auto max-w-3xl px-4 py-14">
+    <div class="prose-body recruit-test">
+      <p class="!mt-0 text-sm text-gray-500">ＳＩＡデジタルテクノロジー株式会社</p>
+
+      <h2>ご応募ありがとうございます</h2>
+      <p>
+        この度は、ＳＩＡデジタルテクノロジー株式会社の求人へご応募いただき、誠にありがとうございます。
+      </p>
+      <p>
+        書類選考を通過された方には、次の選考として「AI運営スタッフ選考課題」をお願いしております。
+      </p>
+      <p>本課題では、実際の業務に近い内容を通して、以下を総合的に評価いたします。</p>
+      <ul>
+        <li>AIツールの活用能力</li>
+        <li>文章作成能力</li>
+        <li>デザイン・表現力</li>
+        <li>発想力・課題解決力</li>
+      </ul>
+      <p>
+        AI時代において最も重要なのは、「AIを使うこと」ではなく、「AIを活用して価値を生み出すこと」です。
+      </p>
+      <p>
+        そのため、本課題では ChatGPT、Claude、Gemini、Perplexity など、生成AIの利用を歓迎しています。
+      </p>
+
+      <hr />
+
+      <h2>弊社サービス</h2>
+      <p>選考課題では、以下のサービスを題材としてご利用ください。</p>
+      <div class="not-prose my-8 space-y-4">
+        {
+          services.map((s) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener"
+              class="block rounded-xl border border-gray-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-[#0bbbb5] hover:shadow-md"
+            >
+              <p class="text-sm font-semibold text-[#0bbbb5]">
+                {s.no} {s.name}
+              </p>
+              <p class="mt-1 text-gray-800">{s.desc}</p>
+              <p class="mt-2 break-all text-sm text-gray-500 underline underline-offset-2">{s.href}</p>
+            </a>
+          ))
+        }
+      </div>
+      <p>※ AI Video Studio は自由にご利用いただけます。</p>
+      <p>※ 他社サービスをご利用いただいても構いません。</p>
+
+      <hr />
+
+      <h2>使用できるAIツール</h2>
+      <p>以下は一例です。その他のAIサービスも自由にご利用ください。</p>
+      <ul>
+        <li>ChatGPT</li>
+        <li>Claude</li>
+        <li>Gemini</li>
+        <li>Perplexity</li>
+        <li>Canva AI</li>
+        <li>Microsoft Copilot</li>
+      </ul>
+
+      <hr />
+
+      <h2>選考課題</h2>
+
+      <h3>課題①　AIライティング</h3>
+      <p>
+        「縁側」または「LIVE IN JAPAN」のいずれかを選択し、初めてサービスを知る方へ向けた紹介記事を作成してください。
+      </p>
+      <p><strong>【条件】</strong></p>
+      <ul>
+        <li>日本語</li>
+        <li>600〜800文字</li>
+        <li>ターゲットを明確にすること</li>
+        <li>AI利用可</li>
+      </ul>
+
+      <h3>課題②　SNS投稿制作</h3>
+      <p>選択したサービスについて、InstagramまたはXへ投稿する内容を制作してください。</p>
+      <p><strong>提出内容</strong></p>
+      <ul>
+        <li>投稿文</li>
+        <li>ハッシュタグ</li>
+        <li>投稿画像（Canva等で制作）</li>
+      </ul>
+
+      <h3>課題③　サービス改善提案</h3>
+      <p>弊社サービスをご覧いただき、改善案を3つご提案ください。</p>
+      <p><strong>対象例</strong></p>
+      <ul>
+        <li>UI</li>
+        <li>UX</li>
+        <li>デザイン</li>
+        <li>新機能</li>
+        <li>マーケティング</li>
+        <li>AI活用方法</li>
+      </ul>
+      <p>理由も合わせてご記載ください。</p>
+
+      <h3>課題④　AI活用レポート</h3>
+      <p>今回利用したAIツールについてご記入ください。</p>
+      <p><strong>内容</strong></p>
+      <ul>
+        <li>使用したAI</li>
+        <li>利用目的</li>
+        <li>AIで生成した内容</li>
+        <li>ご自身で修正・改善した点</li>
+      </ul>
+
+      <h3>（任意・加点対象）AIを活用したマーケティング企画</h3>
+      <p>
+        「縁側」または「LIVE IN JAPAN」の認知度を高めるため、予算10万円以内で実施できるマーケティング施策をご提案ください。
+      </p>
+      <p><strong>記載内容</strong></p>
+      <ul>
+        <li>ターゲット</li>
+        <li>使用する媒体</li>
+        <li>実施内容</li>
+        <li>AIの活用方法</li>
+        <li>期待できる効果</li>
+      </ul>
+
+      <hr />
+
+      <h2>評価項目</h2>
+      <div class="not-prose my-6 overflow-x-auto">
+        <table class="w-full min-w-[280px] border-collapse text-left text-sm">
+          <thead>
+            <tr class="bg-surface">
+              <th class="border border-gray-200 px-4 py-3 font-bold text-gray-900">評価内容</th>
+              <th class="border border-gray-200 px-4 py-3 font-bold text-gray-900">配点</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              scores.map((s) => (
+                <tr>
+                  <td class="border border-gray-200 px-4 py-3 text-gray-700">{s.item}</td>
+                  <td class="border border-gray-200 px-4 py-3 font-semibold text-gray-900">{s.weight}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+
+      <h2>提出方法</h2>
+
+      <h3>提出期限</h3>
+      <p><strong>2026年7月27日（月）23:59（日本時間）</strong></p>
+
+      <h3>提出先</h3>
+      <p>
+        <a href="mailto:service@siadt.jp">service@siadt.jp</a>
+      </p>
+
+      <h3>メール件名</h3>
+      <div class="not-prose my-4 space-y-3">
+        <div class="relative rounded-xl bg-surface px-4 py-4 pr-24 text-sm text-gray-800">
+          <button
+            type="button"
+            class="copy-btn absolute right-3 top-3 rounded-md border border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-600 hover:border-[#0bbbb5] hover:text-[#0bbbb5]"
+            data-copy="【AI運営スタッフ選考課題】氏名">コピーする</button
+          >
+          <code class="font-sans">【AI運営スタッフ選考課題】氏名</code>
+        </div>
+        <p class="text-sm text-gray-500">例）</p>
+        <div class="relative rounded-xl bg-surface px-4 py-4 pr-24 text-sm text-gray-800">
+          <button
+            type="button"
+            class="copy-btn absolute right-3 top-3 rounded-md border border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-600 hover:border-[#0bbbb5] hover:text-[#0bbbb5]"
+            data-copy="【AI運営スタッフ選考課題】山田 太郎">コピーする</button
+          >
+          <code class="font-sans">【AI運営スタッフ選考課題】山田 太郎</code>
+        </div>
+      </div>
+
+      <h3>提出ファイル</h3>
+      <p>以下をメールへ添付してください。</p>
+      <ul>
+        <li>選考課題（PDF）</li>
+        <li>SNS投稿画像（PNG または JPG）</li>
+        <li>動画を制作した場合は動画ファイルまたは URL（任意）</li>
+      </ul>
+
+      <h3>ファイル名</h3>
+      <div class="not-prose my-4 space-y-3">
+        <div class="relative rounded-xl bg-surface px-4 py-4 pr-24 text-sm text-gray-800">
+          <button
+            type="button"
+            class="copy-btn absolute right-3 top-3 rounded-md border border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-600 hover:border-[#0bbbb5] hover:text-[#0bbbb5]"
+            data-copy="氏名_AI運営スタッフ選考課題.pdf">コピーする</button
+          >
+          <code class="font-sans">氏名_AI運営スタッフ選考課題.pdf</code>
+        </div>
+        <p class="text-sm text-gray-500">例）</p>
+        <div class="relative rounded-xl bg-surface px-4 py-4 pr-24 text-sm text-gray-800">
+          <button
+            type="button"
+            class="copy-btn absolute right-3 top-3 rounded-md border border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-600 hover:border-[#0bbbb5] hover:text-[#0bbbb5]"
+            data-copy="山田太郎_AI運営スタッフ選考課題.pdf">コピーする</button
+          >
+          <code class="font-sans">山田太郎_AI運営スタッフ選考課題.pdf</code>
+        </div>
+      </div>
+      <p>
+        添付容量が大きい場合は、Google Drive、Dropbox、OneDrive、ギガファイル便等の共有URLをご利用ください。
+      </p>
+
+      <hr />
+
+      <h2>注意事項</h2>
+      <ul>
+        <li>AIツールの利用を推奨しています。</li>
+        <li>使用したAIツールの種類は評価対象ではありません。</li>
+        <li>AIをどのように活用し、ご自身の考えを加えて成果物を完成させたかを重視して評価いたします。</li>
+        <li>提出物は採用選考以外の目的では使用いたしません。</li>
+        <li>選考結果はIndeedまたはメールにてご連絡いたします。</li>
+      </ul>
+    </div>
+  </main>
+</Base>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy ?? '';
+      try {
+        await navigator.clipboard.writeText(text);
+        const prev = btn.textContent;
+        btn.textContent = 'コピーしました';
+        setTimeout(() => {
+          btn.textContent = prev;
+        }, 1500);
+      } catch {
+        btn.textContent = '失敗しました';
+      }
+    });
+  });
+</script>
