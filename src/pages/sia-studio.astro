@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<Base
+  title="SIA Studio – SIA Digital Technology"
+  description="SIA Studio は、プロンプトから動画・画像・文案を生成できる AI クリエイティブツールです。"
+>
+  <PageHero title="SIA Studio" />
+  <main class="mx-auto max-w-4xl px-4 py-14">
+    <div class="prose-body">
+      <p>
+        SIA Studio は、プロンプトを入力するだけで<strong>動画・画像・文案</strong>を生成できる AI クリエイティブツールです。
+        企画から素材制作までの流れをひとつにまとめ、コンテンツ制作のスピードと品質を同時に高めます。
+      </p>
+
+      <figure class="!my-8 text-center">
+        <img
+          src="/images/sia-studio-ui.png"
+          alt="SIA Studio の操作画面"
+          class="mx-auto w-full max-w-3xl rounded-xl border border-gray-200 shadow-sm"
+          width="1200"
+          height="750"
+          loading="lazy"
+        />
+      </figure>
+
+      <h2>できること</h2>
+      <ul>
+        <li><strong>動画生成</strong> — プロンプトから動画を作成し、進捗を確認したうえで MP4 をダウンロード</li>
+        <li><strong>画像生成</strong> — ブランドや企画に合わせたビジュアル素材を作成</li>
+        <li><strong>文案生成</strong> — 広告・SNS・企画向けのテキストを作成</li>
+        <li><strong>キュー対応</strong> — 複数本の生成を連続でキューに追加可能</li>
+      </ul>
+
+      <h2>主な設定</h2>
+      <ul>
+        <li>品質（標準 など）</li>
+        <li>アスペクト比（16:9 など）</li>
+        <li>解像度（720p など）</li>
+        <li>キュー数</li>
+      </ul>
+
+      <div class="my-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <a
+          href="https://siadt-video-studio.web.app/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-solid !no-underline"
+        >
+          SIA Studio を開く
+        </a>
+        <a href="/inquiries/" class="btn btn-accent !no-underline">お問い合わせ</a>
+      </div>
+    </div>
+  </main>
+</Base>

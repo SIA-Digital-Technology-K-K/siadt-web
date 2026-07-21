@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<Base
+  title="SIA TalentEye – SIA Digital Technology"
+  description="SIA TalentEye は、履歴書を AI が多角的に評価する AI 履歴書スクリーニングツールです。"
+>
+  <PageHero title="SIA TalentEye" />
+  <main class="mx-auto max-w-4xl px-4 py-14">
+    <div class="prose-body">
+      <p>
+        SIA TalentEye は、<strong>AI で才能を見抜く</strong>履歴書スクリーニングツールです。
+        求人要件に合わせて複数の AI 評価官が候補者を評価し、採用の一次選考を効率化します。
+      </p>
+
+      <figure class="!my-8 text-center">
+        <img
+          src="/images/sia-talenteye-ui.png"
+          alt="SIA TalentEye の操作画面"
+          class="mx-auto w-full max-w-3xl rounded-xl border border-gray-200 shadow-sm"
+          width="1200"
+          height="750"
+          loading="lazy"
+        />
+      </figure>
+
+      <h2>3ステップでスクリーニング</h2>
+      <ol>
+        <li>
+          <strong>履歴書をアップロード</strong>
+          — PDF / DOCX に対応（1ファイル最大 20MB）。ドラッグ＆ドロップにも対応。
+        </li>
+        <li>
+          <strong>職位の求人要件を入力</strong>
+          — テキスト入力、または求人票のアップロードで要件を指定。
+        </li>
+        <li>
+          <strong>評価官（AIモデル）を選択</strong>
+          — バランス型・スキル重視型・ポテンシャル重視型など、評価の観点を選択。カスタム評価官の追加も可能。
+        </li>
+      </ol>
+
+      <h2>評価官の例</h2>
+      <ul>
+        <li><strong>バランス型</strong> — 総合的・バランスの取れた評価</li>
+        <li><strong>スキル重視型</strong> — スキル・経験・実績を重視</li>
+        <li><strong>ポテンシャル重視型</strong> — 成長性・学習意欲を重視</li>
+      </ul>
+
+      <div class="my-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <a
+          href="https://sia-talenteye.web.app/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-solid !no-underline"
+        >
+          SIA TalentEye を開く
+        </a>
+        <a href="/inquiries/" class="btn btn-accent !no-underline">お問い合わせ</a>
+      </div>
+    </div>
+  </main>
+</Base>
