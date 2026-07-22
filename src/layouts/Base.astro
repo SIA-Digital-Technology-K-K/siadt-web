@@ -4,6 +4,7 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  keywords?: string;
   lang?: string;
   ogImage?: string;
 }
@@ -11,6 +12,7 @@ interface Props {
 const {
   title,
   description = 'ＳＩＡデジタルテクノロジー株式会社は、AI・ビッグデータ・IoTなど最先端の技術を活用し、日本の伝統を守りながら日本の未来を創るデジタルソリューションを提供します。',
+  keywords,
   lang = 'ja',
   ogImage = '/images/hero-robot-girl.webp',
 } = Astro.props;
@@ -61,6 +63,7 @@ const social = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

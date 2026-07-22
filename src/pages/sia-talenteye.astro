@@ -1,65 +1,116 @@
 ---
 import Base from '../layouts/Base.astro';
-import PageHero from '../components/PageHero.astro';
 ---
 
 <Base
-  title="SIA TalentEye – SIA Digital Technology"
-  description="SIA TalentEye は、履歴書を AI が多角的に評価する AI 履歴書スクリーニングツールです。"
+  title="SIA TalentEye｜AI履歴書解析・候補者比較を支援する採用ツール"
+  description="SIA TalentEyeは、PDF・Word形式の履歴書をAIで解析し、候補者の経験やスキルを整理する採用支援ツールです。履歴書確認や候補者比較など、採用担当者の選考業務をサポートします。"
+  ogImage="/images/sia-talenteye-ui.png"
 >
-  <PageHero title="SIA TalentEye" />
-  <main class="mx-auto max-w-4xl px-4 py-14">
-    <div class="prose-body">
-      <p>
-        SIA TalentEye は、<strong>AI で才能を見抜く</strong>履歴書スクリーニングツールです。
-        求人要件に合わせて複数の AI 評価官が候補者を評価し、採用の一次選考を効率化します。
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-ink text-white">
+    <div class="absolute inset-0 bg-gradient-to-br from-ink via-[#0a1628] to-[#0d2744]" aria-hidden="true"></div>
+    <div class="relative z-10 mx-auto max-w-4xl px-4 py-16 md:py-24">
+      <p class="mb-3 text-sm font-semibold tracking-wide text-accent">SIA TalentEye</p>
+      <h1 class="text-3xl font-bold leading-snug md:text-4xl">
+        AIで、履歴書選考をより効率的に。
+      </h1>
+      <p class="mt-5 max-w-2xl text-base leading-relaxed text-gray-200 md:text-lg">
+        SIA TalentEyeは、PDF・Word形式の履歴書をAIが読み取り、候補者の経験・スキル・適性を整理する採用支援ツールです。
       </p>
-
-      <figure class="!my-8 text-center">
-        <img
-          src="/images/sia-talenteye-hero.png"
-          alt="SIA TalentEye — AI が最適な人材を見抜く採用スクリーニングツール"
-          class="mx-auto w-full max-w-4xl rounded-xl shadow-sm"
-          width="1024"
-          height="682"
-          loading="lazy"
-        />
-      </figure>
-
-      <h2>3ステップでスクリーニング</h2>
-      <ol>
-        <li>
-          <strong>履歴書をアップロード</strong>
-          — PDF / DOCX に対応（1ファイル最大 20MB）。ドラッグ＆ドロップにも対応。
-        </li>
-        <li>
-          <strong>職位の求人要件を入力</strong>
-          — テキスト入力、または求人票のアップロードで要件を指定。
-        </li>
-        <li>
-          <strong>評価官（AIモデル）を選択</strong>
-          — バランス型・スキル重視型・ポテンシャル重視型など、評価の観点を選択。カスタム評価官の追加も可能。
-        </li>
-      </ol>
-
-      <h2>評価官の例</h2>
-      <ul>
-        <li><strong>バランス型</strong> — 総合的・バランスの取れた評価</li>
-        <li><strong>スキル重視型</strong> — スキル・経験・実績を重視</li>
-        <li><strong>ポテンシャル重視型</strong> — 成長性・学習意欲を重視</li>
-      </ul>
-
-      <div class="my-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-        <a
-          href="https://sia-talenteye.web.app/"
-          target="_blank"
-          rel="noopener"
-          class="btn btn-solid !no-underline"
-        >
-          SIA TalentEye を開く
+      <p class="mt-3 max-w-2xl text-base leading-relaxed text-gray-300">
+        採用担当者の確認作業をサポートし、候補者比較をわかりやすくします。
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href="/inquiries/" class="btn btn-solid !bg-white !text-ink hover:!bg-accent hover:!text-ink !no-underline">
+          サービスについて相談する
         </a>
         <a href="/inquiries/" class="btn btn-accent !no-underline">お問い合わせ</a>
       </div>
     </div>
+  </section>
+
+  <main class="mx-auto max-w-4xl px-4 py-14">
+    <div class="prose-body">
+      <p>
+        SIA TalentEyeは、AIを活用して企業の履歴書整理・候補者分析・人材スクリーニングを支援する採用支援ツールです。
+        人手による履歴書確認の負担を軽減し、評価の観点を揃えながら、採用担当者が候補者の特徴を素早く把握できるようサポートします。
+      </p>
+
+      <figure class="!my-10 text-center">
+        <img
+          src="/images/sia-talenteye-ui.png"
+          alt="SIA TalentEyeの履歴書アップロード・求人要件入力・評価官選択画面"
+          class="mx-auto w-full max-w-4xl rounded-xl border border-gray-200 shadow-sm"
+          width="1024"
+          height="525"
+          loading="lazy"
+        />
+        <figcaption class="!mt-3 text-sm !text-gray-500">
+          履歴書のアップロードから求人要件の設定、評価観点の選択までを一連で進められます。
+        </figcaption>
+      </figure>
+
+      <h2>主な機能</h2>
+
+      <h3>1. 履歴書のAI解析</h3>
+      <p>
+        PDFまたはWord形式の履歴書をアップロードすると、AIが記載内容を読み取り、職歴・経験・スキルなどの情報を整理します。
+      </p>
+      <p><strong>対応形式：</strong>PDF、Word</p>
+
+      <h3>2. 候補者評価の整理</h3>
+      <p>
+        募集職種の条件や選考基準をもとに、候補者の強み、関連経験、確認すべきポイントを整理します。
+      </p>
+      <p class="rounded-lg border border-gray-200 bg-surface px-4 py-3 text-sm !leading-relaxed">
+        AIによる分析結果は、採用判断を補助するための参考情報です。最終的な選考判断は採用担当者が行います。
+      </p>
+
+      <h3>3. 候補者の比較・ランキング</h3>
+      <p>
+        複数の候補者を共通の基準で整理し、比較しやすい形で表示します。
+        確認したい経験やスキルの違いを把握しやすくし、書類選考をサポートします。
+      </p>
+
+      <h2>ご利用の流れ</h2>
+      <ol>
+        <li>求人情報・選考条件を設定</li>
+        <li>PDFまたはWordの履歴書をアップロード</li>
+        <li>AIが候補者情報を整理・分析</li>
+        <li>採用担当者が結果を確認して選考</li>
+      </ol>
+
+      <h2>このような場面でご活用いただけます</h2>
+      <ul>
+        <li>応募者が多く、履歴書確認に時間がかかっている企業</li>
+        <li>候補者評価の基準を整理したい採用担当者</li>
+        <li>複数の候補者を効率的に比較したい企業</li>
+        <li>採用業務の一部にAIを活用したい中小企業</li>
+      </ul>
+
+      <h2>AI分析について</h2>
+      <p>
+        SIA TalentEyeの分析結果は、履歴書に記載された情報と設定された条件をもとに生成されます。
+        記載内容の正確性や候補者本人の能力を保証するものではありません。
+      </p>
+      <p>
+        採用に関する最終判断は、面接や確認を行ったうえで採用担当者が行ってください。
+      </p>
+    </div>
+
+    <!-- Bottom CTA -->
+    <section class="mt-16 rounded-2xl bg-surface px-6 py-12 text-center md:px-10">
+      <h2 class="text-2xl font-bold text-gray-900 md:text-3xl">履歴書選考に、AIのサポートを。</h2>
+      <p class="mx-auto mt-4 max-w-xl text-gray-600">
+        SIA TalentEyeの機能や導入方法について、お気軽にご相談ください。
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href="/inquiries/" class="btn btn-solid !no-underline">導入について相談する</a>
+        <a href="/inquiries/" class="btn btn-accent !text-ink !border-ink hover:!bg-ink hover:!text-white !no-underline">
+          お問い合わせ
+        </a>
+      </div>
+    </section>
   </main>
 </Base>
