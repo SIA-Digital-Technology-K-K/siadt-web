@@ -1,39 +1,49 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+
+const productUrl = 'https://sia-talenteye.web.app/';
 ---
 
 <Base
   title="SIA TalentEye｜AI履歴書解析・候補者比較を支援する採用ツール"
   description="SIA TalentEyeは、PDF・Word形式の履歴書をAIで解析し、候補者の経験やスキルを整理する採用支援ツールです。履歴書確認や候補者比較など、採用担当者の選考業務をサポートします。"
-  ogImage="/images/sia-talenteye-ui.png"
+  ogImage="/images/sia-talenteye-hero.png"
 >
-  <!-- Hero -->
-  <section class="relative overflow-hidden bg-ink text-white">
-    <div class="absolute inset-0 bg-gradient-to-br from-ink via-[#0a1628] to-[#0d2744]" aria-hidden="true"></div>
-    <div class="relative z-10 mx-auto max-w-4xl px-4 py-16 md:py-24">
-      <p class="mb-3 text-sm font-semibold tracking-wide text-accent">SIA TalentEye</p>
-      <h1 class="text-3xl font-bold leading-snug md:text-4xl">
-        AIで、履歴書選考をより効率的に。
-      </h1>
-      <p class="mt-5 max-w-2xl text-base leading-relaxed text-gray-200 md:text-lg">
-        SIA TalentEyeは、PDF・Word形式の履歴書をAIが読み取り、候補者の経験・スキル・適性を整理する採用支援ツールです。
-      </p>
-      <p class="mt-3 max-w-2xl text-base leading-relaxed text-gray-300">
-        採用担当者の確認作業をサポートし、候補者比較をわかりやすくします。
-      </p>
-      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-        <a href="/inquiries/" class="btn btn-solid !bg-white !text-ink hover:!bg-accent hover:!text-ink !no-underline">
-          サービスについて相談する
-        </a>
-        <a href="/inquiries/" class="btn btn-accent !no-underline">お問い合わせ</a>
-      </div>
-    </div>
-  </section>
+  <PageHero title="SIA TalentEye" />
 
   <main class="mx-auto max-w-4xl px-4 py-14">
     <div class="prose-body">
+      <figure class="!my-8 text-center">
+        <img
+          src="/images/sia-talenteye-hero.png"
+          alt="SIA TalentEye — AIで履歴書選考をより効率的に"
+          class="mx-auto w-full max-w-4xl rounded-xl shadow-sm"
+          width="1024"
+          height="682"
+          loading="lazy"
+        />
+      </figure>
+
+      <div class="my-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <a
+          href={productUrl}
+          target="_blank"
+          rel="noopener"
+          class="btn btn-solid !no-underline"
+        >
+          今すぐ無料で試す
+        </a>
+        <a href="/inquiries/" class="btn btn-accent !no-underline">お問い合わせ</a>
+      </div>
+
+      <h2>AIで、履歴書選考をより効率的に。</h2>
       <p>
-        SIA TalentEyeは、AIを活用して企業の履歴書整理・候補者分析・人材スクリーニングを支援する採用支援ツールです。
+        SIA TalentEyeは、PDF・Word形式の履歴書をAIが読み取り、候補者の経験・スキル・適性を整理する採用支援ツールです。
+        採用担当者の確認作業をサポートし、候補者比較をわかりやすくします。
+      </p>
+      <p>
+        AIを活用して企業の履歴書整理・候補者分析・人材スクリーニングを支援します。
         人手による履歴書確認の負担を軽減し、評価の観点を揃えながら、採用担当者が候補者の特徴を素早く把握できるようサポートします。
       </p>
 
@@ -47,7 +57,7 @@ import Base from '../layouts/Base.astro';
           loading="lazy"
         />
         <figcaption class="!mt-3 text-sm !text-gray-500">
-          履歴書のアップロードから求人要件の設定、評価観点の選択までを一連で進められます。
+          実際の操作画面：履歴書のアップロードから求人要件の設定、評価観点の選択までを一連で進められます。
         </figcaption>
       </figure>
 
@@ -97,20 +107,22 @@ import Base from '../layouts/Base.astro';
       <p>
         採用に関する最終判断は、面接や確認を行ったうえで採用担当者が行ってください。
       </p>
-    </div>
 
-    <!-- Bottom CTA -->
-    <section class="mt-16 rounded-2xl bg-surface px-6 py-12 text-center md:px-10">
-      <h2 class="text-2xl font-bold text-gray-900 md:text-3xl">履歴書選考に、AIのサポートを。</h2>
-      <p class="mx-auto mt-4 max-w-xl text-gray-600">
-        SIA TalentEyeの機能や導入方法について、お気軽にご相談ください。
+      <h2>履歴書選考に、AIのサポートを。</h2>
+      <p>
+        SIA TalentEyeの機能や導入方法について、お気軽にお問い合わせください。
       </p>
-      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <a href="/inquiries/" class="btn btn-solid !no-underline">導入について相談する</a>
-        <a href="/inquiries/" class="btn btn-accent !text-ink !border-ink hover:!bg-ink hover:!text-white !no-underline">
-          お問い合わせ
+      <div class="my-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <a
+          href={productUrl}
+          target="_blank"
+          rel="noopener"
+          class="btn btn-solid !no-underline"
+        >
+          今すぐ無料で試す
         </a>
+        <a href="/inquiries/" class="btn btn-accent !no-underline">お問い合わせ</a>
       </div>
-    </section>
+    </div>
   </main>
 </Base>
