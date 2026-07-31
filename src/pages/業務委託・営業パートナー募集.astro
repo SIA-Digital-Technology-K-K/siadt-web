@@ -39,67 +39,50 @@ import ConsultButton from '../components/ConsultButton.astro';
         </article>
       </div>
 
-      <!-- 3コース比較タブ -->
-      <div class="partner-tabs" data-partner-tabs>
-        <div class="partner-tablist" role="tablist" aria-label="パートナーコース比較">
-          <button type="button" class="partner-tab is-active" role="tab" aria-selected="true" data-tab="personal">個人パートナー</button>
-          <button type="button" class="partner-tab" role="tab" aria-selected="false" data-tab="corp-intro">法人・紹介コース</button>
-          <button type="button" class="partner-tab" role="tab" aria-selected="false" data-tab="corp-sales">法人・販売コース</button>
-        </div>
-
-        <div class="partner-tabpanel is-active" role="tabpanel" data-panel="personal">
-          <table class="reward-table">
-            <thead>
-              <tr>
-                <th>項目</th>
-                <th>内容</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>役割</td><td>送客のみ</td></tr>
-              <tr><td>初年度報酬率</td><td>20% / 25% / 30%</td></tr>
-              <tr><td>2年目</td><td>10%</td></tr>
-              <tr><td>3年目〜</td><td>なし</td></tr>
-              <tr><td>階梯境界</td><td>100万／300万</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="partner-tabpanel" role="tabpanel" data-panel="corp-intro" hidden>
-          <table class="reward-table">
-            <thead>
-              <tr>
-                <th>項目</th>
-                <th>内容</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>役割</td><td>送客のみ</td></tr>
-              <tr><td>初年度報酬率</td><td>20% / 25% / 30%</td></tr>
-              <tr><td>2年目</td><td>10%</td></tr>
-              <tr><td>3年目〜</td><td>なし</td></tr>
-              <tr><td>階梯境界</td><td>100万／300万</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="partner-tabpanel" role="tabpanel" data-panel="corp-sales" hidden>
-          <table class="reward-table">
-            <thead>
-              <tr>
-                <th>項目</th>
-                <th>内容</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>役割</td><td>提案〜クロージング＋一次サポート</td></tr>
-              <tr><td>初年度報酬率</td><td>25% / 30% / 35%</td></tr>
-              <tr><td>2年目</td><td>15%</td></tr>
-              <tr><td>3年目〜</td><td>なし</td></tr>
-              <tr><td>階梯境界</td><td>300万／1000万</td></tr>
-            </tbody>
-          </table>
-        </div>
+      <!-- 3コース比較表（1テーブル） -->
+      <div class="compare-scroll" role="region" aria-label="パートナーコース比較表" tabindex="0">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">個人パートナー</th>
+              <th scope="col">法人・紹介コース</th>
+              <th scope="col">法人・販売コース</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">役割</th>
+              <td>送客のみ</td>
+              <td>送客のみ</td>
+              <td>提案〜クロージング＋一次サポート</td>
+            </tr>
+            <tr>
+              <th scope="row">初年度</th>
+              <td>20% / 25% / 30%</td>
+              <td>20% / 25% / 30%</td>
+              <td>25% / 30% / 35%</td>
+            </tr>
+            <tr>
+              <th scope="row">2年目</th>
+              <td>10%</td>
+              <td>10%</td>
+              <td>15%</td>
+            </tr>
+            <tr>
+              <th scope="row">3年目以降</th>
+              <td>お支払い対象外</td>
+              <td>お支払い対象外</td>
+              <td>お支払い対象外</td>
+            </tr>
+            <tr>
+              <th scope="row">料率の区分基準</th>
+              <td>100万／300万</td>
+              <td>100万／300万</td>
+              <td>300万／1000万</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <!-- 3. 個人パートナー -->
@@ -143,6 +126,7 @@ import ConsultButton from '../components/ConsultButton.astro';
       <h3>【紹介コース】</h3>
       <p>業務内容・報酬率・お支払期間は、個人パートナーと同一です。</p>
       <h3>【販売コース】</h3>
+      <p>販売コースをご希望の場合、当社所定の製品研修の受講と、一次サポート体制のご用意をお願いしております。まずは紹介コースからお始めいただき、実績に応じて販売コースへ移行いただくことも可能です。</p>
       <p>ご提案から成約、および導入後の一次サポートを担っていただきます。</p>
       <table class="reward-table">
         <thead>
@@ -170,7 +154,6 @@ import ConsultButton from '../components/ConsultButton.astro';
           <tr><td>3年目以降</td><td>お支払い対象外</td></tr>
         </tbody>
       </table>
-      <p>※ 販売コースをご希望の場合、当社所定の製品研修の受講と、一次サポート体制のご用意をお願いしております。まずは紹介コースからお始めいただき、実績に応じて販売コースへ移行いただくことも可能です。</p>
 
       <!-- 5. 報酬率の適用ルール -->
       <h2>報酬率の適用ルール</h2>
@@ -186,9 +169,11 @@ import ConsultButton from '../components/ConsultButton.astro';
       <ul>
         <li>SIA Studio</li>
         <li>SIA TalentEye</li>
-        <li>SIA帳場</li>
+        <!-- SIA帳場：掲載可否の確認待ちのため一時非表示 -->
       </ul>
       <p>※ 「縁側」につきましては、介護施設・高齢者住宅向けの提携プログラムを別途ご用意しております。ご関心のある方は個別にご相談ください。</p>
+
+      <ConsultButton label="お問い合わせ・ご応募はこちら" />
 
       <!-- 7. 案件登録 -->
       <h2>案件登録</h2>
@@ -283,7 +268,7 @@ import ConsultButton from '../components/ConsultButton.astro';
   .partner-cards {
     display: grid;
     gap: 1rem;
-    margin: 1.5rem 0 2rem;
+    margin: 1.5rem 0 1.25rem;
   }
   @media (min-width: 768px) {
     .partner-cards {
@@ -300,45 +285,58 @@ import ConsultButton from '../components/ConsultButton.astro';
     margin-bottom: 0.75rem;
   }
 
-  .partner-tabs {
+  .compare-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     margin: 0 0 2rem;
-  }
-  .partner-tablist {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-  }
-  @media (min-width: 640px) {
-    .partner-tablist {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-  .partner-tab {
-    border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
-    background: #f9fafb;
-    color: #111827;
-    font-size: 0.9rem;
-    font-weight: 600;
-    line-height: 1.35;
-    padding: 0.7rem 0.75rem;
-    text-align: center;
-    cursor: pointer;
-  }
-  .partner-tab.is-active {
-    background: #04000b;
-    border-color: #04000b;
-    color: #fff;
-  }
-  .partner-tabpanel {
     border: 1px solid #e5e7eb;
     border-radius: 0.75rem;
-    padding: 0.75rem;
     background: #fff;
   }
-  .partner-tabpanel[hidden] {
-    display: none;
+  .compare-table {
+    width: 100%;
+    min-width: 40rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0 !important;
+    font-size: 0.9rem;
+  }
+  .compare-table th,
+  .compare-table td {
+    border-bottom: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    padding: 0.7rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+    white-space: normal;
+    word-break: break-word;
+    background: #fff;
+  }
+  .compare-table thead th {
+    background: #f3f4f6;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .compare-table tr:last-child th,
+  .compare-table tr:last-child td {
+    border-bottom: none;
+  }
+  .compare-table th:last-child,
+  .compare-table td:last-child {
+    border-right: none;
+  }
+  .compare-table tbody th,
+  .compare-table thead th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    min-width: 7.5rem;
+    background: #f9fafb;
+    box-shadow: 1px 0 0 #e5e7eb;
+  }
+  .compare-table thead th:first-child {
+    z-index: 3;
+    background: #f3f4f6;
   }
 
   .faq-list {
@@ -375,25 +373,3 @@ import ConsultButton from '../components/ConsultButton.astro';
   }
 </style>
 
-<script>
-  const root = document.querySelector('[data-partner-tabs]');
-  if (root) {
-    const tabs = root.querySelectorAll('.partner-tab');
-    const panels = root.querySelectorAll('.partner-tabpanel');
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const id = tab.getAttribute('data-tab');
-        tabs.forEach((t) => {
-          const active = t === tab;
-          t.classList.toggle('is-active', active);
-          t.setAttribute('aria-selected', active ? 'true' : 'false');
-        });
-        panels.forEach((panel) => {
-          const match = panel.getAttribute('data-panel') === id;
-          panel.classList.toggle('is-active', match);
-          panel.hidden = !match;
-        });
-      });
-    });
-  }
-</script>
