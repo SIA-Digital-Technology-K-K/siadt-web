@@ -7,26 +7,393 @@ import ConsultButton from '../components/ConsultButton.astro';
 <Base title="業務委託・営業パートナー募集 – SIA Digital Technology">
   <PageHero title="業務委託・営業パートナー募集" />
   <main class="mx-auto max-w-4xl px-4 py-14">
-    <div class="prose-body">
+    <div class="prose-body partner-recruit">
       <div class="grid gap-8 md:grid-cols-[23%_auto] md:items-start">
-        <figure class="!my-0"><img src="/images/營業.webp" alt="" width="233" height="350" loading="lazy" /></figure>
+        <figure class="!my-0">
+          <img src="/images/營業.webp" alt="成果報酬型 営業スタッフ募集" width="233" height="350" loading="lazy" />
+        </figure>
         <div>
-          <p>時間や働き方に縛られず、自分のペースで取り組める成果報酬型の営業スタイルです。</p>
+          <!-- 1. 導入 -->
+          <p>時間や働き方に縛られず、ご自身のペースで取り組んでいただける成果報酬型の営業パートナー制度です。</p>
           <p>人工知能（AI）やIT分野に関心をお持ちで、幅広い人脈やネットワークを活かした活動にご興味のある方を歓迎します。</p>
-          <p>個人・法人を問わず、当社サービスのご紹介を通じて成果を創出していただく、シンプルかつ柔軟な業務内容です。</p>
-          <p>営業経験や専門知識は必須ではなく、AIとITサービス分野に興味を持ち、新しいビジネスに挑戦したい方に適した環境をご提供します。</p>
-          <p>報酬は、成約した販売契約金額に応じて支給されます。</p>
-          <p>契約金額に応じた成果報酬制を採用しており、以下の<em>３</em>段階となります。</p>
-          <ul>
-            <li><em>年3000万円未満</em>：契約金額の <strong>20％</strong></li>
-            <li><em>年3000万円以上8000万円未満</em>：契約金額の <strong>25％</strong></li>
-            <li><em>年8000万円以上</em>：契約金額の <strong>30％</strong></li>
-          </ul>
-          <p>成果に応じて報酬率が上がる、シンプルで分かりやすい評価制度です。</p>
-          <p>契約金額に応じて報酬率が段階的に設定されており、高額案件ほど高い報酬が得られます。</p>
+          <p>営業経験や専門知識は必須ではありません。AI・ITサービス分野に興味を持ち、新しいビジネスに挑戦したい方に適した環境をご提供します。</p>
         </div>
       </div>
-      <ConsultButton />
+
+      <!-- 2. パートナー区分 -->
+      <h2>パートナー区分</h2>
+      <p>ご経験やご希望に応じて、3つのコースからお選びいただけます。</p>
+
+      <div class="partner-cards">
+        <article class="partner-card">
+          <h3 class="!mt-0">個人パートナー</h3>
+          <p class="!mb-0">副業・フリーランスの方向け。お客様をご紹介いただくのみで、商談・契約手続きはすべて当社が対応します。</p>
+        </article>
+        <article class="partner-card">
+          <h3 class="!mt-0">法人パートナー／紹介コース</h3>
+          <p class="!mb-0">お客様のご紹介のみを行っていただくコースです。</p>
+        </article>
+        <article class="partner-card">
+          <h3 class="!mt-0">法人パートナー／販売コース</h3>
+          <p class="!mb-0">ご提案から成約、導入後の一次サポートまでを担っていただくコースです。報酬率が最も高く設定されています。</p>
+        </article>
+      </div>
+
+      <!-- 3コース比較タブ -->
+      <div class="partner-tabs" data-partner-tabs>
+        <div class="partner-tablist" role="tablist" aria-label="パートナーコース比較">
+          <button type="button" class="partner-tab is-active" role="tab" aria-selected="true" data-tab="personal">個人パートナー</button>
+          <button type="button" class="partner-tab" role="tab" aria-selected="false" data-tab="corp-intro">法人・紹介コース</button>
+          <button type="button" class="partner-tab" role="tab" aria-selected="false" data-tab="corp-sales">法人・販売コース</button>
+        </div>
+
+        <div class="partner-tabpanel is-active" role="tabpanel" data-panel="personal">
+          <table class="reward-table">
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th>内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>役割</td><td>送客のみ</td></tr>
+              <tr><td>初年度報酬率</td><td>20% / 25% / 30%</td></tr>
+              <tr><td>2年目</td><td>10%</td></tr>
+              <tr><td>3年目〜</td><td>なし</td></tr>
+              <tr><td>階梯境界</td><td>100万／300万</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="partner-tabpanel" role="tabpanel" data-panel="corp-intro" hidden>
+          <table class="reward-table">
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th>内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>役割</td><td>送客のみ</td></tr>
+              <tr><td>初年度報酬率</td><td>20% / 25% / 30%</td></tr>
+              <tr><td>2年目</td><td>10%</td></tr>
+              <tr><td>3年目〜</td><td>なし</td></tr>
+              <tr><td>階梯境界</td><td>100万／300万</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="partner-tabpanel" role="tabpanel" data-panel="corp-sales" hidden>
+          <table class="reward-table">
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th>内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>役割</td><td>提案〜クロージング＋一次サポート</td></tr>
+              <tr><td>初年度報酬率</td><td>25% / 30% / 35%</td></tr>
+              <tr><td>2年目</td><td>15%</td></tr>
+              <tr><td>3年目〜</td><td>なし</td></tr>
+              <tr><td>階梯境界</td><td>300万／1000万</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 3. 個人パートナー -->
+      <h2>個人パートナー</h2>
+      <h3>【業務内容】</h3>
+      <p>当社サービスにご関心のありそうな方を、当社所定のフォームよりご登録（案件登録）いただきます。その後の商談・お見積り・ご契約手続きは、すべて当社が対応します。</p>
+      <h3>【報酬】</h3>
+      <p>報酬は、ご紹介いただいたお客様から当社が実際に入金を受けた金額（税抜・割引適用後）を基準に算定します。</p>
+      <p>報酬率は、暦年（1月1日〜12月31日）における年間紹介実績の累計額に応じて、以下の3段階となります。</p>
+      <table class="reward-table">
+        <thead>
+          <tr>
+            <th>年間紹介実績</th>
+            <th>報酬率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>100万円未満</td><td>20%</td></tr>
+          <tr><td>100万円以上 300万円未満</td><td>25%</td></tr>
+          <tr><td>300万円以上</td><td>30%</td></tr>
+        </tbody>
+      </table>
+      <h3>【お支払期間】</h3>
+      <p>ご紹介いただいたお客様がご利用を継続される限り、以下の期間、毎月の入金額に応じて報酬をお支払いします。</p>
+      <table class="reward-table">
+        <thead>
+          <tr>
+            <th>期間</th>
+            <th>報酬率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>初年度（ご契約開始から12ヶ月）</td><td>上記の報酬率</td></tr>
+          <tr><td>2年目（13〜24ヶ月）</td><td>一律 10%</td></tr>
+          <tr><td>3年目以降</td><td>お支払い対象外</td></tr>
+        </tbody>
+      </table>
+
+      <!-- 4. 法人パートナー -->
+      <h2>法人パートナー</h2>
+      <h3>【紹介コース】</h3>
+      <p>業務内容・報酬率・お支払期間は、個人パートナーと同一です。</p>
+      <h3>【販売コース】</h3>
+      <p>ご提案から成約、および導入後の一次サポートを担っていただきます。</p>
+      <table class="reward-table">
+        <thead>
+          <tr>
+            <th>年間紹介実績</th>
+            <th>報酬率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>300万円未満</td><td>25%</td></tr>
+          <tr><td>300万円以上 1,000万円未満</td><td>30%</td></tr>
+          <tr><td>1,000万円以上</td><td>35%</td></tr>
+        </tbody>
+      </table>
+      <table class="reward-table">
+        <thead>
+          <tr>
+            <th>期間</th>
+            <th>報酬率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>初年度（ご契約開始から12ヶ月）</td><td>上記の報酬率</td></tr>
+          <tr><td>2年目（13〜24ヶ月）</td><td>一律 15%</td></tr>
+          <tr><td>3年目以降</td><td>お支払い対象外</td></tr>
+        </tbody>
+      </table>
+      <p>※ 販売コースをご希望の場合、当社所定の製品研修の受講と、一次サポート体制のご用意をお願いしております。まずは紹介コースからお始めいただき、実績に応じて販売コースへ移行いただくことも可能です。</p>
+
+      <!-- 5. 報酬率の適用ルール -->
+      <h2>報酬率の適用ルール</h2>
+      <ul>
+        <li>報酬率は、年間累計額が各基準に到達した「翌月以降」の入金分から適用されます。遡及適用はありません。</li>
+        <li>年間紹介実績は、毎年1月1日にリセットされます。</li>
+        <li>初期費用・導入支援費・個別カスタマイズ費用は、報酬の算定対象外となります。</li>
+      </ul>
+
+      <!-- 6. 対象サービス -->
+      <h2>対象サービス</h2>
+      <p>本制度の対象サービスは以下のとおりです。</p>
+      <ul>
+        <li>SIA Studio</li>
+        <li>SIA TalentEye</li>
+        <li>SIA帳場</li>
+      </ul>
+      <p>※ 「縁側」につきましては、介護施設・高齢者住宅向けの提携プログラムを別途ご用意しております。ご関心のある方は個別にご相談ください。</p>
+
+      <!-- 7. 案件登録 -->
+      <h2>案件登録</h2>
+      <p>ご紹介の前に、当社所定のフォームより案件登録をお願いいたします。登録の有効期間は90日間です。</p>
+      <p>以下は報酬の対象外となりますので、あらかじめご了承ください。</p>
+      <ul>
+        <li>案件登録を行わずにご紹介いただいた場合</li>
+        <li>当社が既にお取引中、またはご商談中のお客様</li>
+        <li>パートナーご本人、およびその関係会社様とのご契約</li>
+        <li>他のパートナーが先に登録済みのお客様</li>
+      </ul>
+
+      <!-- 8. お支払い条件 -->
+      <h2>お支払い条件</h2>
+      <ul>
+        <li>月末締め、翌月末日までにご指定口座へお振込みいたします。</li>
+        <li>報酬額の合計が10,000円に満たない場合は、翌月へ繰り越します。</li>
+        <li>お客様の解約・返金が発生した場合、当該分は翌月以降の報酬から調整させていただきます。</li>
+        <li>振込手数料は当社が負担いたします。</li>
+      </ul>
+
+      <!-- 9. 費用サポート -->
+      <h2>費用サポート</h2>
+      <p>個人パートナーの方を対象に、業務効率化を目的としたAIツール（ChatGPT等）の利用料として、月額1,000円を上限に補助いたします。</p>
+      <p>※ 当月に案件登録の実績があるパートナーの方が対象です。</p>
+      <p>※ 領収書のご提出をお願いいたします。</p>
+
+      <!-- 10. ご留意事項 -->
+      <h2>ご留意事項</h2>
+      <ul>
+        <li>個人の方への報酬が所得税法上の外交員報酬等に該当する場合、源泉徴収を行ったうえでお支払いいたします。</li>
+        <li>適格請求書発行事業者の登録番号をお持ちの方は、ご契約時にご提供ください。</li>
+        <li>ノルマは設けておりません。ただし、6ヶ月以上ご紹介実績がない場合、次回更新をお見送りさせていただく場合がございます。</li>
+        <li>契約期間は1年間とし、以降1年ごとの自動更新となります。</li>
+        <li>本ページの内容は制度の概要です。詳細は業務委託契約書の定めによります。</li>
+      </ul>
+
+      <!-- 11. お申し込みの流れ -->
+      <h2>お申し込みの流れ</h2>
+      <ol>
+        <li>お問い合わせフォームよりご応募</li>
+        <li>オンラインにて制度のご説明（30分程度）</li>
+        <li>業務委託契約書の締結</li>
+        <li>案件登録フォーム・資料一式のご案内</li>
+        <li>活動開始</li>
+      </ol>
+
+      <!-- 12. よくあるご質問 -->
+      <h2>よくあるご質問</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>営業経験がなくても応募できますか。</summary>
+          <p>はい。商談・契約手続きは当社が対応しますので、「ご紹介いただく」ことが可能であれば問題ございません。</p>
+        </details>
+        <details class="faq-item">
+          <summary>報酬はいつから発生しますか。</summary>
+          <p>ご紹介いただいたお客様からのご入金が確認できた翌月からです。</p>
+        </details>
+        <details class="faq-item">
+          <summary>3年目以降に報酬がなくなるのはなぜですか。</summary>
+          <p>継続的なサポート・運用は当社が担うためです。一方で、初年度・2年目の報酬率は業界水準を上回る設定としており、新規のご紹介に注力いただける制度としております。</p>
+        </details>
+        <details class="faq-item">
+          <summary>個人事業主でも法人でも応募できますか。</summary>
+          <p>はい。個人・法人いずれも歓迎しております。法人の方は紹介コース・販売コースのいずれかをお選びいただけます。</p>
+        </details>
+      </div>
+
+      <ConsultButton label="お問い合わせ・ご応募はこちら" />
     </div>
   </main>
 </Base>
+
+<style>
+  .partner-recruit :global(.reward-table) {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    font-size: 0.95rem;
+  }
+  .partner-recruit :global(.reward-table th),
+  .partner-recruit :global(.reward-table td) {
+    white-space: normal;
+    word-break: break-word;
+    padding: 0.55rem 0.65rem;
+  }
+  .partner-recruit :global(.reward-table th:first-child),
+  .partner-recruit :global(.reward-table td:first-child) {
+    width: 62%;
+  }
+
+  .partner-cards {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
+  }
+  @media (min-width: 768px) {
+    .partner-cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .partner-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    background: #fff;
+    padding: 1.1rem 1rem;
+  }
+  .partner-card p {
+    margin-bottom: 0.75rem;
+  }
+
+  .partner-tabs {
+    margin: 0 0 2rem;
+  }
+  .partner-tablist {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .partner-tablist {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .partner-tab {
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    background: #f9fafb;
+    color: #111827;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.35;
+    padding: 0.7rem 0.75rem;
+    text-align: center;
+    cursor: pointer;
+  }
+  .partner-tab.is-active {
+    background: #04000b;
+    border-color: #04000b;
+    color: #fff;
+  }
+  .partner-tabpanel {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    background: #fff;
+  }
+  .partner-tabpanel[hidden] {
+    display: none;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1rem 0 2rem;
+  }
+  .faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    background: #fff;
+    padding: 0.85rem 1rem;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: #111827;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-item summary::after {
+    content: "+";
+    float: right;
+    color: #0bbbb5;
+    font-weight: 700;
+  }
+  .faq-item[open] summary::after {
+    content: "−";
+  }
+  .faq-item p {
+    margin: 0.75rem 0 0;
+  }
+</style>
+
+<script>
+  const root = document.querySelector('[data-partner-tabs]');
+  if (root) {
+    const tabs = root.querySelectorAll('.partner-tab');
+    const panels = root.querySelectorAll('.partner-tabpanel');
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const id = tab.getAttribute('data-tab');
+        tabs.forEach((t) => {
+          const active = t === tab;
+          t.classList.toggle('is-active', active);
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        panels.forEach((panel) => {
+          const match = panel.getAttribute('data-panel') === id;
+          panel.classList.toggle('is-active', match);
+          panel.hidden = !match;
+        });
+      });
+    });
+  }
+</script>
