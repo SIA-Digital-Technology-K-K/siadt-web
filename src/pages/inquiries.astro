@@ -1,17 +1,23 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import NetlifyFormEnhance from '../components/NetlifyFormEnhance.astro';
 
 const products = [
-  '小売業向けAI製品',
-  '自動車向けAI製品',
-  '個人的な製品',
-  '人工知能アシスタント',
+  'SIA Studio',
+  'SIA TalentEye',
+  'SIA帳場',
+  '緣側',
+  '日本通',
+  'AIエッジ計算製品',
+  'AIアシスタント',
+  '小売店舗向けAIシステム',
+  '自動車向けAI分析システム',
+  'オンラインストア（個人向けAI製品）',
+  '企業金融技術服務',
   '会社向けDX支援',
   'アプリケーションおよびシステム開発',
   'IT基盤サービス',
-  '緣側app',
-  '日本通',
   '他の',
 ];
 ---
@@ -24,7 +30,7 @@ const products = [
       method="POST"
       action="/thanks/"
       data-netlify="true"
-      data-netlify-honeypot="bot-field"
+      netlify-honeypot="bot-field"
       class="space-y-5"
     >
       <input type="hidden" name="form-name" value="contact" />
@@ -56,6 +62,10 @@ const products = [
       </div>
       <button type="submit" class="form-submit">確認</button>
     </form>
+    <NetlifyFormEnhance
+      formName="contact"
+      emailFields={['メールアドレス', 'メールアドレス確認用']}
+    />
     <p class="mt-8 text-center text-sm text-gray-500">
       住所・電話番号は <a href="/連絡先/" class="text-[#0bbbb5] underline underline-offset-2">連絡先</a> をご覧ください。
     </p>

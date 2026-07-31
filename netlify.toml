@@ -2,6 +2,8 @@
   command = "npm run build"
   publish = "dist"
 
-# Netlify Forms 通知先は管理画面で設定:
-# Project → Forms → Form notifications → Email notification
-# 宛先: service@siadt.jp（contact / contact-zh / enterprise-order の 3 フォーム）
+# Netlify Forms:
+# 1) Project → Forms → Form detection を Enable（必須。未設定だと POST が 404 になる）
+# 2) デプロイ後、Build log に "contact / contact-zh / enterprise-order" が検出されること
+# 3) Form notifications → Email notification 宛先: service@siadt.jp
+# 静的検出用 HTML: public/__forms.html（ビルド後 dist/__forms.html）

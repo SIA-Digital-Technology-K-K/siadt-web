@@ -39,8 +39,10 @@ npm run images     # _mirror/media の画像を WebP 変換して public/images 
 | `contact-zh` | `/bankhelp/` | #556 華人服務聯繫我們 |
 | `enterprise-order` | `/order/` | #730 企業服務訂單確認 |
 
-- 全フォーム honeypot（`data-netlify-honeypot="bot-field"`）設定済み
-- 送信成功後は `/thanks/` に遷移
+- 全フォーム honeypot（`netlify-honeypot="bot-field"`）設定済み
+- 送信は `/__forms.html` へ POST し、成功後 `/thanks/` に遷移
+- ビルド時検出用の静的 HTML: `public/__forms.html`
+- **必須**: Netlify 管理画面 → Forms → Form detection を Enable（未設定だと送信が 404）
 - 通知先メールは Netlify 管理画面 → Forms → Notifications で設定（発注者タスク）
 
 ## デプロイ運用ルール（Netlify Personal プラン）

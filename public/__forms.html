@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Netlify Forms</title>
+  </head>
+  <body>
+    <!--
+      Netlify Forms 検出用の静的 HTML。
+      ビルド後の dist に必ず含めることで、フォーム登録漏れ（POST 404）を防ぐ。
+      訪問者向け UI ではない。フィールド名は各ページの form と完全一致させること。
+    -->
+
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
+      <input type="text" name="お名前" />
+      <input type="email" name="メールアドレス" />
+      <input type="email" name="メールアドレス確認用" />
+      <input type="text" name="製品" />
+      <textarea name="お問合せ内容"></textarea>
+    </form>
+
+    <form name="contact-zh" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact-zh" />
+      <input name="bot-field" />
+      <input type="text" name="姓" />
+      <input type="text" name="名" />
+      <input type="email" name="电邮" />
+      <input type="email" name="确认邮件地址" />
+      <textarea name="需求和問題"></textarea>
+    </form>
+
+    <form name="enterprise-order" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="enterprise-order" />
+      <input name="bot-field" />
+      <input type="checkbox" name="服務內容" />
+      <input type="text" name="追加網頁製作的數量" />
+      <input type="text" name="尾款" />
+      <input type="text" name="企業名稱" />
+      <input type="email" name="电邮" />
+      <input type="email" name="确认邮件地址" />
+      <input type="tel" name="電話" />
+      <input type="text" name="住所1" />
+      <input type="text" name="住所2" />
+      <input type="text" name="市" />
+      <input type="text" name="都道府県" />
+      <input type="text" name="郵便番号" />
+      <textarea name="備注說明"></textarea>
+      <input type="radio" name="支付方式" />
+      <input type="checkbox" name="同意" />
+    </form>
+  </body>
+</html>

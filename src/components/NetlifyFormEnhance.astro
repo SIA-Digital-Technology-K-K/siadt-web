@@ -1,0 +1,66 @@
+---
+/**
+ * Netlify Forms の送信を安定化:
+ * - 静的エンドポイント /__forms.html へ POST（フォーム未登録時の pretty URL 404 を回避）
+ * - 成功時は /thanks/ へ遷移
+ * - 任意でメール確認フィールドの一致チェック
+ */
+interface Props {
+  formName: string;
+  emailFields?: [string, string];
+}
+const { formName, emailFields } = Astro.props;
+const emailA = emailFields?.[0] ?? '';
+const emailB = emailFields?.[1] ?? '';
+---
+
+<script define:vars={{ formName, emailA, emailB }}>
+  const form = document.querySelector(`form[name="${formName}"]`);
+  if (!form || form.dataset.netlifyEnhance === '1') return;
+  form.dataset.netlifyEnhance = '1';
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const submitButton = form.querySelector('[type="submit"]');
+    const data = new FormData(form);
+
+    if (emailA && emailB) {
+      const a = String(data.get(emailA) ?? '').trim();
+      const b = String(data.get(emailB) ?? '').trim();
+      if (a && b && a !== b) {
+        alert('メールアドレスが一致しません。確認用の入力をご確認ください。');
+        return;
+      }
+    }
+
+    if (!data.get('form-name')) {
+      data.set('form-name', formName);
+    }
+
+    if (submitButton instanceof HTMLButtonElement) {
+      submitButton.disabled = true;
+    }
+
+    try {
+      const response = await fetch('/__forms.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      window.location.assign('/thanks/');
+    } catch {
+      alert(
+        '送信に失敗しました。しばらくしてから再度お試しください。解決しない場合は service@siadt.jp までご連絡ください。',
+      );
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = false;
+      }
+    }
+  });
+</script>

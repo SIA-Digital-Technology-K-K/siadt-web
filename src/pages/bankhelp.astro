@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import NetlifyFormEnhance from '../components/NetlifyFormEnhance.astro';
 ---
 
 <Base
@@ -16,7 +17,7 @@ import PageHero from '../components/PageHero.astro';
       method="POST"
       action="/thanks/"
       data-netlify="true"
-      data-netlify-honeypot="bot-field"
+      netlify-honeypot="bot-field"
       class="space-y-5"
     >
       <input type="hidden" name="form-name" value="contact-zh" />
@@ -50,5 +51,9 @@ import PageHero from '../components/PageHero.astro';
       </div>
       <button type="submit" class="form-submit">提交</button>
     </form>
+    <NetlifyFormEnhance
+      formName="contact-zh"
+      emailFields={['电邮', '确认邮件地址']}
+    />
   </main>
 </Base>

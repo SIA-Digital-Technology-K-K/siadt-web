@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import NetlifyFormEnhance from '../components/NetlifyFormEnhance.astro';
 
 const services = [
   { img: '/images/b1.webp', label: '服務定金', price: '¥3,000' },
@@ -22,7 +23,7 @@ const services = [
       method="POST"
       action="/thanks/"
       data-netlify="true"
-      data-netlify-honeypot="bot-field"
+      netlify-honeypot="bot-field"
       class="space-y-8"
     >
       <input type="hidden" name="form-name" value="enterprise-order" />
@@ -153,5 +154,9 @@ const services = [
 
       <button type="submit" class="form-submit">確認</button>
     </form>
+    <NetlifyFormEnhance
+      formName="enterprise-order"
+      emailFields={['电邮', '确认邮件地址']}
+    />
   </main>
 </Base>
