@@ -169,7 +169,10 @@ import ConsultButton from '../components/ConsultButton.astro';
       <ul>
         <li>SIA Studio</li>
         <li>SIA TalentEye</li>
-        <!-- SIA帳場：掲載可否の確認待ちのため一時非表示 -->
+        <li>
+          SIA帳場
+          <span class="service-note">（プロモーション業務は法人顧客向け製品に限ります）</span>
+        </li>
       </ul>
       <p>※ 「縁側」につきましては、介護施設・高齢者住宅向けの提携プログラムを別途ご用意しております。ご関心のある方は個別にご相談ください。</p>
 
@@ -370,6 +373,13 @@ import ConsultButton from '../components/ConsultButton.astro';
   }
   .faq-item p {
     margin: 0.75rem 0 0;
+  }
+
+  .service-note {
+    display: inline;
+    font-size: 0.85em;
+    color: #6b7280;
+    font-weight: 400;
   }
 </style>
 
