@@ -44,6 +44,29 @@ body {
 .prose-body p {
   margin-bottom: 1rem;
 }
+.product-entity {
+  margin-top: 4rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.8125rem;
+  color: #6b7280;
+  line-height: 1.7;
+}
+.product-entity p {
+  margin-bottom: 0.85rem;
+}
+.product-entity a {
+  color: #0bbbb5;
+}
+.product-entity table {
+  font-size: 0.8125rem;
+  margin-top: 0.5rem;
+}
+.product-entity caption {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #6b7280;
+}
 .prose-body ul {
   list-style: disc;
   padding-left: 1.5rem;

@@ -64,29 +64,8 @@ const faqs = [
       </div>
 
       <p class="text-lg font-semibold !text-gray-900">
-        SIA Studioは、SIAデジタルテクノロジー株式会社が提供するAIクリエイティブツールです。
+        プロンプトから、画像・動画・文章を生成できるAIクリエイティブツール。
       </p>
-      <p>
-        開発・運営は大阪のSIAデジタルテクノロジー株式会社（SIA Digital Technology Co., Ltd.、https://siadt.jp/）です。製品の公式サイトは <a href={studioUrl} target="_blank" rel="noopener">https://studio.siadt.jp/</a> です。
-      </p>
-
-      <ProductFacts
-        caption="SIA Studio の基本情報"
-        facts={[
-          { term: '製品名', text: 'SIA Studio' },
-          { term: '提供元', text: 'SIAデジタルテクノロジー株式会社', href: '/企業情報/' },
-          { term: '英文社名', text: 'SIA Digital Technology Co., Ltd.' },
-          { term: '製品ページ', text: 'https://siadt.jp/sia-studio/', href: '/sia-studio/' },
-          { term: '公式サイト', text: 'https://studio.siadt.jp/', href: studioUrl, external: true },
-          { term: 'できること', text: 'プロンプトからの画像生成、動画生成、文章生成。ガイドによる文案・画像・短尺動画の一括生成' },
-          { term: 'できないこと', text: '生成結果の権利・事実関係の保証、公開判断の代行、専門制作ソフトの完全代替' },
-          { term: '生成モデル', text: '入力内容と利用モデルにより異なる。特定モデル名は固定公開していない' },
-          { term: '対象ユーザー', text: '企業の広報・マーケ、中小企業、SNSや広告素材を作る担当者' },
-          { term: '利用料金', text: '無料で試用可能。詳細は製品サイトを参照' },
-          { term: '商用利用', text: '利用規約と法令の範囲内で可能。公開前の確認は利用者の責任' },
-          { term: '対応言語', text: '日本語のプロンプトで利用可能' },
-        ]}
-      />
 
       <h2>アイデアを、AIですばやく形に。</h2>
       <p>
@@ -259,6 +238,27 @@ const faqs = [
         </a>
         <a href="/inquiries/" class="btn btn-accent !no-underline">お問い合わせ</a>
       </div>
+
+      <section class="product-entity" aria-label="製品の基本情報">
+        <p>
+          SIA Studioは、<a href="/企業情報/">SIAデジタルテクノロジー株式会社</a>が提供するAIクリエイティブツールです。公式サイトは
+          <a href={studioUrl} target="_blank" rel="noopener">studio.siadt.jp</a>。
+        </p>
+        <ProductFacts
+          caption="SIA Studio の基本情報"
+          facts={[
+            { term: '提供元', text: 'SIAデジタルテクノロジー株式会社', href: '/企業情報/' },
+            { term: '公式サイト', text: 'https://studio.siadt.jp/', href: studioUrl, external: true },
+            { term: 'できること', text: 'プロンプトからの画像生成、動画生成、文章生成。ガイドによる文案・画像・短尺動画の一括生成' },
+            { term: 'できないこと', text: '生成結果の権利・事実関係の保証、公開判断の代行、専門制作ソフトの完全代替' },
+            { term: '生成モデル', text: '入力内容と利用モデルにより異なる。特定モデル名は固定公開していない' },
+            { term: '対象ユーザー', text: '企業の広報・マーケ、中小企業、SNSや広告素材を作る担当者' },
+            { term: '利用料金', text: '無料で試用可能。詳細は製品サイトを参照' },
+            { term: '商用利用', text: '利用規約と法令の範囲内で可能。公開前の確認は利用者の責任' },
+            { term: '対応言語', text: '日本語のプロンプトで利用可能' },
+          ]}
+        />
+      </section>
     </div>
   </main>
 </Base>
