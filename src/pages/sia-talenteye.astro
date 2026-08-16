@@ -57,22 +57,9 @@ const faqs = [
 
       <h2>AIで、履歴書選考をより効率的に。</h2>
       <p>
-        SIA TalentEyeは、SIAデジタルテクノロジー株式会社が提供する採用支援ツールです。
-        PDF・Word形式の履歴書をAIが読み取り、候補者の経験・スキル・適性を整理します。
+        SIA TalentEyeは、PDF・Word形式の履歴書をAIが読み取り、候補者の経験・スキル・適性を整理する採用支援ツールです。
+        採用担当者の確認作業をサポートし、候補者比較をわかりやすくします。
       </p>
-      <ProductFacts
-        caption="SIA TalentEye の基本情報"
-        facts={[
-          { term: '製品名', text: 'SIA TalentEye' },
-          { term: '提供元', text: 'SIAデジタルテクノロジー株式会社', href: '/企業情報/' },
-          { term: '公式サイト', text: 'https://talenteye.siadt.jp/', href: productUrl, external: true },
-          { term: 'できること', text: '履歴書のAI解析、候補者評価の整理、複数候補者の比較・ランキング' },
-          { term: 'できないこと', text: '採用の最終判断、履歴書記載内容の真偽保証、候補者本人の能力保証' },
-          { term: '対応形式', text: 'PDF、Word' },
-          { term: '対象ユーザー', text: '採用担当者、応募が多い企業、中小企業' },
-          { term: '利用料金', text: '無料で試用可能' },
-        ]}
-      />
       <p>
         AIを活用して企業の履歴書整理・候補者分析・人材スクリーニングを支援します。
         人手による履歴書確認の負担を軽減し、評価の観点を揃えながら、採用担当者が候補者の特徴を素早く把握できるようサポートします。
@@ -177,6 +164,25 @@ const faqs = [
         </a>
         <a href="/inquiries/" class="btn btn-accent !no-underline">お問い合わせ</a>
       </div>
+
+      <section class="product-entity" aria-label="製品の基本情報">
+        <p>
+          SIA TalentEyeは、<a href="/企業情報/">SIAデジタルテクノロジー株式会社</a>が提供する採用支援ツールです。公式サイトは
+          <a href={productUrl} target="_blank" rel="noopener">talenteye.siadt.jp</a>。
+        </p>
+        <ProductFacts
+          caption="SIA TalentEye の基本情報"
+          facts={[
+            { term: '提供元', text: 'SIAデジタルテクノロジー株式会社', href: '/企業情報/' },
+            { term: '公式サイト', text: 'https://talenteye.siadt.jp/', href: productUrl, external: true },
+            { term: 'できること', text: '履歴書のAI解析、候補者評価の整理、複数候補者の比較・ランキング' },
+            { term: 'できないこと', text: '採用の最終判断、履歴書記載内容の真偽保証、候補者本人の能力保証' },
+            { term: '対応形式', text: 'PDF、Word' },
+            { term: '対象ユーザー', text: '採用担当者、応募が多い企業、中小企業' },
+            { term: '利用料金', text: '無料で試用可能' },
+          ]}
+        />
+      </section>
     </div>
   </main>
 </Base>

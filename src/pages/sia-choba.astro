@@ -71,22 +71,11 @@ const faqs = [
       </figure>
 
       <p class="text-lg font-semibold !text-gray-900">
-        SIA帳場は、SIAデジタルテクノロジー株式会社が提供する中小企業向けAI経理プラットフォームです。
+        中小企業の経理を、もっとシンプルに。
       </p>
-      <ProductFacts
-        caption="SIA帳場 の基本情報"
-        facts={[
-          { term: '製品名', text: 'SIA帳場' },
-          { term: '提供元', text: 'SIAデジタルテクノロジー株式会社', href: '/企業情報/' },
-          { term: '公式サイト', text: 'https://choba.siadt.jp/', href: productUrl, external: true },
-          { term: 'できること', text: '領収書・請求書・銀行明細の読取、仕訳と帳簿の自動生成、財務・税務の質問回答' },
-          { term: 'できないこと', text: '税理士業務の代行、税務申告の確定、仕訳結果の無確認利用' },
-          { term: '対応データ', text: '領収書、請求書、レシート、銀行明細（PDF / JPG / PNG）' },
-          { term: '連携予定', text: '弥生会計、freee、マネーフォワード クラウド会計、勘定奉行、CSV' },
-          { term: '対象ユーザー', text: '経理担当が少ない中小企業' },
-          { term: '利用料金', text: '無料で試用可能' },
-        ]}
-      />
+      <p>
+        SIA帳場は、AIによる自動記帳・財務税務アシスタント・会計ソフト連携をひとつにまとめた、中小企業向けAI経理プラットフォームです。
+      </p>
 
       <h2>なぜSIA帳場を選ぶのか</h2>
       <h3>AIが経理業務をまるごとサポート</h3>
@@ -263,6 +252,26 @@ const faqs = [
             お問い合わせ
           </a>
         </div>
+      </section>
+
+      <section class="product-entity" aria-label="製品の基本情報">
+        <p>
+          SIA帳場は、<a href="/企業情報/">SIAデジタルテクノロジー株式会社</a>が提供する中小企業向けAI経理プラットフォームです。公式サイトは
+          <a href={productUrl} target="_blank" rel="noopener">choba.siadt.jp</a>。
+        </p>
+        <ProductFacts
+          caption="SIA帳場 の基本情報"
+          facts={[
+            { term: '提供元', text: 'SIAデジタルテクノロジー株式会社', href: '/企業情報/' },
+            { term: '公式サイト', text: 'https://choba.siadt.jp/', href: productUrl, external: true },
+            { term: 'できること', text: '領収書・請求書・銀行明細の読取、仕訳と帳簿の自動生成、財務・税務の質問回答' },
+            { term: 'できないこと', text: '税理士業務の代行、税務申告の確定、仕訳結果の無確認利用' },
+            { term: '対応データ', text: '領収書、請求書、レシート、銀行明細（PDF / JPG / PNG）' },
+            { term: '連携予定', text: '弥生会計、freee、マネーフォワード クラウド会計、勘定奉行、CSV' },
+            { term: '対象ユーザー', text: '経理担当が少ない中小企業' },
+            { term: '利用料金', text: '無料で試用可能' },
+          ]}
+        />
       </section>
     </div>
   </main>
