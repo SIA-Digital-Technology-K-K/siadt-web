@@ -1,24 +1,32 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import ProductFacts from '../components/ProductFacts.astro';
+import { productSchema, products } from '../data/site';
 
 const productUrl = 'https://talenteye.siadt.jp/';
+const product = products.find((p) => p.name === 'SIA TalentEye')!;
+const faqs = [
+  {
+    q: 'SIA TalentEyeはどの会社の製品ですか？',
+    a: 'SIA TalentEyeは、SIAデジタルテクノロジー株式会社（SIA Digital Technology Co., Ltd.）が提供する採用支援ツールです。製品サイトは https://talenteye.siadt.jp/ です。',
+  },
+  {
+    q: '履歴書の最終判断もAIが行いますか？',
+    a: '行いません。AIの分析は参考情報です。最終的な選考判断は採用担当者が行います。',
+  },
+  {
+    q: '対応している履歴書の形式は何ですか？',
+    a: 'PDFとWord形式です。',
+  },
+];
 ---
 
 <Base
-  title="SIA TalentEye｜AI履歴書解析・候補者比較を支援する採用ツール"
-  description="SIA TalentEyeは、PDF・Word形式の履歴書をAIで解析し、候補者の経験やスキルを整理する採用支援ツールです。履歴書確認や候補者比較など、採用担当者の選考業務をサポートします。"
+  title="SIA TalentEye｜SIAデジタルテクノロジーのAI採用ツール"
+  description="SIA TalentEyeは、SIAデジタルテクノロジー株式会社が提供する採用支援ツールです。PDF・Word履歴書をAIで解析し、候補者比較を支援します。公式サイト talenteye.siadt.jp。"
   ogImage="/images/sia-talenteye-hero.png"
-  jsonLd={{
-    '@type': 'SoftwareApplication',
-    name: 'SIA TalentEye',
-    url: productUrl,
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'JPY' },
-    description: 'PDF・Word形式の履歴書をAIで解析し、候補者比較を支援する採用ツール。',
-    publisher: { '@id': 'https://siadt.jp/#organization' },
-  }}
+  jsonLd={productSchema({ product, faqs })}
 >
   <PageHero title="SIA TalentEye" />
 
@@ -49,9 +57,22 @@ const productUrl = 'https://talenteye.siadt.jp/';
 
       <h2>AIで、履歴書選考をより効率的に。</h2>
       <p>
-        SIA TalentEyeは、PDF・Word形式の履歴書をAIが読み取り、候補者の経験・スキル・適性を整理する採用支援ツールです。
-        採用担当者の確認作業をサポートし、候補者比較をわかりやすくします。
+        SIA TalentEyeは、SIAデジタルテクノロジー株式会社が提供する採用支援ツールです。
+        PDF・Word形式の履歴書をAIが読み取り、候補者の経験・スキル・適性を整理します。
       </p>
+      <ProductFacts
+        caption="SIA TalentEye の基本情報"
+        facts={[
+          { term: '製品名', text: 'SIA TalentEye' },
+          { term: '提供元', text: 'SIAデジタルテクノロジー株式会社', href: '/企業情報/' },
+          { term: '公式サイト', text: 'https://talenteye.siadt.jp/', href: productUrl, external: true },
+          { term: 'できること', text: '履歴書のAI解析、候補者評価の整理、複数候補者の比較・ランキング' },
+          { term: 'できないこと', text: '採用の最終判断、履歴書記載内容の真偽保証、候補者本人の能力保証' },
+          { term: '対応形式', text: 'PDF、Word' },
+          { term: '対象ユーザー', text: '採用担当者、応募が多い企業、中小企業' },
+          { term: '利用料金', text: '無料で試用可能' },
+        ]}
+      />
       <p>
         AIを活用して企業の履歴書整理・候補者分析・人材スクリーニングを支援します。
         人手による履歴書確認の負担を軽減し、評価の観点を揃えながら、採用担当者が候補者の特徴を素早く把握できるようサポートします。
@@ -130,6 +151,16 @@ const productUrl = 'https://talenteye.siadt.jp/';
       <p>
         採用に関する最終判断は、面接や確認を行ったうえで採用担当者が行ってください。
       </p>
+
+      <h2>よくある質問</h2>
+      {
+        faqs.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
 
       <h2>履歴書選考に、AIのサポートを。</h2>
       <p>

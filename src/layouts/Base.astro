@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { organization, siteUrl } from '../data/site';
+import { organization, products, siteUrl } from '../data/site';
 
 interface Props {
   title: string;
@@ -69,6 +69,18 @@ const structuredData = {
       sameAs: organization.sameAs,
       knowsAbout: organization.knowsAbout,
       areaServed: { '@type': 'Country', name: 'Japan' },
+      brand: products.map((p) => ({ '@type': 'Brand', name: p.name, url: p.url })),
+      owns: products.map((p) => ({ '@id': p.id })),
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'SIA Digital Technology 製品',
+        itemListElement: products.map((p, i) => ({
+          '@type': 'Offer',
+          position: i + 1,
+          itemOffered: { '@id': p.id },
+          url: p.url,
+        })),
+      },
     },
     {
       '@type': 'WebSite',
