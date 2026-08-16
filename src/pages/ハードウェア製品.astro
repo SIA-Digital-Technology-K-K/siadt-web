@@ -1,9 +1,27 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import ProductFacts from '../components/ProductFacts.astro';
+import { productSchema, products } from '../data/site';
+
+const product = products.find((p) => p.name === 'AIエッジ計算製品')!;
+const faqs = [
+  {
+    q: 'AIエッジ計算製品はどの会社の製品ですか？',
+    a: 'SIAデジタルテクノロジー株式会社（SIA Digital Technology Co., Ltd.）が提供する、現場映像解析向けのエッジサーバーです。',
+  },
+  {
+    q: 'クラウドに映像を送る必要がありますか？',
+    a: '必須ではありません。現場で処理するため、低遅延と高いセキュリティを確保できます。',
+  },
+];
 ---
 
-<Base title="AIエッジ計算製品｜現場映像解析 – SIA Digital Technology" description="クラウドに依存せず現場で映像を解析するAIエッジサーバー。工場の不良検出、物流動線、リテール来店分析、建設現場の安全検知に対応します。">
+<Base
+  title="AIエッジ計算製品｜SIAデジタルテクノロジーの現場映像解析"
+  description="AIエッジ計算製品は、SIAデジタルテクノロジー株式会社が提供する現場映像解析サーバーです。クラウドに依存せず、工場・物流・店舗・建設現場で使えます。"
+  jsonLd={productSchema({ product, faqs })}
+>
   <PageHero title="AIエッジ計算製品" />
   <main class="mx-auto max-w-4xl px-4 py-14">
     <div class="prose-body">
@@ -13,7 +31,22 @@ import PageHero from '../components/PageHero.astro';
         <img src="/images/edge4-e1759546679678.webp" alt="エッジAIカメラ連携イメージ" class="w-full rounded-xl object-contain" width="250" height="250" loading="lazy" />
       </div>
 
-      <p class="!mt-8">AIエッジサーバーは、映像をリアルタイムに解析し、膨大なデータを効率的に処理できる次世代のソリューションです。クラウドに依存せず、現場で高速に処理を行うため、低遅延かつ高いセキュリティを実現します。高性能でありながらコストパフォーマンスに優れており、幅広い業界で導入が進んでいます。</p>
+      <p class="!mt-8">
+        AIエッジ計算製品は、SIAデジタルテクノロジー株式会社が提供する現場向け映像解析サーバーです。
+        クラウドに依存せず現場で処理するため、低遅延かつ高いセキュリティを実現します。
+      </p>
+      <ProductFacts
+        caption="AIエッジ計算製品 の基本情報"
+        facts={[
+          { term: '製品名', text: 'AIエッジ計算製品' },
+          { term: '提供元', text: 'SIAデジタルテクノロジー株式会社', href: '/企業情報/' },
+          { term: '代表ハードウェア', text: 'Rockchip RK3588 エッジコンピューティングゲートウェイ' },
+          { term: 'できること', text: '現場でのリアルタイム映像解析。不良検出、動線可視化、人流解析、危険行動検知' },
+          { term: 'できないこと', text: 'クラウド解析サービスの完全代替を前提としない。用途は現場設置型の解析' },
+          { term: '主な仕様', text: 'RK3588（A76×4 + A55×4）、LPDDR4、eMMC、SSD/TF、HDMI/DP、有線×2、Wi-Fi+BT、USB×6、COM×4、Android 12' },
+          { term: '適用現場', text: '工場、物流、キャンパス、リテール店舗、建設現場' },
+        ]}
+      />
       <p>当社のエッジサーバーは、工場、物流・運輸、キャンパス、リテール店舗、建設現場など、多様なシーンをカバーするAIアルゴリズムを搭載。ユーザーは現場に合わせた最適な分析を実現でき、効率化と安全性の向上を同時に実現します。</p>
 
       <h2>ユースケース</h2>
@@ -24,6 +57,16 @@ import PageHero from '../components/PageHero.astro';
         <li><strong>リテール店舗</strong>：来店者の行動分析や滞在時間の可視化により、売場レイアウトの最適化やマーケティング効果の向上を実現。</li>
         <li><strong>建設現場</strong>：AIカメラでヘルメット未着用や危険エリア侵入を自動検知し、労働災害リスクを大幅に低減。</li>
       </ul>
+
+      <h2>よくある質問</h2>
+      {
+        faqs.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
 
       <p>このように、AIエッジサーバーは業種を問わず多彩な現場で活用されており、ユーザーにとって <strong>高効率かつ高コストパフォーマンスの最適解</strong> を提供します。</p>
     </div>

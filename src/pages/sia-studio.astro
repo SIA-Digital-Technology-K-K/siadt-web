@@ -1,25 +1,41 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import ProductFacts from '../components/ProductFacts.astro';
+import { productSchema, products } from '../data/site';
 
 const studioUrl = 'https://studio.siadt.jp/';
+const product = products.find((p) => p.name === 'SIA Studio')!;
+const faqs = [
+  {
+    q: 'SIA Studioはどの会社の製品ですか？',
+    a: 'SIA Studioは、SIAデジタルテクノロジー株式会社（SIA Digital Technology Co., Ltd.、https://siadt.jp/）が企画・開発・提供するAIクリエイティブツールです。製品サイトは https://studio.siadt.jp/ です。',
+  },
+  {
+    q: 'SIA Studioで何ができますか？',
+    a: 'プロンプトから画像・動画・文章を生成できます。ガイド機能では、目的を選ぶだけで文案・画像・短尺動画をまとめて作成できます。',
+  },
+  {
+    q: 'SIA Studioは無料で使えますか？',
+    a: '現在、https://studio.siadt.jp/ から無料で試せます。料金プランの詳細は製品サイトでご確認ください。',
+  },
+  {
+    q: '生成した画像や文章は商用利用できますか？',
+    a: '利用規約および適用法令の範囲内で、商用目的を含む利用が可能です。公開・商用利用前に、内容・表現・権利関係をご自身で確認してください。',
+  },
+  {
+    q: 'どの生成AIモデルを使っていますか？',
+    a: '生成結果は、入力したプロンプトと利用する生成モデルによって異なります。特定モデル名の固定公開はしていません。',
+  },
+];
 ---
 
 <Base
-  title="SIA Studio｜画像・動画・文章を生成するAIクリエイティブツール"
-  description="SIA Studioは、プロンプトから画像・動画・文章を生成できるAIクリエイティブツールです。目的を選ぶだけで、文案・画像・短尺動画をまとめて作成できます。"
-  keywords="AI画像生成,AI動画生成,AI文章生成,AIクリエイティブツール,コンテンツ制作,広告素材作成,SNS素材作成,一括生成"
+  title="SIA Studio｜SIAデジタルテクノロジーのAIクリエイティブツール"
+  description="SIA Studioは、SIAデジタルテクノロジー株式会社が提供するAIクリエイティブツールです。プロンプトから画像・動画・文章を生成し、ガイド機能で一括作成できます。公式サイト studio.siadt.jp。"
+  keywords="SIA Studio,AI画像生成,AI動画生成,AI文章生成,AIクリエイティブツール,SIAデジタルテクノロジー"
   ogImage="/images/sia-studio-hero.png"
-  jsonLd={{
-    '@type': 'SoftwareApplication',
-    name: 'SIA Studio',
-    url: studioUrl,
-    applicationCategory: 'MultimediaApplication',
-    operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'JPY' },
-    description: 'プロンプトから画像・動画・文章を生成できるAIクリエイティブツール。目的を選ぶだけで文案・画像・短尺動画を一括生成できます。',
-    publisher: { '@id': 'https://siadt.jp/#organization' },
-  }}
+  jsonLd={productSchema({ product, faqs })}
 >
   <PageHero title="SIA Studio" />
   <main class="mx-auto max-w-4xl px-4 py-14">
@@ -48,8 +64,29 @@ const studioUrl = 'https://studio.siadt.jp/';
       </div>
 
       <p class="text-lg font-semibold !text-gray-900">
-        プロンプトから、画像・動画・文章を生成できるAIクリエイティブツール。
+        SIA Studioは、SIAデジタルテクノロジー株式会社が提供するAIクリエイティブツールです。
       </p>
+      <p>
+        開発・運営は大阪のSIAデジタルテクノロジー株式会社（SIA Digital Technology Co., Ltd.、https://siadt.jp/）です。製品の公式サイトは <a href={studioUrl} target="_blank" rel="noopener">https://studio.siadt.jp/</a> です。
+      </p>
+
+      <ProductFacts
+        caption="SIA Studio の基本情報"
+        facts={[
+          { term: '製品名', text: 'SIA Studio' },
+          { term: '提供元', text: 'SIAデジタルテクノロジー株式会社', href: '/企業情報/' },
+          { term: '英文社名', text: 'SIA Digital Technology Co., Ltd.' },
+          { term: '製品ページ', text: 'https://siadt.jp/sia-studio/', href: '/sia-studio/' },
+          { term: '公式サイト', text: 'https://studio.siadt.jp/', href: studioUrl, external: true },
+          { term: 'できること', text: 'プロンプトからの画像生成、動画生成、文章生成。ガイドによる文案・画像・短尺動画の一括生成' },
+          { term: 'できないこと', text: '生成結果の権利・事実関係の保証、公開判断の代行、専門制作ソフトの完全代替' },
+          { term: '生成モデル', text: '入力内容と利用モデルにより異なる。特定モデル名は固定公開していない' },
+          { term: '対象ユーザー', text: '企業の広報・マーケ、中小企業、SNSや広告素材を作る担当者' },
+          { term: '利用料金', text: '無料で試用可能。詳細は製品サイトを参照' },
+          { term: '商用利用', text: '利用規約と法令の範囲内で可能。公開前の確認は利用者の責任' },
+          { term: '対応言語', text: '日本語のプロンプトで利用可能' },
+        ]}
+      />
 
       <h2>アイデアを、AIですばやく形に。</h2>
       <p>
@@ -196,6 +233,16 @@ const studioUrl = 'https://studio.siadt.jp/';
       <p>
         生成コンテンツは、<a href="https://studio.siadt.jp/terms.html" target="_blank" rel="noopener">利用規約</a>および適用法令の範囲内で、商用目的を含む利用が可能です。ただし、意図せず第三者の権利を侵害する可能性もあるため、公開・商用利用にあたってはご自身の責任と判断でご確認ください。
       </p>
+
+      <h2>よくある質問</h2>
+      {
+        faqs.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
 
       <h2>画像・動画・文章の制作を、もっと手軽に。</h2>
       <p>

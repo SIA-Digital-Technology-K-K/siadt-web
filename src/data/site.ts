@@ -3,12 +3,14 @@ export const siteUrl = 'https://siadt.jp';
 export const organization = {
   name: 'SIAデジタルテクノロジー株式会社',
   alternateName: [
-    'ＳＩＡデジタルテクノロジー株式会社',
-    'SIA Digital Technology',
+    'SIA Digital Technology Co., Ltd.',
     'SIA Digital Technology K.K.',
+    'SIA Digital Technology',
+    'ＳＩＡデジタルテクノロジー株式会社',
     'SIADT',
   ],
   legalName: 'SIAデジタルテクノロジー株式会社',
+  englishName: 'SIA Digital Technology Co., Ltd.',
   url: siteUrl,
   logo: `${siteUrl}/images/siadt-logo-mark.webp`,
   email: 'service@siadt.jp',
@@ -54,31 +56,97 @@ export const organization = {
 
 export const products = [
   {
+    id: `${siteUrl}/sia-studio/#product`,
     name: 'SIA Studio',
     url: `${siteUrl}/sia-studio/`,
     appUrl: 'https://studio.siadt.jp/',
-    description: 'プロンプトから画像・動画・文章を生成できるAIクリエイティブツール。',
+    image: `${siteUrl}/images/sia-studio-hero.png`,
+    description: 'SIAデジタルテクノロジー株式会社が提供する、プロンプトから画像・動画・文章を生成できるAIクリエイティブツール。',
+    applicationCategory: 'MultimediaApplication',
   },
   {
+    id: `${siteUrl}/sia-talenteye/#product`,
     name: 'SIA TalentEye',
     url: `${siteUrl}/sia-talenteye/`,
     appUrl: 'https://talenteye.siadt.jp/',
-    description: 'PDF・Word履歴書をAIで解析し、候補者比較を支援する採用ツール。',
+    image: `${siteUrl}/images/sia-talenteye-hero.png`,
+    description: 'SIAデジタルテクノロジー株式会社が提供する、PDF・Word履歴書をAIで解析し候補者比較を支援する採用ツール。',
+    applicationCategory: 'BusinessApplication',
   },
   {
+    id: `${siteUrl}/sia-choba/#product`,
     name: 'SIA帳場',
     url: `${siteUrl}/sia-choba/`,
     appUrl: 'https://choba.siadt.jp/',
-    description: '領収書・請求書から仕訳と帳簿を自動生成する中小企業向けAI経理プラットフォーム。',
+    image: `${siteUrl}/images/sia-choba-hero.png`,
+    description: 'SIAデジタルテクノロジー株式会社が提供する、領収書・請求書から仕訳と帳簿を自動生成する中小企業向けAI経理プラットフォーム。',
+    applicationCategory: 'FinanceApplication',
   },
   {
+    id: `${siteUrl}/ハードウェア製品/#product`,
+    name: 'AIエッジ計算製品',
+    url: `${siteUrl}/ハードウェア製品/`,
+    image: `${siteUrl}/images/edge1.webp`,
+    description: 'SIAデジタルテクノロジー株式会社が提供する、現場で映像を解析するAIエッジサーバー。',
+  },
+  {
+    id: 'https://engawa-app.jp/#product',
     name: '緣側（えんがわ）',
     url: 'https://engawa-app.jp/',
-    description: '高齢者向けAI会話・見守りサービス。',
+    description: 'SIAデジタルテクノロジー株式会社が提供する、高齢者向けAI会話・見守りサービス。',
   },
   {
+    id: 'https://livein-japan.com/#product',
     name: '日本通（LIVE IN JAPAN）',
     url: 'https://livein-japan.com',
-    description: '在日外国人向けの多言語生活支援サービス。',
+    description: 'SIAデジタルテクノロジー株式会社が提供する、在日外国人向け多言語生活支援サービス。',
   },
 ];
+
+type Faq = { q: string; a: string };
+
+export function productSchema(opts: {
+  product: (typeof products)[number];
+  faqs?: Faq[];
+}) {
+  const { product, faqs = [] } = opts;
+  const org = { '@id': `${siteUrl}/#organization` };
+  const nodes: Record<string, unknown>[] = [
+    {
+      '@type': 'applicationCategory' in product && product.applicationCategory ? ['Product', 'SoftwareApplication'] : 'Product',
+      '@id': product.id,
+      name: product.name,
+      description: product.description,
+      url: product.url,
+      image: 'image' in product ? product.image : undefined,
+      brand: org,
+      manufacturer: org,
+      provider: org,
+      ...('appUrl' in product && product.appUrl ? { sameAs: product.appUrl } : {}),
+      ...('applicationCategory' in product && product.applicationCategory
+        ? {
+            applicationCategory: product.applicationCategory,
+            operatingSystem: 'Web',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'JPY',
+              url: 'appUrl' in product && product.appUrl ? product.appUrl : product.url,
+              availability: 'https://schema.org/InStock',
+            },
+          }
+        : {}),
+    },
+  ];
+  if (faqs.length) {
+    nodes.push({
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    });
+  }
+  return nodes;
+}

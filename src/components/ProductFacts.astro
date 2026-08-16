@@ -1,0 +1,39 @@
+---
+interface Fact {
+  term: string;
+  text: string;
+  href?: string;
+  external?: boolean;
+}
+
+interface Props {
+  caption: string;
+  facts: Fact[];
+}
+
+const { caption, facts } = Astro.props;
+---
+
+<div class="table-scroll">
+  <table>
+    <caption>{caption}</caption>
+    <tbody>
+      {
+        facts.map((f) => (
+          <tr>
+            <th scope="row">{f.term}</th>
+            <td>
+              {f.href ? (
+                <a href={f.href} target={f.external ? '_blank' : undefined} rel={f.external ? 'noopener' : undefined}>
+                  {f.text}
+                </a>
+              ) : (
+                f.text
+              )}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
