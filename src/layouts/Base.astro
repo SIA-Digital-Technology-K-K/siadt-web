@@ -275,12 +275,6 @@ const social = [
               </span>
             </a>
             <p class="mt-4 text-sm leading-relaxed">日本の伝統を守り、日本の未来を創る</p>
-            <address class="mt-4 text-sm not-italic leading-relaxed text-gray-400">
-              {organization.addressDisplay}<br />
-              <a href={`tel:${organization.telephoneDisplay.replace(/-/g, '')}`} class="hover:text-accent">TEL {organization.telephoneDisplay}</a>
-              <span aria-hidden="true"> / </span>
-              <a href={`mailto:${organization.email}`} class="hover:text-accent">{organization.email}</a>
-            </address>
             <div class="mt-5 flex items-center gap-4">
               {
                 social.map((s) => (
