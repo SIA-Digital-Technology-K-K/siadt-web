@@ -4,31 +4,33 @@ import PageHero from '../components/PageHero.astro';
 import ConsultButton from '../components/ConsultButton.astro';
 
 const gallery = [
-  { img: '/images/4.webp', href: '/1631/uncategorized/' },
-  { img: '/images/1.webp', href: '/class/' },
-  { img: '/images/2.webp', href: null },
-  { img: '/images/3.webp', href: '/shop/' },
-  { img: '/images/5.webp', href: '/人工知能アシスタント/' },
-  { img: '/images/6.webp', href: '/ハードウェア製品/' },
+  { img: '/images/4.webp', href: '/中小企業向けIT基盤サービス/', label: '中小企業向けIT基盤サービス' },
+  { img: '/images/1.webp', href: '/class/', label: 'AI技術トレーニング' },
+  { img: '/images/2.webp', href: '/企業金融技術服務/', label: 'FinTech技術サポート' },
+  { img: '/images/3.webp', href: '/shop/', label: '小売店舗向けAIシステム' },
+  { img: '/images/5.webp', href: '/人工知能アシスタント/', label: 'SIA AI Assist' },
+  { img: '/images/6.webp', href: '/ハードウェア製品/', label: 'AIエッジ計算製品' },
 ];
 ---
 
-<Base title="サービス分野 – SIA Digital Technology">
+<Base
+  title="サービス分野｜AI・DX・IT基盤 – SIA Digital Technology"
+  description="SIAデジタルテクノロジーのサービス分野。中小企業のIT基盤、AI研修、法人口座支援、小売・自動車向け店舗AI、対話AI、エッジ計算まで対応します。"
+>
   <PageHero title="サービス分野" />
   <main class="mx-auto max-w-5xl px-4 py-14">
+    <h2 class="mb-4 text-center text-2xl font-bold text-gray-900">提供サービス一覧</h2>
+    <p class="mb-10 text-center leading-relaxed text-gray-600">
+      中小企業のIT基盤整備から、生成AI、店舗向け映像解析、法人設立後の金融実務まで。現場で使える形に落とし込んだデジタル支援を提供します。
+    </p>
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {
-        gallery.map((g) =>
-          g.href ? (
-            <a href={g.href} class="block overflow-hidden rounded-xl transition hover:-translate-y-1 hover:shadow-lg">
-              <img src={g.img} alt="" class="aspect-[3/2] w-full object-cover" width="350" height="233" loading="lazy" />
-            </a>
-          ) : (
-            <div class="overflow-hidden rounded-xl">
-              <img src={g.img} alt="" class="aspect-[3/2] w-full object-cover" width="350" height="233" loading="lazy" />
-            </div>
-          ),
-        )
+        gallery.map((g) => (
+          <a href={g.href} class="group block overflow-hidden rounded-xl border border-gray-100 transition hover:-translate-y-1 hover:shadow-lg">
+            <img src={g.img} alt={g.label} class="aspect-[3/2] w-full object-cover" width="350" height="233" loading="lazy" />
+            <p class="bg-white px-4 py-3 text-center text-sm font-semibold text-gray-900 group-hover:text-[#0bbbb5]">{g.label}</p>
+          </a>
+        ))
       }
     </div>
     <ConsultButton />

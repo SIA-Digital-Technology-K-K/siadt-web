@@ -1,0 +1,40 @@
+# SIAデジタルテクノロジー株式会社（SIA Digital Technology K.K.）
+
+> 大阪市住之江区のテクノロジー企業。AI・ビッグデータ・IoTで日本の中小企業・伝統産業・小売・自動車販売店を支援する。設立2022年7月。法人番号 3120001247658。
+
+サイト: https://siadt.jp/
+詳細な会社情報: https://siadt.jp/llms-full.txt
+
+## 会社
+
+- [会社概要](https://siadt.jp/%E4%BC%81%E6%A5%AD%E6%83%85%E5%A0%B1/): 社名・所在地・代表・設立・資本金・事業内容
+- [私たちについて](https://siadt.jp/%E7%A7%81%E3%81%9F%E3%81%A1%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/): 社名 SIA の意味と代表メッセージ
+- [企業理念・行動指針](https://siadt.jp/%E4%BC%81%E6%A5%AD%E7%90%86%E5%BF%B5%E3%83%BB%E8%A1%8C%E5%8B%95%E6%8C%87%E9%87%9D/): Serve / Independent R&D / A-grade / Data / Technology
+- [連絡先](https://siadt.jp/%E9%80%A3%E7%B5%A1%E5%85%88/): 住所・電話 06-4400-2968・メール service@siadt.jp・公式LINE
+- [お問い合わせ](https://siadt.jp/inquiries/): 日本語お問い合わせフォーム
+
+## 製品
+
+- [SIA Studio](https://siadt.jp/sia-studio/): 画像・動画・文章を生成するAIクリエイティブツール（https://studio.siadt.jp/）
+- [SIA TalentEye](https://siadt.jp/sia-talenteye/): AI履歴書解析・候補者比較（https://talenteye.siadt.jp/）
+- [SIA帳場](https://siadt.jp/sia-choba/): 中小企業向けAI経理プラットフォーム（https://choba.siadt.jp/）
+- [AIエッジ計算製品](https://siadt.jp/%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2%E8%A3%BD%E5%93%81/): 現場で映像解析するエッジサーバー
+- [SIA AI Assist](https://siadt.jp/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%82%A2%E3%82%B7%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%88/): 企業向けAI対話・ナレッジベースアシスタント
+- [小売店舗向けAIシステム](https://siadt.jp/shop/): 万引き防止と客流分析
+- [自動車向けAI分析システム](https://siadt.jp/car/): 自動車販売店の来店・行動分析
+- [オンラインストア](https://siadt.jp/%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%82%A2/): AI自動給餌器などの個人向け製品
+- [緣側](https://engawa-app.jp/): 高齢者向けAI会話・見守り
+- [日本通](https://livein-japan.com): 在日外国人向け生活支援
+
+## サービス
+
+- [サービス分野](https://siadt.jp/%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%B4%B9%E4%BB%8B/): 事業領域の一覧
+- [中小企業向けIT基盤サービス](https://siadt.jp/%E4%B8%AD%E5%B0%8F%E4%BC%81%E6%A5%AD%E5%90%91%E3%81%91IT%E5%9F%BA%E7%9B%A4%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/): 公式サイト・ドメイン・DXの段階的導入
+- [企業金融技術服務](https://siadt.jp/%E4%BC%81%E6%A5%AD%E9%87%91%E8%9E%8D%E6%8A%80%E8%A1%93%E6%9C%8D%E5%8B%99/): 日本の法人口座開設に必要なサイト・電話・申請支援
+- [AI技術の普及・研修](https://siadt.jp/class/): 教育機関・社会人向けAI研修
+
+## Optional
+
+- [採用情報](https://siadt.jp/%E6%8E%A1%E7%94%A8%E6%83%85%E5%A0%B1/)
+- [プライバシーポリシー](https://siadt.jp/%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC/)
+- [特定商取引法に基づく表記](https://siadt.jp/%E7%89%B9%E5%AE%9A%E5%95%86%E5%8F%96%E5%BC%95%E6%B3%95%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8F%E8%A1%A8%E8%A8%98/)
