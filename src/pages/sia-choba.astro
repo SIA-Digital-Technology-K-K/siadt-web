@@ -10,6 +10,16 @@ const productUrl = 'https://choba.siadt.jp/';
   description="SIA帳場は、領収書・請求書・銀行明細からAIが仕訳と帳簿を自動生成する中小企業向けAI経理プラットフォームです。財務・税務の質問にも回答し、主要な日本会計ソフトとの連携を目指します。"
   keywords="AI経理,自動記帳,AI仕訳,領収書OCR,会計ソフト連携,財務税務アシスタント,中小企業経理,SIA帳場"
   ogImage="/images/sia-choba-hero.png"
+  jsonLd={{
+    '@type': 'SoftwareApplication',
+    name: 'SIA帳場',
+    url: productUrl,
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'Web',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'JPY' },
+    description: '領収書・請求書・銀行明細からAIが仕訳と帳簿を自動生成する中小企業向けAI経理プラットフォーム。',
+    publisher: { '@id': 'https://siadt.jp/#organization' },
+  }}
 >
   <PageHero title="SIA帳場" />
 

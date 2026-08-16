@@ -9,6 +9,16 @@ const productUrl = 'https://talenteye.siadt.jp/';
   title="SIA TalentEye｜AI履歴書解析・候補者比較を支援する採用ツール"
   description="SIA TalentEyeは、PDF・Word形式の履歴書をAIで解析し、候補者の経験やスキルを整理する採用支援ツールです。履歴書確認や候補者比較など、採用担当者の選考業務をサポートします。"
   ogImage="/images/sia-talenteye-hero.png"
+  jsonLd={{
+    '@type': 'SoftwareApplication',
+    name: 'SIA TalentEye',
+    url: productUrl,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'JPY' },
+    description: 'PDF・Word形式の履歴書をAIで解析し、候補者比較を支援する採用ツール。',
+    publisher: { '@id': 'https://siadt.jp/#organization' },
+  }}
 >
   <PageHero title="SIA TalentEye" />
 

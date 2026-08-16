@@ -10,6 +10,16 @@ const studioUrl = 'https://studio.siadt.jp/';
   description="SIA Studioは、プロンプトから画像・動画・文章を生成できるAIクリエイティブツールです。目的を選ぶだけで、文案・画像・短尺動画をまとめて作成できます。"
   keywords="AI画像生成,AI動画生成,AI文章生成,AIクリエイティブツール,コンテンツ制作,広告素材作成,SNS素材作成,一括生成"
   ogImage="/images/sia-studio-hero.png"
+  jsonLd={{
+    '@type': 'SoftwareApplication',
+    name: 'SIA Studio',
+    url: studioUrl,
+    applicationCategory: 'MultimediaApplication',
+    operatingSystem: 'Web',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'JPY' },
+    description: 'プロンプトから画像・動画・文章を生成できるAIクリエイティブツール。目的を選ぶだけで文案・画像・短尺動画を一括生成できます。',
+    publisher: { '@id': 'https://siadt.jp/#organization' },
+  }}
 >
   <PageHero title="SIA Studio" />
   <main class="mx-auto max-w-4xl px-4 py-14">

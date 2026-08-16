@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<Base
+  title="自動車店舗向けAI分析システム資料｜SIA Digital Technology"
+  description="自動車販売店の既存カメラとAIで、来客ヒートマップ・スタッフ業務・規律を可視化するスマートショールーム資料。"
+>
+  <PageHero title="自動車店舗向けAI分析システム" />
+  <main class="mx-auto max-w-4xl px-4 py-14">
+    <div class="prose-body">
+      <p>
+        <strong>AIで顧客とスタッフの行動を分析し、店舗経営を加速。</strong>
+        自動車販売店舗に既に設置されているカメラと当社のAIシステムを活用し、消費者のヒートマップ、スタッフの業務状況、規律違反の有無などを分析します。
+      </p>
+      <figure class="!my-8 text-center">
+        <img src="/images/car.webp" alt="自動車販売店向けAI分析・スマートショールームのイメージ" class="mx-auto w-full max-w-md" width="411" height="274" loading="lazy" />
+      </figure>
+      <p>SIA Digital Technology は、自動車販売店・4S店舗向けに、既存の監視カメラやネットワーク設備を活かしたスマートショールームソリューションを提供しています。来店分析・顧客行動解析・販売支援を一体化します。</p>
+      <p>製品ページ：<a href="/car/">自動車向けAI分析システム</a></p>
+
+      <object data="/files/car.pdf" type="application/pdf" style="width:100%;height:600px" aria-label="自動車店舗向けAI分析システム資料（PDF）">
+        <p>PDFを表示できない場合は、下のリンクからダウンロードしてください。</p>
+      </object>
+      <p class="mt-4">
+        <a href="/files/car.pdf">自動車店舗向けAI分析システム資料（PDF）</a>
+        <a href="/files/car.pdf" download class="btn-download ml-4 !no-underline">ダウンロード</a>
+      </p>
+    </div>
+  </main>
+</Base>

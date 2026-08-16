@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+
+const pdf = '/files/SIA_AI_DX_Whitepaper_Pro_2026.pdf';
+---
+
+<Base
+  title="【無料公開】AI × DX で中小企業の利益を最大化する｜白書"
+  description="中小企業がAIとDXで利益を最大化するための無料白書。公式サイト・IT基盤から店舗AI、生成AIまで、現場に落とせる導入の考え方をまとめました。"
+>
+  <PageHero title="【無料公開】AI × DX で中小企業の利益を最大化する" />
+  <main class="mx-auto max-w-4xl px-4 py-14">
+    <div class="prose-body">
+      <p><strong>デジタルテクノロジーによる最新ソリューション白書（2026年）</strong></p>
+      <p>
+        本資料は、SIAデジタルテクノロジー株式会社が中小企業向けにまとめた、AIとDXによる利益最大化のガイドです。最新技術の導入そのものを目的とせず、紙・電話・Excel中心の現場から、公式サイト、業務の可視化、店舗AI、生成AIまでを段階的に整える考え方を解説しています。
+      </p>
+      <ul>
+        <li>対象：創業期・成長期の中小企業、伝統事業者、IT専任者がいない組織</li>
+        <li>テーマ：無理のないIT基盤、店舗のロス削減、生成AIによる業務効率化</li>
+        <li>提供元：SIAデジタルテクノロジー株式会社（大阪市住之江区）</li>
+      </ul>
+      <p>関連ページ：<a href="/中小企業向けIT基盤サービス/">IT基盤サービス</a> ／ <a href="/shop/">小売店舗向けAI</a> ／ <a href="/sia-studio/">SIA Studio</a></p>
+
+      <object data={pdf} type="application/pdf" style="width:100%;height:600px" aria-label="AI × DX で中小企業の利益を最大化する（PDF白書）">
+        <p>PDFを表示できない場合は、下のリンクからダウンロードしてください。</p>
+      </object>
+      <p class="mt-4">
+        <a href={pdf}>AI × DX で中小企業の利益を最大化する（PDF）</a>
+        <a href={pdf} download class="btn-download ml-4 !no-underline">ダウンロード</a>
+      </p>
+    </div>
+  </main>
+</Base>
