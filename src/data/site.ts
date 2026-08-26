@@ -83,6 +83,15 @@ export const products = [
     applicationCategory: 'FinanceApplication',
   },
   {
+    id: `${siteUrl}/人工知能アシスタント/#product`,
+    name: 'SIA AI Assist',
+    url: `${siteUrl}/人工知能アシスタント/`,
+    appUrl: 'https://assist.siadt.jp/',
+    image: `${siteUrl}/images/sia-ai-assist-hero.png`,
+    description: 'SIAデジタルテクノロジー株式会社が提供する、社内検索・数値分析・文書作成などを一つの画面から進める社内AIワークスペース。',
+    applicationCategory: 'BusinessApplication',
+  },
+  {
     id: `${siteUrl}/ハードウェア製品/#product`,
     name: 'AIエッジ計算製品',
     url: `${siteUrl}/ハードウェア製品/`,

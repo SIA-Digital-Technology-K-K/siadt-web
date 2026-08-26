@@ -1,53 +1,240 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import ProductFacts from '../components/ProductFacts.astro';
+import { productSchema, products } from '../data/site';
+
+const productUrl = 'https://assist.siadt.jp/';
+const product = products.find((p) => p.name === 'SIA AI Assist')!;
+const faqs = [
+  {
+    q: 'SIA AI Assistはどの会社の製品ですか？',
+    a: 'SIA AI Assistは、SIAデジタルテクノロジー株式会社（SIA Digital Technology Co., Ltd.）が提供する社内AIワークスペースです。製品サイトは https://assist.siadt.jp/ です。',
+  },
+  {
+    q: 'どのような業務に使えますか？',
+    a: '社内検索、数値分析、文書作成、報告資料の構成、議事整理、日報・週報作成、税務・財務相談、市場調査、翻訳、ウェブ調査などに対応しています。定型業務カードを選ぶか、自由に相談できます。',
+  },
+  {
+    q: '導入形態は選べますか？',
+    a: 'クラウド版（月額課金）、オンプレミス版（買い切り）、自社モデル利用（モデル差し替え）から、企業のセキュリティ方針に合わせて選べる設計です。',
+  },
+  {
+    q: '社内データは外部に送信されますか？',
+    a: 'オンプレミス版および自社モデル利用では、社内データが当社を含む外部に送信されません。クラウド版は当社が運用する環境でご利用いただけます。',
+  },
+];
+
+const features = [
+  { title: '社内検索', desc: '社内の資料や情報を探す' },
+  { title: '数値分析', desc: '数字を読み解き整理する' },
+  { title: '文書作成', desc: '各種文書のたたき台を作る' },
+  { title: '報告資料', desc: '報告資料の構成を組み立てる' },
+  { title: '議事整理', desc: '打ち合わせ内容を整理する' },
+  { title: '日報作成', desc: '日々の記録をまとめる' },
+  { title: '週報作成', desc: '週次の報告をまとめる' },
+  { title: '税務・財務', desc: '税務・財務まわりの相談' },
+  { title: '市場調査', desc: '市場や競合の情報を調べる' },
+  { title: '翻訳', desc: '文書や文面の翻訳を支援' },
+  { title: 'ウェブ調査', desc: '公開情報の調査を支援' },
+];
+
+const deployments = [
+  {
+    badge: '月額課金',
+    title: 'クラウド版',
+    desc: '当社が運用するクラウド環境をそのままご利用いただけます。サーバーの用意が不要で、すぐに使い始められます。',
+    points: ['初期費用を抑えて開始', '運用・保守は当社が担当', '機能追加を自動で反映'],
+  },
+  {
+    badge: '買い切り',
+    title: 'オンプレミス版',
+    desc: 'ソフトウェアを買い切りでご購入いただき、貴社のサーバー環境に導入します。データが社外に出ません。',
+    points: ['自社環境内で完結', '社内ネットワークで運用', '月額費用が発生しない'],
+  },
+  {
+    badge: 'モデル差し替え',
+    title: '自社モデル利用',
+    desc: '貴社で契約・構築済みのAIモデルに差し替えてご利用いただけます。既存のAI投資をそのまま活かせます。',
+    points: ['利用するモデルを指定可能', '既存のAI基盤と併用', '社内方針に沿った運用'],
+  },
+];
 ---
 
-<Base title="SIA AI Assist｜企業向けAI対話ロボット – SIA Digital Technology" description="問い合わせ一次受付や情報案内を自動化する企業向けAIアシスタント。ナレッジベースで24時間対応し、従業員の負担軽減と対応速度向上を実現します。">
+<Base
+  title="SIA AI Assist｜SIAデジタルテクノロジーの社内AIワークスペース"
+  description="SIA AI Assistは、SIAデジタルテクノロジー株式会社が提供する社内AIワークスペースです。社内検索・数値分析・文書作成などを一つの画面から。公式サイト assist.siadt.jp。"
+  keywords="SIA AI Assist,社内AI,AIアシスタント,ナレッジベース,社内検索,文書作成,オンプレミスAI,SIAデジタルテクノロジー"
+  ogImage="/images/sia-ai-assist-hero.png"
+  jsonLd={productSchema({ product, faqs })}
+>
   <PageHero title="SIA AI Assist" />
+
   <main class="mx-auto max-w-4xl px-4 py-14">
     <div class="prose-body">
-      <h2>人材不足を、AI対話で補う</h2>
-      <p>日本では少子高齢化の進行により、多くの企業が慢性的な人材不足という課題に直面しています。その中で、従来の人手による対応だけでは、サービス品質の維持や迅速な対応が難しくなりつつあります。AI対話ロボットの導入により、問い合わせ対応や一次受付、情報案内などの業務を自動化することで、24時間365日の安定したサービス提供が可能になります。これにより、</p>
-      <p>・従業員の業務負担軽減</p>
-      <p>・対応スピードの向上</p>
-      <p>・人件費の最適化</p>
-      <p>・顧客満足度の向上</p>
-      <p>を同時に実現できます。AIは人の代替ではなく、人がより付加価値の高い業務に集中できる環境をつくるためのパートナーです。AI データ分析、行動予測、企業が構築したナレッジ ベースを通じて、企業が独自の AI アプリケーションを構築し、人工知能の構築および管理プラットフォームを構築するメリットを実現できるよう支援します。</p>
+      <h2 class="!mt-0">仕事の相談を、いつでも。</h2>
+      <p>
+        社内業務のためのAIアシスタント。少人数の会社が、事務作業に取られる時間を減らすことを狙っています。
+        社内検索、数値分析、文書・報告資料の作成などを一つの画面から進められます。
+      </p>
+
+      <div class="my-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <a
+          href={productUrl}
+          target="_blank"
+          rel="noopener"
+          class="btn btn-solid !no-underline"
+        >
+          今すぐ無料で試す
+        </a>
+        <a href="/inquiries/" class="btn btn-accent !no-underline">お問い合わせ</a>
+      </div>
 
       <figure class="!my-8 text-center">
-        <img src="/images/AI機器人.webp" alt="企業向けAI対話ロボット SIA AI Assist" class="mx-auto w-full max-w-2xl" width="677" height="451" loading="lazy" />
+        <img
+          src="/images/sia-ai-assist-hero.png"
+          alt="SIA AI Assist — 社内AIワークスペースのホーム画面"
+          class="mx-auto w-full max-w-4xl rounded-xl border border-gray-200 shadow-sm"
+          width="1440"
+          height="900"
+          loading="lazy"
+        />
+        <figcaption class="!mt-3 text-sm !text-gray-500">
+          実際の操作画面：進行中の作業と完了成果を本週・本月で確認できます。
+        </figcaption>
       </figure>
 
-      <p>AIロボットを迅速に起動し、企業のAIコストを削減手順：</p>
-      <ul>
-        <li>1. ナレッジベース作成（10分で稼働、プログラム不要）</li>
-        <li>2. 各種ドキュメントのアップロード、Webページ読み込み対応</li>
-        <li>3. キャラクターデザイン（年齢・性別・役割・専門分野など自由設定）</li>
-        <li>4. 即時リリース・拡散が可能</li>
-      </ul>
+      <p class="text-lg font-semibold !text-gray-900">
+        社内データを扱うツールだからこそ、導入形態を選べる設計です。
+      </p>
+      <p>
+        SIA AI Assistは、定型業務カードを選ぶと目的に合わせて応答する社内AIワークスペースです。
+        作業ごとに文脈を保存し、続きから再開できます。社内ナレッジを登録すると、AI回答時に参照されます。
+      </p>
 
-      <p><strong>サービス活用例</strong></p>
-      <ul>
-        <li>
-          <blockquote><p><strong>活用例：教育コンサルティングアシスタント</strong></p></blockquote>
-          <p>LINEグループで小型AIアシスタントを導入。ナレッジベース機能でコストパフォーマンス高く、率直な応対が可能。初心者教師でも高度なAIを簡単に利用できます。</p>
-        </li>
-        <li>
-          <blockquote><p><strong>活用例：オンライン販売アシスタント</strong></p></blockquote>
-          <p>直販システム初参加の新パートナーでも、製品説明や組織の仕組みをAIが24時間サポート。教育・研修ロボットが新規加入者の疑問や課題を迅速に解決します。</p>
-        </li>
-        <li>
-          <blockquote><p><strong>活用例：接客ロボット</strong></p></blockquote>
-          <p>深夜の問い合わせも対応可能なAIナレッジベースサービス。高価なOAサービス不要、24時間365日オンライン対応で満足度を大幅向上。日常業務にもシームレス統合。</p>
-        </li>
-      </ul>
-
-      <blockquote><p>導入事例</p></blockquote>
-      <div class="flex flex-wrap items-center gap-6">
-        <img src="/images/台南-edited.webp" alt="導入事例：台南" class="h-10 w-auto" width="152" height="40" loading="lazy" />
-        <img src="/images/dyson.webp" alt="導入事例：Dyson" class="h-9 w-auto" width="97" height="36" loading="lazy" />
+      <h2>主な機能</h2>
+      <div class="not-prose my-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          features.map((f) => (
+            <div class="rounded-xl border border-gray-200 bg-white px-4 py-4">
+              <p class="font-semibold text-gray-900">{f.title}</p>
+              <p class="mt-1 text-sm text-gray-600">{f.desc}</p>
+            </div>
+          ))
+        }
       </div>
+
+      <figure class="!my-10 text-center">
+        <img
+          src="/images/sia-ai-assist-features.jpg"
+          alt="SIA AI Assistの主な機能 — 社内検索・数値分析・文書作成など"
+          class="mx-auto w-full max-w-4xl rounded-xl border border-gray-200 shadow-sm"
+          width="1600"
+          height="900"
+          loading="lazy"
+        />
+      </figure>
+
+      <h2>社内ナレッジ</h2>
+      <p>
+        ファイルまたはテキストを登録すると、AI回答時に参照されます。
+        公開範囲を全社または部署限定に設定でき、分析用データセットとしても登録できます。
+      </p>
+
+      <h2>選べる導入形態</h2>
+      <p>
+        企業ごとのセキュリティ方針に合わせて、導入方法を選べる設計にしています。
+      </p>
+      <div class="not-prose my-8 grid gap-4 md:grid-cols-3">
+        {
+          deployments.map((d) => (
+            <div class="rounded-xl border border-gray-200 bg-surface px-5 py-6">
+              <p class="text-xs font-bold tracking-wide text-accent">{d.badge}</p>
+              <h3 class="mt-2 text-lg font-bold text-gray-900">{d.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-gray-600">{d.desc}</p>
+              <ul class="mt-4 space-y-1.5 text-sm text-gray-700">
+                {d.points.map((p) => (
+                  <li class="flex gap-2">
+                    <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <figure class="!my-8 text-center">
+        <img
+          src="/images/sia-ai-assist-deploy.jpg"
+          alt="SIA AI Assistの導入形態 — クラウド版・オンプレミス版・自社モデル利用"
+          class="mx-auto w-full max-w-4xl rounded-xl border border-gray-200 shadow-sm"
+          width="1600"
+          height="900"
+          loading="lazy"
+        />
+      </figure>
+      <p class="rounded-lg border border-gray-200 bg-surface px-4 py-3 text-sm !leading-relaxed">
+        オンプレミス版および自社モデル利用では、社内データが当社を含む外部に送信されません。機密性の高い情報を扱う業務でもご利用いただけます。
+      </p>
+
+      <h2>このような場面でご活用いただけます</h2>
+      <ul>
+        <li>社内資料の検索や確認に時間がかかっている企業</li>
+        <li>日報・週報・議事録などの定型文書を効率化したい企業</li>
+        <li>少人数で事務作業の負担が大きい会社</li>
+        <li>データを社外に出したくない企業</li>
+        <li>既存のAIモデル投資を活かしたい企業</li>
+      </ul>
+
+      <h2>よくある質問</h2>
+      {
+        faqs.map((f) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))
+      }
+
+      <section class="mt-16 rounded-2xl bg-surface px-6 py-12 text-center md:px-10">
+        <h2 class="!mt-0 text-2xl font-bold text-gray-900 md:text-3xl">仕事の相談を、いつでも。</h2>
+        <p class="mx-auto mt-4 max-w-xl text-gray-600">
+          社内検索から文書作成、ナレッジ参照まで。
+          SIA AI Assistが、少人数の会社の事務作業をサポートします。
+        </p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href={productUrl}
+            target="_blank"
+            rel="noopener"
+            class="btn btn-solid !no-underline"
+          >
+            今すぐ無料で試す
+          </a>
+          <a href="/inquiries/" class="btn btn-accent !text-ink !border-ink hover:!bg-ink hover:!text-white !no-underline">
+            お問い合わせ
+          </a>
+        </div>
+      </section>
+
+      <section class="product-entity" aria-label="製品の基本情報">
+        <p>
+          SIA AI Assistは、<a href="/企業情報/">SIAデジタルテクノロジー株式会社</a>が提供する社内AIワークスペースです。公式サイトは
+          <a href={productUrl} target="_blank" rel="noopener">assist.siadt.jp</a>。
+        </p>
+        <ProductFacts
+          caption="SIA AI Assist の基本情報"
+          facts={[
+            { term: '提供元', text: 'SIAデジタルテクノロジー株式会社', href: '/企業情報/' },
+            { term: '公式サイト', text: 'https://assist.siadt.jp/', href: productUrl, external: true },
+            { term: 'できること', text: '社内検索、数値分析、文書・報告資料の作成、議事や日報の整理、ナレッジ参照' },
+            { term: '導入形態', text: 'クラウド／オンプレミス／自社モデル' },
+            { term: '対象ユーザー', text: 'データを社外に出したくない企業、少人数の中小企業' },
+            { term: '利用料金', text: 'クラウド版は無料で試用可能' },
+          ]}
+        />
+      </section>
     </div>
   </main>
 </Base>
