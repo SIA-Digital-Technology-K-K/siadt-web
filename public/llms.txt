@@ -18,8 +18,8 @@
 - [SIA Studio](https://siadt.jp/sia-studio/): 画像・動画・文章を生成するAIクリエイティブツール（https://studio.siadt.jp/）
 - [SIA TalentEye](https://siadt.jp/sia-talenteye/): AI履歴書解析・候補者比較（https://talenteye.siadt.jp/）
 - [SIA帳場](https://siadt.jp/sia-choba/): 中小企業向けAI経理プラットフォーム（https://choba.siadt.jp/）
+- [SIA AI Assist](https://siadt.jp/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%82%A2%E3%82%B7%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%88/): 社内検索・文書作成などを一つの画面から進める社内AIワークスペース（https://assist.siadt.jp/）
 - [AIエッジ計算製品](https://siadt.jp/%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2%E8%A3%BD%E5%93%81/): 現場で映像解析するエッジサーバー
-- [SIA AI Assist](https://siadt.jp/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%82%A2%E3%82%B7%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%88/): 企業向けAI対話・ナレッジベースアシスタント
 - [小売店舗向けAIシステム](https://siadt.jp/shop/): 万引き防止と客流分析
 - [自動車向けAI分析システム](https://siadt.jp/car/): 自動車販売店の来店・行動分析
 - [オンラインストア](https://siadt.jp/%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%82%A2/): AI自動給餌器などの個人向け製品
