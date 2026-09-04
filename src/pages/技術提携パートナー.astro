@@ -1,16 +1,47 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+
+const partners = [
+  {
+    name: '深象智能',
+    nameEn: 'DeepEleph',
+    img: '/images/partner-deepeleph.webp',
+    alt: '深象智能（DeepEleph）のロゴ',
+  },
+  {
+    name: 'Chosen Technology',
+    nameEn: 'CHOSEN TECHNOLOGY',
+    img: '/images/partner-chosen.webp',
+    alt: 'Chosen Technology のロゴ',
+  },
+  {
+    name: 'Emdoor DIGI',
+    nameEn: 'Emdoor DIGI',
+    img: '/images/partner-emdoor.webp',
+    alt: 'Emdoor DIGI のロゴ',
+  },
+];
 ---
 
-<Base title="技術提携パートナー｜SIA Digital Technology" description="SIAデジタルテクノロジーの技術提携パートナー。AI・クラウド・ハードウェア領域で協業する企業各社をご紹介します。">
+<Base title="技術提携パートナー｜SIA Digital Technology" description="SIAデジタルテクノロジーの技術提携パートナー。深象智能（DeepEleph）、Chosen Technology、Emdoor DIGI と協業し、現場で使えるデジタルソリューションを届けます。">
   <PageHero title="技術提携パートナー" />
   <main class="mx-auto max-w-5xl px-4 py-14">
-    <p class="mb-8 text-center leading-relaxed text-gray-600">
+    <p class="mb-10 text-center leading-relaxed text-gray-600">
       AI・クラウド・エッジハードウェアなどの領域で、SIAデジタルテクノロジーが協業する技術提携パートナーです。共同開発や導入支援を通じて、現場で使えるデジタルソリューションを届けます。
     </p>
-    <figure class="my-8">
-      <img src="/images/partner_logos_final.webp" alt="技術提携パートナー各社のロゴ" class="w-full" width="1024" height="96" loading="lazy" />
-    </figure>
+    <ul class="mx-auto grid max-w-4xl gap-4 sm:grid-cols-3">
+      {
+        partners.map((p) => (
+          <li class="rounded-xl border border-gray-100 bg-white px-4 py-5 shadow-sm">
+            <img src={p.img} alt={p.alt} class="mx-auto h-16 w-full object-contain" width="720" height="280" loading="lazy" />
+            <p class="mt-3 text-center text-sm font-semibold text-gray-900">{p.name}</p>
+            {p.nameEn !== p.name && (
+              <p class="mt-0.5 text-center text-xs tracking-wide text-gray-500">{p.nameEn}</p>
+            )}
+          </li>
+        ))
+      }
+    </ul>
   </main>
 </Base>
