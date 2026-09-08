@@ -1,0 +1,58 @@
+---
+import {
+  additionalPatentApplicationsPending,
+  patentStatusLabel,
+  patents,
+} from '../data/site';
+---
+
+<section id="patents" class="mt-16">
+  <h2>知的財産</h2>
+  <p>
+    当社は、自社で研究開発した技術の知的財産保護に取り組んでいます。登録済みの特許に加え、複数件を出願中です。
+  </p>
+  <div class="table-scroll">
+    <table>
+      <caption>特許・特許出願</caption>
+      <thead>
+        <tr>
+          <th scope="col">発明の名称</th>
+          <th scope="col">番号</th>
+          <th scope="col">状況</th>
+          <th scope="col">資料</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          patents.map((p) => (
+            <tr id={`patent-${p.slug}`}>
+              <td>{p.name}</td>
+              <td>
+                {p.status === 'registered' ? p.patentNumber : p.applicationNumber || '—'}
+                {p.status === 'registered' && p.applicationNumber ? (
+                  <span class="mt-1 block text-sm font-normal text-gray-500">{p.applicationNumber}</span>
+                ) : null}
+              </td>
+              <td>{patentStatusLabel[p.status]}</td>
+              <td>
+                {p.certificateUrl ? (
+                  <a href={p.certificateUrl} class="inline-flex items-center gap-1.5 !no-underline">
+                    <span aria-hidden="true">🔗</span>
+                    <span class="underline underline-offset-2">特許証（PDF）</span>
+                  </a>
+                ) : (
+                  '—'
+                )}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+  {
+    additionalPatentApplicationsPending && (
+      <p>上記のほか、複数件の特許を出願中です。登録後、本一覧に追加します。</p>
+    )
+  }
+</section>
