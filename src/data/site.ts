@@ -51,8 +51,78 @@ export const organization = {
     'AI経理',
     'AI採用',
     '生成AI',
+    '高齢者見守り',
+    '見守り支援システム',
   ],
 };
+
+export const patentStatusLabel = {
+  registered: '登録',
+  pending: '出願中',
+} as const;
+
+export type PatentStatus = keyof typeof patentStatusLabel;
+
+type PatentBase = {
+  slug: string;
+  name: string;
+  holder: string;
+  inventor?: string;
+  applicationNumber?: string;
+  filingDate?: string;
+  filingDateDisplay?: string;
+  certificateUrl?: string;
+  jplatpatUrl?: string;
+};
+
+export type Patent =
+  | (PatentBase & {
+      status: 'registered';
+      patentNumber: string;
+      registrationDate: string;
+      registrationDateDisplay: string;
+      expires?: string;
+      expiresDisplay?: string;
+    })
+  | (PatentBase & {
+      status: 'pending';
+    });
+
+/** 公開できる案件はここに追加する。出願中は status: 'pending'。 */
+export const patents: Patent[] = [
+  {
+    slug: '7917241',
+    status: 'registered',
+    name: '見守り支援システム、見守り支援方法及びプログラム',
+    patentNumber: '特許第7917241号',
+    applicationNumber: '特願2026-100459',
+    filingDate: '2026-06-16',
+    filingDateDisplay: '2026年6月16日',
+    registrationDate: '2026-08-31',
+    registrationDateDisplay: '2026年8月31日',
+    expires: '2046-06-16',
+    expiresDisplay: '2046年6月16日',
+    inventor: '劉 亜烜',
+    holder: 'ＳＩＡデジタルテクノロジー株式会社',
+    certificateUrl: '/files/patent-7917241.pdf',
+    jplatpatUrl: 'https://www.j-platpat.inpit.go.jp/c1800/PU/JP-7917241/11/ja',
+  },
+];
+
+/** 一覧にまだ載せていない特許出願がほかにもある */
+export const additionalPatentApplicationsPending = true;
+
+export function patentHref(patent: Patent) {
+  return `/企業情報/#patent-${patent.slug}`;
+}
+
+export function patentId(patent: Patent) {
+  return `${siteUrl}${patentHref(patent)}`;
+}
+
+export const registeredPatents = patents.filter(
+  (p): p is Extract<Patent, { status: 'registered' }> => p.status === 'registered',
+);
 
 export const products = [
   {
@@ -102,7 +172,7 @@ export const products = [
     id: 'https://engawa-app.jp/#product',
     name: '緣側（えんがわ）',
     url: 'https://engawa-app.jp/',
-    description: 'SIAデジタルテクノロジー株式会社が提供する、高齢者向けAI会話・見守りサービス。',
+    description: 'SIAデジタルテクノロジー株式会社が提供する、高齢者向けAI会話・見守りサービス。関連技術は特許第7917241号として登録されています。',
   },
   {
     id: 'https://livein-japan.com/#product',
@@ -111,6 +181,26 @@ export const products = [
     description: 'SIAデジタルテクノロジー株式会社が提供する、在日外国人向け多言語生活支援サービス。',
   },
 ];
+
+export function patentSchema() {
+  const org = { '@id': `${siteUrl}/#organization` };
+  return patents.map((p) => ({
+    '@type': 'Patent',
+    '@id': patentId(p),
+    name: p.name,
+    ...(p.status === 'registered' ? { patentNumber: p.patentNumber, datePublished: p.registrationDate } : {}),
+    identifier: [p.status === 'registered' ? p.patentNumber : undefined, p.applicationNumber].filter(Boolean),
+    filingDate: p.filingDate,
+    inventor: p.inventor ? { '@type': 'Person', name: p.inventor } : undefined,
+    copyrightHolder: org,
+    sourceOrganization: org,
+    url: patentId(p),
+    description:
+      p.status === 'registered'
+        ? `${organization.name}が保有する日本国特許。発明の名称は「${p.name}」。${p.registrationDateDisplay}設定登録。ほかにも特許出願中。`
+        : `${organization.name}が出願中の発明。発明の名称は「${p.name}」（${patentStatusLabel.pending}）。`,
+  }));
+}
 
 type Faq = { q: string; a: string };
 

@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { organization, products, siteUrl } from '../data/site';
+import { organization, patentSchema, products, siteUrl } from '../data/site';
 
 interface Props {
   title: string;
@@ -70,7 +70,7 @@ const structuredData = {
       knowsAbout: organization.knowsAbout,
       areaServed: { '@type': 'Country', name: 'Japan' },
       brand: products.map((p) => ({ '@type': 'Brand', name: p.name, url: p.url })),
-      owns: products.map((p) => ({ '@id': p.id })),
+      owns: [...products.map((p) => ({ '@id': p.id })), ...patentSchema().map((p) => ({ '@id': p['@id'] }))],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'SIA Digital Technology 製品',
@@ -102,6 +102,7 @@ const structuredData = {
       isPartOf: { '@id': `${siteUrl}/#website` },
       about: { '@id': `${siteUrl}/#organization` },
     },
+    ...patentSchema(),
     ...extraJsonLd,
   ],
 };

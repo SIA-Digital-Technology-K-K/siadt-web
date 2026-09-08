@@ -1,9 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import PatentList from '../components/PatentList.astro';
+import { additionalPatentApplicationsPending, registeredPatents } from '../data/site';
+
+const watchPatent = registeredPatents.find((p) => p.slug === '7917241') ?? registeredPatents[0];
+if (!watchPatent) {
+  throw new Error('登録特許データがありません');
+}
 ---
 
-<Base title="会社概要｜SIAデジタルテクノロジー株式会社" description="大阪市住之江区のSIAデジタルテクノロジー株式会社の会社概要。設立2022年7月、資本金1,500万円、法人番号3120001247658、代表取締役 劉亜烜。">
+<Base title="会社概要｜SIAデジタルテクノロジー株式会社" description="大阪市住之江区のSIAデジタルテクノロジー株式会社の会社概要。設立2022年7月、資本金1,500万円、法人番号3120001247658、代表取締役 劉亜烜。特許第7917241号のほか、複数件を特許出願中。">
   <PageHero title="会社概要" />
   <main class="mx-auto max-w-4xl px-4 py-14">
     <div class="prose-body">
@@ -19,6 +26,19 @@ import PageHero from '../components/PageHero.astro';
             <tr><td><strong>設立</strong></td><td>2022年7月</td></tr>
             <tr><td><strong>公式サイト</strong></td><td><a href="https://siadt.jp/">https://siadt.jp/</a></td></tr>
             <tr><td><strong>主な事業内容</strong></td><td>AI技術を活用したアプリケーションの企画・開発・運営</td></tr>
+            <tr>
+              <td><strong>特許</strong></td>
+              <td>
+                {
+                  registeredPatents.map((p) => (
+                    <div>
+                      <a href={`#patent-${p.slug}`}>{p.patentNumber}</a>（{p.name}）
+                    </div>
+                  ))
+                }
+                {additionalPatentApplicationsPending && <div>ほか特許出願中</div>}
+              </td>
+            </tr>
             <tr><td><strong>資本金</strong></td><td>1,500万円</td></tr>
             <tr><td><strong>取引銀行</strong></td><td>ドコモSMTBネット銀行、 GMOあおぞらネット銀行</td></tr>
             <tr><td><strong>チーム人数</strong></td><td>3名</td></tr>
@@ -34,9 +54,11 @@ import PageHero from '../components/PageHero.astro';
         <li><a href="/sia-choba/">SIA帳場</a>（<a href="https://choba.siadt.jp/" target="_blank" rel="noopener">choba.siadt.jp</a>）— 中小企業向けAI経理</li>
         <li><a href="/人工知能アシスタント/">SIA AI Assist</a>（<a href="https://assist.siadt.jp/" target="_blank" rel="noopener">assist.siadt.jp</a>）— 社内AIワークスペース</li>
         <li><a href="/ハードウェア製品/">AIエッジ計算製品</a> — 現場映像解析サーバー</li>
-        <li><a href="https://engawa-app.jp/" target="_blank" rel="noopener">緣側</a> — 高齢者向けAI会話・見守り</li>
+        <li><a href="https://engawa-app.jp/" target="_blank" rel="noopener">緣側</a> — 高齢者向けAI会話・見守り（関連技術：<a href={`#patent-${watchPatent.slug}`}>{watchPatent.patentNumber}</a>）</li>
         <li><a href="https://livein-japan.com" target="_blank" rel="noopener">日本通</a> — 在日外国人向け生活支援</li>
       </ul>
+
+      <PatentList />
 
       <div class="company-history mt-16 rounded-xl bg-surface px-5 py-10 md:px-10">
         <h2>会社沿革</h2>
@@ -64,11 +86,15 @@ import PageHero from '../components/PageHero.astro';
           </div>
           <div class="history-item">
             <div class="history-date">2026年2月</div>
-            <div class="history-text">日本の高齢者のニーズに着目し、関連するAI製品の開発を行っています。発明名称：見守り支援システム、見守り支援方法及びプログラム特許出願中，特願2026-100459</div>
+            <div class="history-text">日本の高齢者のニーズに着目し、関連するAI製品の開発を開始。</div>
           </div>
           <div class="history-item">
             <div class="history-date">2026年5月</div>
             <div class="history-text">在日外国人がより便利に日本社会へ適応できるよう、AI技術を活用した多言語支援サービスおよび生活支援ソリューションの開発を開始。</div>
+          </div>
+          <div class="history-item">
+            <div class="history-date">2026年6月</div>
+            <div class="history-text">「{watchPatent.name}」を特許出願（{watchPatent.applicationNumber}）。</div>
           </div>
           <div class="history-item">
             <div class="history-date">2026年7月</div>
@@ -81,6 +107,10 @@ import PageHero from '../components/PageHero.astro';
           <div class="history-item">
             <div class="history-date">2026年7月</div>
             <div class="history-text">中小企業向けAI経理プラットフォーム「SIA帳場」の提供を開始。領収書・請求書からの自動記帳と財務・税務アシスタントに対応。</div>
+          </div>
+          <div class="history-item">
+            <div class="history-date">2026年8月</div>
+            <div class="history-text">「{watchPatent.name}」が{watchPatent.patentNumber}として設定登録（設定登録日：{watchPatent.registrationDateDisplay}）。ほか複数件の特許を出願中。</div>
           </div>
         </div>
       </div>
