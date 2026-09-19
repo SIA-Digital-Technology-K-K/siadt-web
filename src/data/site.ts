@@ -107,10 +107,28 @@ export const patents: Patent[] = [
     certificateUrl: '/files/patent-7917241.pdf',
     jplatpatUrl: 'https://www.j-platpat.inpit.go.jp/c1800/PU/JP-7917241/11/ja',
   },
+  {
+    slug: '2026-210114',
+    status: 'pending',
+    name: '複数の生成ＡＩを協調させる業務支援システム、方法、及びプログラム',
+    applicationNumber: '特願2026-210114',
+    filingDate: '2026-09-18',
+    filingDateDisplay: '2026年9月18日',
+    holder: 'ＳＩＡデジタルテクノロジー株式会社',
+  },
+  {
+    slug: '2026-210115',
+    status: 'pending',
+    name: '日本語採用候補者評価システム、方法、及びプログラム',
+    applicationNumber: '特願2026-210115',
+    filingDate: '2026-09-18',
+    filingDateDisplay: '2026年9月18日',
+    holder: 'ＳＩＡデジタルテクノロジー株式会社',
+  },
 ];
 
 /** 一覧にまだ載せていない特許出願がほかにもある */
-export const additionalPatentApplicationsPending = true;
+export const additionalPatentApplicationsPending = false;
 
 export function patentHref(patent: Patent) {
   return `/企業情報/#patent-${patent.slug}`;
@@ -122,6 +140,10 @@ export function patentId(patent: Patent) {
 
 export const registeredPatents = patents.filter(
   (p): p is Extract<Patent, { status: 'registered' }> => p.status === 'registered',
+);
+
+export const pendingPatents = patents.filter(
+  (p): p is Extract<Patent, { status: 'pending' }> => p.status === 'pending',
 );
 
 export const products = [
