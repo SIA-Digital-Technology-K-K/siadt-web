@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import PatentList from '../components/PatentList.astro';
-import { additionalPatentApplicationsPending, registeredPatents } from '../data/site';
+import { additionalPatentApplicationsPending, pendingPatents, registeredPatents } from '../data/site';
 
 const watchPatent = registeredPatents.find((p) => p.slug === '7917241') ?? registeredPatents[0];
 if (!watchPatent) {
@@ -10,7 +10,7 @@ if (!watchPatent) {
 }
 ---
 
-<Base title="会社概要｜SIAデジタルテクノロジー株式会社" description="大阪市住之江区のSIAデジタルテクノロジー株式会社の会社概要。設立2022年7月、資本金1,500万円、法人番号3120001247658、代表取締役 劉亜烜。特許第7917241号のほか、複数件を特許出願中。">
+<Base title="会社概要｜SIAデジタルテクノロジー株式会社" description="大阪市住之江区のSIAデジタルテクノロジー株式会社の会社概要。設立2022年7月、資本金1,500万円、法人番号3120001247658、代表取締役 劉亜烜。特許第7917241号のほか、特願2026-210114・特願2026-210115を出願中。">
   <PageHero title="会社概要" />
   <main class="mx-auto max-w-4xl px-4 py-14">
     <div class="prose-body">
@@ -33,6 +33,13 @@ if (!watchPatent) {
                   registeredPatents.map((p) => (
                     <div>
                       <a href={`#patent-${p.slug}`}>{p.patentNumber}</a>（{p.name}）
+                    </div>
+                  ))
+                }
+                {
+                  pendingPatents.map((p) => (
+                    <div>
+                      <a href={`#patent-${p.slug}`}>{p.applicationNumber}</a>（{p.name}・出願中）
                     </div>
                   ))
                 }
@@ -110,7 +117,11 @@ if (!watchPatent) {
           </div>
           <div class="history-item">
             <div class="history-date">2026年8月</div>
-            <div class="history-text">「{watchPatent.name}」が{watchPatent.patentNumber}として設定登録（設定登録日：{watchPatent.registrationDateDisplay}）。ほか複数件の特許を出願中。</div>
+            <div class="history-text">「{watchPatent.name}」が{watchPatent.patentNumber}として設定登録（設定登録日：{watchPatent.registrationDateDisplay}）。</div>
+          </div>
+          <div class="history-item">
+            <div class="history-date">2026年9月</div>
+            <div class="history-text">「複数の生成ＡＩを協調させる業務支援システム、方法、及びプログラム」（特願2026-210114）および「日本語採用候補者評価システム、方法、及びプログラム」（特願2026-210115）を特許出願。</div>
           </div>
         </div>
       </div>
