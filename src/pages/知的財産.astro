@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PatentList from '../components/PatentList.astro';
+---
+
+<Base
+  title="知的財産｜SIAデジタルテクノロジー株式会社"
+  description="SIAデジタルテクノロジー株式会社の知的財産。特許第7917241号のほか、特願2026-210114・特願2026-210115を出願中。登録済み特許と出願中案件の一覧。"
+>
+  <PageHero title="知的財産" />
+  <main class="mx-auto max-w-4xl px-4 py-14">
+    <div class="prose-body">
+      <p>
+        SIAデジタルテクノロジー株式会社は、自社で研究開発した技術の知的財産保護に取り組んでいます。登録済みの特許と、出願中の案件は次のとおりです。
+      </p>
+      <PatentList compact />
+    </div>
+  </main>
+</Base>

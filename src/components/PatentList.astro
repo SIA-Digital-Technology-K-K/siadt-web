@@ -4,13 +4,26 @@ import {
   patentStatusLabel,
   patents,
 } from '../data/site';
+
+interface Props {
+  /** 独立ページでは見出し・導入文を省略（ページ側で表示） */
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
 ---
 
-<section id="patents" class="mt-16">
-  <h2>知的財産</h2>
-  <p>
-    当社は、自社で研究開発した技術の知的財産保護に取り組んでいます。登録済みの特許と、出願中の案件は次のとおりです。
-  </p>
+<section id="patents" class={compact ? undefined : 'mt-16'}>
+  {
+    !compact && (
+      <>
+        <h2>知的財産</h2>
+        <p>
+          当社は、自社で研究開発した技術の知的財産保護に取り組んでいます。登録済みの特許と、出願中の案件は次のとおりです。
+        </p>
+      </>
+    )
+  }
   <div class="table-scroll">
     <table>
       <caption>特許・特許出願</caption>

@@ -1,8 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
-import PatentList from '../components/PatentList.astro';
-import { additionalPatentApplicationsPending, pendingPatents, registeredPatents } from '../data/site';
+import { additionalPatentApplicationsPending, patentHref, pendingPatents, registeredPatents } from '../data/site';
 
 const watchPatent = registeredPatents.find((p) => p.slug === '7917241') ?? registeredPatents[0];
 if (!watchPatent) {
@@ -32,18 +31,19 @@ if (!watchPatent) {
                 {
                   registeredPatents.map((p) => (
                     <div>
-                      <a href={`#patent-${p.slug}`}>{p.patentNumber}</a>（{p.name}）
+                      <a href={patentHref(p)}>{p.patentNumber}</a>（{p.name}）
                     </div>
                   ))
                 }
                 {
                   pendingPatents.map((p) => (
                     <div>
-                      <a href={`#patent-${p.slug}`}>{p.applicationNumber}</a>（{p.name}・出願中）
+                      <a href={patentHref(p)}>{p.applicationNumber}</a>（{p.name}・出願中）
                     </div>
                   ))
                 }
                 {additionalPatentApplicationsPending && <div>ほか特許出願中</div>}
+                <div class="mt-2"><a href="/知的財産/">知的財産の詳細を見る</a></div>
               </td>
             </tr>
             <tr><td><strong>資本金</strong></td><td>1,500万円</td></tr>
@@ -61,11 +61,9 @@ if (!watchPatent) {
         <li><a href="/sia-choba/">SIA帳場</a>（<a href="https://choba.siadt.jp/" target="_blank" rel="noopener">choba.siadt.jp</a>）— 中小企業向けAI経理</li>
         <li><a href="/人工知能アシスタント/">SIA AI Assist</a>（<a href="https://assist.siadt.jp/" target="_blank" rel="noopener">assist.siadt.jp</a>）— 社内AIワークスペース</li>
         <li><a href="/ハードウェア製品/">AIエッジ計算製品</a> — 現場映像解析サーバー</li>
-        <li><a href="https://engawa-app.jp/" target="_blank" rel="noopener">緣側</a> — 高齢者向けAI会話・見守り（関連技術：<a href={`#patent-${watchPatent.slug}`}>{watchPatent.patentNumber}</a>）</li>
+        <li><a href="https://engawa-app.jp/" target="_blank" rel="noopener">緣側</a> — 高齢者向けAI会話・見守り（関連技術：<a href={patentHref(watchPatent)}>{watchPatent.patentNumber}</a>）</li>
         <li><a href="https://livein-japan.com" target="_blank" rel="noopener">日本通</a> — 在日外国人向け生活支援</li>
       </ul>
-
-      <PatentList />
 
       <div class="company-history mt-16 rounded-xl bg-surface px-5 py-10 md:px-10">
         <h2>会社沿革</h2>
