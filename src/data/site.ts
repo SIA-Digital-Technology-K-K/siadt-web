@@ -131,7 +131,7 @@ export const patents: Patent[] = [
 export const additionalPatentApplicationsPending = false;
 
 export function patentHref(patent: Patent) {
-  return `/企業情報/#patent-${patent.slug}`;
+  return `/知的財産/#patent-${patent.slug}`;
 }
 
 export function patentId(patent: Patent) {
