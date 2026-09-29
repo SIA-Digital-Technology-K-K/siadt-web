@@ -125,6 +125,15 @@ export const patents: Patent[] = [
     filingDateDisplay: '2026年9月18日',
     holder: 'ＳＩＡデジタルテクノロジー株式会社',
   },
+  {
+    slug: '2026-215614',
+    status: 'pending',
+    name: '会計処理支援システム、会計処理支援方法及びプログラム',
+    applicationNumber: '特願2026-215614',
+    filingDate: '2026-09-29',
+    filingDateDisplay: '2026年9月29日',
+    holder: 'ＳＩＡデジタルテクノロジー株式会社',
+  },
 ];
 
 /** 一覧にまだ載せていない特許出願がほかにもある */
