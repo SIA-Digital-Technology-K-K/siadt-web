@@ -156,10 +156,30 @@ import Base from '../layouts/Base.astro';
         <div class="grid gap-5 sm:grid-cols-2 lg:col-span-3">
           {
             [
-              { icon: '/images/service-img1.webp', label: 'AIエッジ計算製品', href: '/ハードウェア製品/' },
-              { icon: '/images/service-img2.webp', label: '個人向けAI製品', href: '/オンラインストア/' },
-              { icon: '/images/service-img3.webp', label: '小売店AIシステム', href: '/shop/' },
-              { icon: '/images/service-img4.webp', label: '自動車AI分析システム', href: '/car/' },
+              {
+                icon: '/images/service-img1.webp',
+                label: 'SIA Studio',
+                blurb: 'プロンプトから画像・動画・文章を生成。',
+                href: '/sia-studio/',
+              },
+              {
+                icon: '/images/service-img2.webp',
+                label: 'SIA TalentEye',
+                blurb: 'AIで履歴書選考をより効率的に。',
+                href: '/sia-talenteye/',
+              },
+              {
+                icon: '/images/service-img3.webp',
+                label: 'SIA 帳場',
+                blurb: 'AIが、経理担当者になる。',
+                href: '/sia-choba/',
+              },
+              {
+                icon: '/images/service-img4.webp',
+                label: 'SIA AI Assist',
+                blurb: '仕事の相談を、いつでも。',
+                href: '/人工知能アシスタント/',
+              },
             ].map((s) => (
               <a
                 href={s.href}
@@ -168,6 +188,7 @@ import Base from '../layouts/Base.astro';
               >
                 <img src={s.icon} alt="" class="h-10 w-10" width="40" height="40" loading="lazy" aria-hidden="true" />
                 <h3 class="mt-4 text-lg font-bold text-white group-hover:text-accent">{s.label}</h3>
+                <p class="mt-2 truncate text-sm text-gray-300">{s.blurb}</p>
                 <div class="mt-6 flex justify-end">
                   <span class="rounded-lg bg-ink p-3">
                     <img src="/images/services-img5.webp" alt="" class="h-4 w-4" width="16" height="16" loading="lazy" aria-hidden="true" />
