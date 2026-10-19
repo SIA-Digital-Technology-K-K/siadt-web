@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import ProductFacts from '../components/ProductFacts.astro';
-import { productSchema, products } from '../data/site';
+import { productSchema, products, siteUrl } from '../data/site';
 
 const productUrl = 'https://choba.siadt.jp/';
 const product = products.find((p) => p.name === 'SIA帳場')!;
@@ -19,15 +19,61 @@ const faqs = [
     q: '税理士の代わりになりますか？',
     a: 'なりません。仕訳・帳簿の下書きと財務・税務の質問回答を支援します。最終的な税務判断は利用者または専門家が行ってください。',
   },
+  {
+    q: '補助金を使って導入できますか？',
+    a: '当社は中小企業デジタル化・AI導入支援事業費補助金におけるIT導入支援事業者として採択されています（採択通知日：2026年10月19日）。補助対象や申請可否は制度・審査結果により異なりますので、導入前にご相談ください。採択通知書: https://siadt.jp/files/中小企業デジタル化AI導入支援_IT導入支援事業者採択通知書.pdf',
+  },
+  {
+    q: 'IT導入支援事業者とは何ですか？',
+    a: '中小企業デジタル化・AI導入支援事業費補助金において、補助事業者（導入企業）の申請・報告などを支援する登録事業者です。当社は審査の結果、IT導入支援事業者として採択されました。',
+  },
+];
+
+const itSupportNoticePdf = '/files/中小企業デジタル化AI導入支援_IT導入支援事業者採択通知書.pdf';
+const itSupportNoticePdfAbs = `${siteUrl}${itSupportNoticePdf}`;
+const pageUrl = `${siteUrl}/sia-choba/`;
+
+const jsonLd = [
+  ...productSchema({ product, faqs }),
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'SIA帳場', item: pageUrl },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'IT導入支援事業者採択',
+        item: `${pageUrl}#it-support-provider`,
+      },
+    ],
+  },
+  {
+    '@type': 'DigitalDocument',
+    '@id': `${itSupportNoticePdfAbs}#document`,
+    name: '中小企業デジタル化・AI導入支援事業費補助金 IT導入支援事業者 採択通知書',
+    description:
+      'ＳＩＡデジタルテクノロジー株式会社が、中小企業デジタル化・ＡＩ導入支援事業費補助金におけるIT導入支援事業者として採択されたことを示す通知書（通知日：2026年10月19日、登録番号：ITP07-0006526）。',
+    encodingFormat: 'application/pdf',
+    url: itSupportNoticePdfAbs,
+    datePublished: '2026-10-19',
+    identifier: 'ITP07-0006526',
+    inLanguage: 'ja',
+    about: [{ '@id': product.id }, { '@id': `${siteUrl}/#organization` }],
+    author: {
+      '@type': 'Organization',
+      name: '中小企業デジタル化・ＡＩ導入支援事業費補助金事務局',
+    },
+  },
 ];
 ---
 
 <Base
-  title="SIA帳場｜SIAデジタルテクノロジーのAI経理プラットフォーム"
-  description="SIA帳場は、SIAデジタルテクノロジー株式会社が提供する中小企業向けAI経理プラットフォームです。領収書・請求書から仕訳と帳簿を自動生成します。公式サイト choba.siadt.jp。"
-  keywords="AI経理,自動記帳,AI仕訳,領収書OCR,会計ソフト連携,財務税務アシスタント,中小企業経理,SIA帳場"
+  title="SIA帳場｜AI経理・IT導入支援事業者採択｜SIAデジタルテクノロジー"
+  description="SIA帳場は領収書・請求書から仕訳と帳簿を自動生成する中小企業向けAI経理。提供元SIAデジタルテクノロジーは中小企業デジタル化・AI導入支援事業費補助金のIT導入支援事業者として採択済み（2026年10月19日）。"
+  keywords="SIA帳場,AI経理,自動記帳,AI仕訳,領収書OCR,会計ソフト連携,財務税務アシスタント,中小企業経理,IT導入支援事業者,中小企業デジタル化AI導入支援事業費補助金,補助金,採択通知"
   ogImage="/images/sia-choba-hero.png"
-  jsonLd={productSchema({ product, faqs })}
+  jsonLd={jsonLd}
 >
   <PageHero title="SIA帳場" />
 
@@ -38,6 +84,8 @@ const faqs = [
         領収書・請求書・銀行明細をアップロードするだけ。
         AIが仕訳を作成し、帳簿を自動生成。
         財務・税務の質問にも回答し、主要な日本会計ソフトとスムーズに連携します。
+        提供元は中小企業デジタル化・AI導入支援事業費補助金の
+        <a href="#it-support-provider">IT導入支援事業者として採択</a>されています。
       </p>
 
       <div class="my-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -209,6 +257,37 @@ const faqs = [
         アップロードされたデータは暗号化して保存されます。
       </p>
 
+      <h2 id="it-support-provider">補助金対応：IT導入支援事業者として採択</h2>
+      <p>
+        ＳＩＡデジタルテクノロジー株式会社は、中小企業デジタル化・ＡＩ導入支援事業費補助金における
+        <strong>IT導入支援事業者</strong>として採択されました（採択通知日：2026年10月19日、登録番号：ITP07-0006526）。
+        SIA帳場をはじめとするAI・DX導入をご検討の中小企業様は、補助金制度の活用についてもご相談いただけます。
+      </p>
+      <p>
+        補助対象範囲や申請可否は、制度の要件および審査結果により異なります。詳細は
+        <a href="/inquiries/">お問い合わせ</a>ください。
+      </p>
+      <ul>
+        <li>制度名：中小企業デジタル化・ＡＩ導入支援事業費補助金</li>
+        <li>区分：IT導入支援事業者 採択</li>
+        <li>採択通知日：2026年10月19日</li>
+        <li>登録番号：ITP07-0006526</li>
+        <li>法人番号：3120001247658</li>
+        <li>関連製品：<a href="https://choba.siadt.jp/" target="_blank" rel="noopener">SIA帳場</a>（AI経理）</li>
+      </ul>
+      <object
+        data={itSupportNoticePdf}
+        type="application/pdf"
+        style="width:100%;height:640px"
+        aria-label="中小企業デジタル化・AI導入支援事業費補助金 IT導入支援事業者 採択通知書（PDF）"
+      >
+        <p>PDFを表示できない場合は、下のリンクからダウンロードしてください。</p>
+      </object>
+      <p class="mt-4">
+        <a href={itSupportNoticePdf}>IT導入支援事業者 採択通知書（PDF）</a>
+        <a href={itSupportNoticePdf} download class="btn-download ml-4 !no-underline">ダウンロード</a>
+      </p>
+
       <h2>このようなお客様におすすめ</h2>
       <ul>
         <li>経理担当者がいない企業</li>
@@ -216,6 +295,7 @@ const faqs = [
         <li>記帳代行コストを削減したい企業</li>
         <li>紙の領収書管理に時間がかかっている企業</li>
         <li>会計ソフトへの入力を効率化したい企業</li>
+        <li>補助金を活用してAI経理・DXを進めたい中小企業</li>
       </ul>
 
       <h2>よくある質問</h2>
@@ -270,6 +350,12 @@ const faqs = [
             { term: '連携予定', text: '弥生会計、freee、マネーフォワード クラウド会計、勘定奉行、CSV' },
             { term: '対象ユーザー', text: '経理担当が少ない中小企業' },
             { term: '利用料金', text: '無料で試用可能' },
+            {
+              term: '補助金',
+              text: '中小企業デジタル化・AI導入支援事業費補助金のIT導入支援事業者として採択（2026年10月19日）',
+              href: itSupportNoticePdf,
+              external: true,
+            },
           ]}
         />
       </section>
