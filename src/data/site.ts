@@ -53,6 +53,9 @@ export const organization = {
     '生成AI',
     '高齢者見守り',
     '見守り支援システム',
+    'IT導入支援事業者',
+    '中小企業デジタル化・AI導入支援事業費補助金',
+    '補助金活用',
   ],
 };
 
@@ -180,8 +183,10 @@ export const products = [
     url: `${siteUrl}/sia-choba/`,
     appUrl: 'https://choba.siadt.jp/',
     image: `${siteUrl}/images/sia-choba-hero.png`,
-    description: 'SIAデジタルテクノロジー株式会社が提供する、領収書・請求書から仕訳と帳簿を自動生成する中小企業向けAI経理プラットフォーム。',
+    description:
+      'SIAデジタルテクノロジー株式会社が提供する、領収書・請求書から仕訳と帳簿を自動生成する中小企業向けAI経理プラットフォーム。提供元は中小企業デジタル化・AI導入支援事業費補助金のIT導入支援事業者として採択済み（2026年10月19日）。',
     applicationCategory: 'FinanceApplication',
+    award: '中小企業デジタル化・AI導入支援事業費補助金 IT導入支援事業者採択（2026年10月19日）',
   },
   {
     id: `${siteUrl}/人工知能アシスタント/#product`,
@@ -252,6 +257,7 @@ export function productSchema(opts: {
       brand: org,
       manufacturer: org,
       provider: org,
+      ...('award' in product && product.award ? { award: product.award } : {}),
       ...('appUrl' in product && product.appUrl ? { sameAs: product.appUrl } : {}),
       ...('applicationCategory' in product && product.applicationCategory
         ? {
