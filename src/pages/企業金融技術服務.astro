@@ -1,9 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import { serviceSchema, services } from '../data/site';
+
+const service = services.find((s) => s.url.endsWith('/企業金融技術服務/'))!;
 ---
 
-<Base title="企業金融技術服務｜日本の法人口座開設支援 – SIA Digital Technology" description="日本での法人口座開設に必要な公式サイト、国内電話番号、申請資料の整理を支援。日本語・中国語対応。審査結果は各銀行の判断です。">
+<Base
+  title="企業金融・決済技術サービス｜FinTech・キャッシュレス決済連携 – SIA Digital Technology"
+  description="法人向けのオンライン決済・QRコード決済導入支援（PayPay・Alipay・WeChat Pay等）および企業金融・事業運営に必要なIT基盤整備を日本語・中国語で技術サポートします。"
+  keywords="企業金融技術サービス,FinTech 技術サポート,キャッシュレス決済導入,PayPay Alipay WeChatPay 法人導入,SIAデジタルテクノロジー"
+  jsonLd={serviceSchema({ service })}
+>
   <PageHero title="企業金融技術服務" />
   <main class="mx-auto max-w-4xl px-4 py-14">
     <div class="prose-body">

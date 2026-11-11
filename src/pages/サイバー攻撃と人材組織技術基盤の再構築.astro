@@ -1,11 +1,45 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import { articleSchema, siteUrl } from '../data/site';
+
+const pageUrl = `${siteUrl}/${encodeURIComponent('サイバー攻撃と人材組織技術基盤の再構築')}/`;
+const cyberArticleJsonLd = articleSchema({
+  url: pageUrl,
+  headline: '日本企業のサイバー攻撃対策はなぜ難しい？大企業の被害から考える3つの課題と解決策',
+  description:
+    '日本企業のサイバー攻撃対策を、教育・人材育成、組織文化、システム外注の観点から分析。大企業だけでなく、中小企業でも実践できる改善策を紹介します。',
+  image: '/images/cyber-hr-rebuild.jpg',
+  datePublished: '2026-10-15',
+  dateModified: '2026-11-11',
+  keywords: [
+    'サイバー攻撃対策',
+    '中小企業 情報セキュリティ',
+    'ランサムウェア対策',
+    'システム外注 管理',
+    'IT基盤',
+    'SIAデジタルテクノロジー',
+  ],
+  faqs: [
+    {
+      q: '中小企業でもサイバー攻撃の標的になりますか？',
+      a: 'はい。攻撃者は企業の知名度だけでなく、外部公開されたVPN機器の脆弱性や認証不備を機械的に探索して侵入するため、中小企業も無関係ではありません。',
+    },
+    {
+      q: 'セキュリティ製品を入れるだけでサイバー攻撃は防げますか？',
+      a: '製品導入だけでは不十分です。侵入防止に加えて、被害拡大を防ぐ権限分離・バックアップ運用、実務と結びついた人材育成、システム外注先との責任分界の明確化が不可欠です。',
+    },
+  ],
+});
 ---
 
 <Base
   title="日本企業のサイバー攻撃対策はなぜ難しい？大企業の被害から考える3つの課題と解決策｜SIAデジタルテクノロジー"
   description="日本企業のサイバー攻撃対策を、教育・人材育成、組織文化、システム外注の観点から分析。大企業だけでなく、中小企業でも実践できる改善策を紹介します。"
+  keywords="サイバー攻撃対策,日本企業 セキュリティ,中小企業 ランサムウェア,システム外注 リスク,IT基盤再構築,SIAデジタルテクノロジー"
+  ogImage="/images/cyber-hr-rebuild.jpg"
+  ogType="article"
+  jsonLd={cyberArticleJsonLd}
 >
   <PageHero title="日本企業のサイバー攻撃対策はなぜ難しい？大企業の被害から考える3つの課題と解決策" />
   <main class="mx-auto max-w-4xl px-4 py-14">

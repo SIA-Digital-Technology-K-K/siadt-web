@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { organization, patentSchema, products, siteUrl } from '../data/site';
+import { organization, patentSchema, products, services, siteUrl } from '../data/site';
 
 interface Props {
   title: string;
@@ -8,6 +8,7 @@ interface Props {
   keywords?: string;
   lang?: string;
   ogImage?: string;
+  ogType?: 'website' | 'article';
   robots?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
@@ -18,19 +19,38 @@ const {
   keywords,
   lang = 'ja',
   ogImage = '/images/hero-robot-girl.webp',
-  robots,
+  ogType = 'website',
+  robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
   jsonLd,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImageAbs = new URL(ogImage, Astro.site).href;
 const extraJsonLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const hasCustomBreadcrumb = extraJsonLd.some((node) => node['@type'] === 'BreadcrumbList');
+
+const pathnameDecoded = decodeURIComponent(Astro.url.pathname);
+const isHome = pathnameDecoded === '/';
+const pageShortTitle = title.split(/[｜|–—]/)[0].trim();
+
+const autoBreadcrumb = !isHome && !hasCustomBreadcrumb
+  ? [
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${canonical.href}#breadcrumb`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${siteUrl}/` },
+          { '@type': 'ListItem', position: 2, name: pageShortTitle, item: canonical.href },
+        ],
+      },
+    ]
+  : [];
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': ['Organization', 'ProfessionalService'],
+      '@type': ['Organization', 'Corporation', 'ProfessionalService'],
       '@id': `${siteUrl}/#organization`,
       name: organization.name,
       alternateName: organization.alternateName,
@@ -38,56 +58,103 @@ const structuredData = {
       url: siteUrl,
       logo: {
         '@type': 'ImageObject',
+        '@id': `${siteUrl}/#logo`,
         url: organization.logo,
+        caption: organization.name,
       },
       image: ogImageAbs,
       email: organization.email,
       telephone: organization.telephone,
       foundingDate: organization.foundingDate,
       taxID: organization.taxID,
-      numberOfEmployees: organization.numberOfEmployees,
+      iso6523Code: organization.iso6523Code,
+      founder: {
+        '@type': 'Person',
+        name: organization.founder,
+        jobTitle: '代表取締役',
+      },
+      numberOfEmployees: {
+        '@type': 'QuantitativeValue',
+        value: organization.numberOfEmployees,
+      },
       slogan: organization.slogan,
       description: organization.description,
       address: {
         '@type': 'PostalAddress',
         ...organization.address,
       },
-      contactPoint: {
-        '@type': 'ContactPoint',
-        telephone: organization.telephone,
-        email: organization.email,
-        contactType: 'customer service',
-        areaServed: 'JP',
-        availableLanguage: ['Japanese', 'Chinese'],
-        hoursAvailable: {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-          opens: '10:00',
-          closes: '17:00',
-        },
+      geo: {
+        '@type': 'GeoCoordinates',
+        ...organization.geo,
       },
+      hasMap: organization.hasMap,
+      openingHours: organization.openingHours,
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: organization.telephone,
+          email: organization.email,
+          contactType: 'customer service',
+          areaServed: 'JP',
+          availableLanguage: ['ja', 'zh', 'en'],
+          hoursAvailable: {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+            opens: '10:00',
+            closes: '17:00',
+          },
+        },
+      ],
       sameAs: organization.sameAs,
+      award: organization.awards,
+      hasCredential: organization.credentials.map((c) => ({
+        '@type': 'EducationalOccupationalCredential',
+        name: c.name,
+        ...(c.identifier ? { identifier: c.identifier } : {}),
+        ...(c.dateCreated ? { dateCreated: c.dateCreated } : {}),
+        recognizedBy: { '@type': 'Organization', name: c.recognizedBy },
+        url: c.url,
+      })),
       knowsAbout: organization.knowsAbout,
       areaServed: { '@type': 'Country', name: 'Japan' },
       brand: products.map((p) => ({ '@type': 'Brand', name: p.name, url: p.url })),
       owns: [...products.map((p) => ({ '@id': p.id })), ...patentSchema().map((p) => ({ '@id': p['@id'] }))],
+      makesOffer: services.map((s) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          '@id': s.id,
+          name: s.name,
+          serviceType: s.serviceType,
+          description: s.description,
+          url: s.url,
+        },
+      })),
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'SIA Digital Technology 製品',
-        itemListElement: products.map((p, i) => ({
-          '@type': 'Offer',
-          position: i + 1,
-          itemOffered: { '@id': p.id },
-          url: p.url,
-        })),
+        name: 'SIAデジタルテクノロジー株式会社 製品・ソリューション一覧',
+        itemListElement: [
+          ...products.map((p, i) => ({
+            '@type': 'Offer',
+            position: i + 1,
+            itemOffered: { '@id': p.id, name: p.name },
+            url: p.url,
+          })),
+          ...services.map((s, i) => ({
+            '@type': 'Offer',
+            position: products.length + i + 1,
+            itemOffered: { '@id': s.id, name: s.name },
+            url: s.url,
+          })),
+        ],
       },
     },
     {
       '@type': 'WebSite',
       '@id': `${siteUrl}/#website`,
       url: `${siteUrl}/`,
-      name: 'SIA Digital Technology',
-      alternateName: organization.name,
+      name: 'SIAデジタルテクノロジー株式会社',
+      alternateName: ['SIA Digital Technology', 'SIADT'],
       inLanguage: 'ja',
       description: organization.description,
       publisher: { '@id': `${siteUrl}/#organization` },
@@ -101,25 +168,33 @@ const structuredData = {
       inLanguage: lang === 'zh-Hant' ? 'zh-Hant' : lang === 'zh-Hans' ? 'zh-Hans' : 'ja',
       isPartOf: { '@id': `${siteUrl}/#website` },
       about: { '@id': `${siteUrl}/#organization` },
+      ...(!isHome && !hasCustomBreadcrumb ? { breadcrumb: { '@id': `${canonical.href}#breadcrumb` } } : {}),
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', 'main h2'],
+      },
     },
-    ...patentSchema(),
+    ...(isHome ? patentSchema() : []),
+    ...autoBreadcrumb,
     ...extraJsonLd,
   ],
 };
 
 const navProducts = [
-  { href: 'https://engawa-app.jp/', label: '緣側', external: true },
-  { href: 'https://livein-japan.com', label: '日本通', external: true },
-  { href: '/sia-studio/', label: 'SIA Studio' },
-  { href: '/sia-talenteye/', label: 'SIA TalentEye' },
-  { href: '/sia-choba/', label: 'SIA 帳場' },
-  { href: '/人工知能アシスタント/', label: 'SIA AI Assist' },
+  { href: '/sia-choba/', label: 'SIA 帳場（AI経理）' },
+  { href: '/sia-talenteye/', label: 'SIA TalentEye（AI採用）' },
+  { href: '/sia-studio/', label: 'SIA Studio（生成AI制作）' },
+  { href: '/人工知能アシスタント/', label: 'SIA AI Assist（社内AI）' },
   { href: '/ハードウェア製品/', label: 'AIエッジ計算製品' },
+  { href: 'https://engawa-app.jp/', label: '緣側（高齢者見守り）', external: true },
+  { href: 'https://livein-japan.com/', label: '日本通（多言語支援）', external: true },
 ];
 const navCompany = [
-  { href: '/企業理念・行動指針/', label: '企業理念・行動指針' },
   { href: '/企業情報/', label: '会社概要' },
-  { href: '/知的財産/', label: '知的財産' },
+  { href: '/私たちについて/', label: '私たちについて' },
+  { href: '/企業理念・行動指針/', label: '企業理念・行動指針' },
+  { href: '/知的財産/', label: '知的財産（特許）' },
+  { href: '/security-policy/', label: '情報セキュリティ基本方針' },
 ];
 
 const social = [
@@ -154,14 +229,21 @@ const social = [
     <title>{title}</title>
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
-    {robots && <meta name="robots" content={robots} />}
+    <meta name="robots" content={robots} />
+    <meta name="googlebot" content={robots} />
     <meta name="author" content={organization.name} />
+    <meta name="geo.region" content="JP-27" />
+    <meta name="geo.placename" content="大阪市住之江区" />
+    <meta name="geo.position" content="34.6092;135.4728" />
+    <meta name="ICBM" content="34.6092, 135.4728" />
+    <meta name="format-detection" content="telephone=no" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM information" />
-    <meta property="og:type" content="website" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary (llms.txt)" />
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM full knowledge base (llms-full.txt)" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -171,6 +253,7 @@ const social = [
     <meta property="og:locale" content={lang === 'zh-Hant' || lang === 'zh-Hans' ? 'zh_TW' : 'ja_JP'} />
     {lang === 'ja' && <meta property="og:locale:alternate" content="zh_TW" />}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@SIADTJP0721" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbs} />
@@ -188,12 +271,13 @@ const social = [
       <div class="border-b border-white/10">
         <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs text-gray-300">
           <div class="flex flex-wrap items-center gap-4">
+            <a href="tel:0644002968" class="hover:text-accent">TEL: 06-4400-2968（平日 10:00–17:00）</a>
             <a href="mailto:service@siadt.jp" class="hover:text-accent">service@siadt.jp</a>
             <a
               href="https://maps.app.goo.gl/y5sWWEem8hMMLE8r5"
               target="_blank"
               rel="noopener"
-              class="hidden hover:text-accent sm:inline">大阪市住之江区南加賀屋3-8-26 YSビル6B</a
+              class="hidden hover:text-accent md:inline">〒559-0015 大阪市住之江区南加賀屋3-8-26 Y.S.ビル6B</a
             >
           </div>
           <div class="flex items-center gap-3">
@@ -220,7 +304,7 @@ const social = [
               製品情報
               <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
             </a>
-            <div class="invisible absolute left-0 top-full z-50 min-w-56 rounded-lg border border-white/10 bg-panel py-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100">
+            <div class="invisible absolute left-0 top-full z-50 min-w-64 rounded-lg border border-white/10 bg-panel py-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100">
               {navProducts.map((item) => (
                 <a
                   href={item.href}
@@ -236,7 +320,7 @@ const social = [
               企業情報
               <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
             </a>
-            <div class="invisible absolute left-0 top-full z-50 min-w-56 rounded-lg border border-white/10 bg-panel py-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100">
+            <div class="invisible absolute left-0 top-full z-50 min-w-60 rounded-lg border border-white/10 bg-panel py-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100">
               {navCompany.map((item) => (
                 <a href={item.href} class="block px-4 py-2 hover:bg-white/5 hover:text-accent">{item.label}</a>
               ))}
@@ -266,9 +350,11 @@ const social = [
               ))
             }
             <a href="/ソリューション紹介/" class="block px-4 py-2 hover:text-accent">サービス分野</a>
-            <a href="/企業理念・行動指針/" class="block px-4 py-2 hover:text-accent">企業理念・行動指針</a>
-            <a href="/企業情報/" class="block px-4 py-2 hover:text-accent">会社概要</a>
-            <a href="/知的財産/" class="block px-4 py-2 hover:text-accent">知的財産</a>
+            {
+              navCompany.map((item) => (
+                <a href={item.href} class="block px-4 py-2 hover:text-accent">{item.label}</a>
+              ))
+            }
             <a href="/連絡先/" class="block px-4 py-2 hover:text-accent">連絡先</a>
             <a href="/オンラインストア/" class="block px-4 py-2 hover:text-accent">SHOP</a>
             <a href="/inquiries/" class="block px-4 py-2 text-accent">お問い合わせ</a>
@@ -281,7 +367,7 @@ const social = [
 
     <footer class="bg-ink text-gray-300">
       <div class="mx-auto max-w-6xl px-4 py-14">
-        <div class="grid gap-10 lg:grid-cols-[1.4fr_repeat(4,minmax(0,1fr))]">
+        <div class="grid gap-10 lg:grid-cols-[1.5fr_repeat(4,minmax(0,1fr))]">
           <div>
             <a href="/" class="inline-flex items-center gap-3">
               <img src="/images/siadt-logo-mark.webp" alt="SIAデジタルテクノロジー株式会社" class="h-14 w-14" width="56" height="56" loading="lazy" />
@@ -289,7 +375,7 @@ const social = [
                 SIAデジタルテクノロジー<br />株式会社
               </span>
             </a>
-            <p class="mt-4 text-sm leading-relaxed">日本の伝統を守り、日本の未来を創る</p>
+            <p class="mt-4 text-sm leading-relaxed text-gray-300">日本の伝統を守り、日本の未来を創る</p>
             <div class="mt-5 flex items-center gap-4">
               {
                 social.map((s) => (
@@ -302,55 +388,66 @@ const social = [
               }
             </div>
           </div>
-          <nav aria-label="Products">
-            <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-white">Products</h3>
+          <nav aria-label="自社AI製品">
+            <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-white">AI Products</h3>
             <ul class="space-y-2.5 text-sm">
+              <li><a href="/sia-choba/" class="hover:text-accent">SIA 帳場（AI経理）</a></li>
+              <li><a href="/sia-talenteye/" class="hover:text-accent">SIA TalentEye（AI採用）</a></li>
+              <li><a href="/sia-studio/" class="hover:text-accent">SIA Studio（生成AI制作）</a></li>
+              <li><a href="/人工知能アシスタント/" class="hover:text-accent">SIA AI Assist（社内AI）</a></li>
               <li><a href="/ハードウェア製品/" class="hover:text-accent">AIエッジ計算製品</a></li>
-              <li><a href="https://engawa-app.jp/" target="_blank" rel="noopener" class="hover:text-accent">個人向けAI製品</a></li>
-              <li><a href="/shop/" class="hover:text-accent">小売店AIシステム</a></li>
-              <li><a href="/car/" class="hover:text-accent">自動車AI分析システム</a></li>
+              <li><a href="https://engawa-app.jp/" target="_blank" rel="noopener" class="hover:text-accent">緣側（見守りAI）</a></li>
+              <li><a href="https://livein-japan.com/" target="_blank" rel="noopener" class="hover:text-accent">日本通（公式生活情報）</a></li>
             </ul>
           </nav>
-          <nav aria-label="Service">
-            <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-white">Service</h3>
+          <nav aria-label="法人向けサービス">
+            <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-white">Solutions</h3>
             <ul class="space-y-2.5 text-sm">
-              <li><a href="/中小企業向けIT基盤サービス/" class="hover:text-accent">IT基盤サービス</a></li>
-              <li><a href="/人工知能アシスタント/" class="hover:text-accent">SIA AI Assist</a></li>
+              <li><a href="/中小企業向けIT基盤サービス/" class="hover:text-accent">中小企業IT基盤・DX支援</a></li>
+              <li><a href="/shop/" class="hover:text-accent">小売店AI防犯・客流分析</a></li>
+              <li><a href="/car/" class="hover:text-accent">自動車店舗AI分析</a></li>
               <li><a href="/企業金融技術服務/" class="hover:text-accent">FinTech技術サポート</a></li>
               <li><a href="/class/" class="hover:text-accent">AI技術トレーニング</a></li>
             </ul>
           </nav>
-          <nav aria-label="Resources">
-            <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-white">Resources</h3>
+          <nav aria-label="企業・資料">
+            <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-white">Company & Docs</h3>
             <ul class="space-y-2.5 text-sm">
+              <li><a href="/企業情報/" class="hover:text-accent">会社概要</a></li>
+              <li><a href="/知的財産/" class="hover:text-accent">知的財産・特許一覧</a></li>
+              <li><a href="/AI-DX白書/" class="hover:text-accent">中小企業AI×DX白書</a></li>
+              <li><a href="/サイバー攻撃と人材組織技術基盤の再構築/" class="hover:text-accent">サイバー攻撃対策コラム</a></li>
               <li><a href="/技術提携パートナー/" class="hover:text-accent">技術提携パートナー</a></li>
-              <li><a href="/業務委託・営業パートナー募集/" class="hover:text-accent">営業パートナー募集</a></li>
               <li><a href="/採用情報/" class="hover:text-accent">採用情報</a></li>
-              <li><a href="/security-policy/" class="hover:text-accent">情報セキュリティ基本方針</a></li>
             </ul>
           </nav>
-          <nav aria-label="Support">
-            <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-white">Support</h3>
+          <nav aria-label="規約・セキュリティ">
+            <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-white">Governance</h3>
             <ul class="space-y-2.5 text-sm">
-              <li><a href="/利用規約（草案）/" class="hover:text-accent">利用規約</a></li>
-              <li><a href="/特定商取引法に基づく表記/" class="hover:text-accent">特定商取引法表記</a></li>
+              <li><a href="/security-policy/" class="hover:text-accent">情報セキュリティ基本方針</a></li>
               <li><a href="/プライバシーポリシー/" class="hover:text-accent">プライバシーポリシー</a></li>
-              <li><a href="/知的財産/" class="hover:text-accent">知的財産</a></li>
+              <li><a href="/特定商取引法に基づく表記/" class="hover:text-accent">特定商取引法に基づく表記</a></li>
+              <li><a href="/暴力団等反社会勢力排除宣言/" class="hover:text-accent">反社会的勢力排除宣言</a></li>
+              <li><a href="/利用規約（草案）/" class="hover:text-accent">利用規約</a></li>
+              <li><a href="/業務委託・営業パートナー募集/" class="hover:text-accent">営業パートナー募集</a></li>
             </ul>
           </nav>
         </div>
         <div class="mt-10 flex flex-col items-center gap-4 border-t border-white/10 pt-6 sm:flex-row sm:justify-between">
-          <p class="text-center text-xs text-gray-400 sm:text-left">Copyright © 2022 · SIA Digital Technology · All rights reserved</p>
-          <a href="/security-policy/" class="inline-block shrink-0">
-            <img
-              src="/images/security-action-two-star.png"
-              alt="SECURITY ACTION 二つ星（セキュリティ対策自己宣言）"
-              width="1378"
-              height="1378"
-              class="h-auto w-10"
-              loading="lazy"
-            />
-          </a>
+          <p class="text-center text-xs text-gray-400 sm:text-left">Copyright © 2022 SIAデジタルテクノロジー株式会社（SIA Digital Technology Co., Ltd.） All rights reserved.</p>
+          <div class="flex items-center gap-4">
+            <span class="text-xs text-gray-400">IPA SECURITY ACTION 二つ星宣言事業者</span>
+            <a href="/security-policy/" class="inline-block shrink-0" aria-label="SECURITY ACTION 二つ星・情報セキュリティ基本方針">
+              <img
+                src="/images/security-action-two-star.png"
+                alt="SECURITY ACTION 二つ星（セキュリティ対策自己宣言）"
+                width="1378"
+                height="1378"
+                class="h-auto w-10"
+                loading="lazy"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
