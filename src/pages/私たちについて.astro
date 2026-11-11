@@ -8,29 +8,92 @@ import PageHero from '../components/PageHero.astro';
   description="SIAデジタルテクノロジー株式会社の社名の意味と代表メッセージ。AI・ビッグデータ・IoTで社会と産業の課題を解決し、日本の伝統を守りながら未来を創ります。"
 >
   <PageHero title="私たちについて" />
-  <main class="mx-auto max-w-4xl px-4 py-14">
-    <div class="prose-body">
-      <video controls preload="metadata" width="1280" height="720">
-        <source src="/videos/sia-company-intro.mp4" type="video/mp4" />
-        <p>SIAデジタルテクノロジー株式会社の会社紹介動画です。</p>
-      </video>
+  <main class="mx-auto max-w-4xl px-4 py-14 md:py-20">
+    <!-- 1. 動画（余計な見出し・説明文・黒枠なし） -->
+    <section aria-label="会社紹介ムービー" class="mb-16 md:mb-20">
+      <div class="overflow-hidden rounded-lg border border-gray-200/80 shadow-sm">
+        <video
+          controls
+          preload="metadata"
+          class="block aspect-video w-full object-cover"
+          width="1280"
+          height="720"
+        >
+          <source src="/videos/sia-company-intro.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
 
-      <h2>SIAという社名</h2>
-      <p>S– to serve the public 大衆に奉仕する</p>
-      <p>I- Independent research and development それは、独立した思考、独立した研究開発を意味します</p>
-      <p>A- A grade product その商品が最高レベルであることを意味します</p>
-      <p>SIAデジタルテクノロジーの技術は、未来を見据えた革新的なソリューションを通じて、社会と産業の進化を支えています。私たちは、AI（人工知能）、ビッグデータ、IoTといった最先端のデジタル技術を戦略的に活用し、複雑化・高度化する現代社会の課題に対して、本質的かつ実践的な価値を提供しています。</p>
-      <p>急速に変化する経済環境の中で、企業や組織には、データに基づいた意思決定、業務効率の最適化、そして持続可能な成長戦略が求められています。SIAは、技術そのものを目的とするのではなく、「社会や人の営みにどのような変革をもたらすか」という視点を重視し、現場に根ざしたデジタルソリューションを設計・実装しています。</p>
-      <p>私たちのソリューションは、業務プロセスの高度化や生産性向上にとどまらず、新たなビジネス価値の創出や、組織全体の競争力強化にも貢献します。データの可視化や自動化、リアルタイム分析を通じて、従来は見えなかった課題や可能性を明らかにし、より精度の高い判断と迅速な行動を可能にします。</p>
-      <p>また、SIAは経済的な成長だけでなく、社会の持続可能性や人々の生活の質にも強い関心を持っています。テクノロジーを通じて、人と社会、そして未来をつなぐこと。それが私たちの使命です。デジタルイノベーションを社会に浸透させることで、人々の暮らしをより豊かにし、信頼される持続可能な社会の実現に貢献していきます。</p>
-      <p>SIAは、パートナーやクライアント、そして社会と共に歩みながら、変化を恐れず、新しい価値を創造し続けます。私たちは、デジタルの力で未来を切り拓き、次世代へとつながる社会基盤を築いていくことを目指しています。</p>
-      <p>高齢者見守り支援に関する発明「見守り支援システム、見守り支援方法及びプログラム」は、2026年8月31日に特許第7917241号として設定登録されました。生成AI協調、日本語採用候補者評価および会計処理支援に関する発明も特許出願中です。詳細は<a href="/知的財産/">知的財産</a>をご覧ください。</p>
-      <p>SIA’s digital technologies support the evolution of society and industry by delivering innovative solutions designed with the future in mind. By strategically leveraging cutting-edge technologies such as artificial intelligence (AI), big data, and IoT, we provide practical and essential value to address the increasingly complex challenges of today’s world.</p>
-      <p>In a rapidly changing economic environment, organizations are required to make data-driven decisions, optimize operational efficiency, and pursue sustainable growth strategies. At SIA, technology itself is not the goal. Instead, we focus on how digital innovation can transform real-world activities and generate meaningful impact for society and people. Our solutions are designed and implemented with a deep understanding of on-the-ground needs.</p>
-      <p>Beyond improving productivity and streamlining operations, SIA’s solutions contribute to the creation of new business value and the enhancement of organizational competitiveness. Through data visualization, automation, and real-time analytics, we uncover insights and opportunities that were previously invisible, enabling faster actions and more accurate decision-making.</p>
-      <p>SIA is committed not only to economic growth but also to sustainability and the quality of life for individuals and communities. Connecting people, society, and the future through technology lies at the heart of our mission. By embedding digital innovation into society, we aim to enrich everyday life and contribute to the realization of a trusted and sustainable social framework.</p>
-      <p>Working closely with our partners, clients, and the broader community, SIA continues to embrace change and create new value without fear of transformation. Through the power of digital technology, we strive to shape the future and build a solid foundation for the next generation.</p>
-      <p class="text-right">SIA Digital Technology 社長</p>
-    </div>
+    <!-- 2. 代表メッセージ（日語原文のみ・英文は削除） -->
+    <section aria-labelledby="representative-message-heading" class="border-t border-gray-200 pt-12 md:pt-16">
+      <div class="mb-8">
+        <p class="text-xs font-semibold tracking-[0.2em] text-[#0bbbb5] uppercase">Top Message</p>
+        <h2 id="representative-message-heading" class="mt-2 text-2xl font-bold tracking-tight text-gray-900 md:text-[1.75rem]">
+          代表メッセージ
+        </h2>
+      </div>
+
+      <div class="prose-body space-y-5 text-[15.5px] leading-[2] text-gray-700 md:text-base">
+        <p>SIAデジタルテクノロジーの技術は、未来を見据えた革新的なソリューションを通じて、社会と産業の進化を支えています。私たちは、AI（人工知能）、ビッグデータ、IoTといった最先端のデジタル技術を戦略的に活用し、複雑化・高度化する現代社会の課題に対して、本質的かつ実践的な価値を提供しています。</p>
+        <p>急速に変化する経済環境の中で、企業や組織には、データに基づいた意思決定、業務効率の最適化、そして持続可能な成長戦略が求められています。SIAは、技術そのものを目的とするのではなく、「社会や人の営みにどのような変革をもたらすか」という視点を重視し、現場に根ざしたデジタルソリューションを設計・実装しています。</p>
+        <p>私たちのソリューションは、業務プロセスの高度化や生産性向上にとどまらず、新たなビジネス価値の創出や、組織全体の競争力強化にも貢献します。データの可視化や自動化、リアルタイム分析を通じて、従来は見えなかった課題や可能性を明らかにし、より精度の高い判断と迅速な行動を可能にします。</p>
+        <p>また、SIAは経済的な成長だけでなく、社会の持続可能性や人々の生活の質にも強い関心を持っています。テクノロジーを通じて、人と社会、そして未来をつなぐこと。それが私たちの使命です。デジタルイノベーションを社会に浸透させることで、人々の暮らしをより豊かにし、信頼される持続可能な社会の実現に貢献していきます。</p>
+        <p>SIAは、パートナーやクライアント、そして社会と共に歩みながら、変化を恐れず、新しい価値を創造し続けます。私たちは、デジタルの力で未来を切り拓き、次世代へとつながる社会基盤を築いていくことを目指しています。</p>
+        <p>高齢者見守り支援に関する発明「見守り支援システム、見守り支援方法及びプログラム」は、2026年8月31日に特許第7917241号として設定登録されました。生成AI協調、日本語採用候補者評価および会計処理支援に関する発明も特許出願中です。詳細は<a href="/知的財産/">知的財産</a>をご覧ください。</p>
+      </div>
+
+      <!-- 3. 署名＋写真（正文結尾・右對齊） -->
+      <div class="mt-10 flex items-end justify-end gap-5">
+        <div class="text-right leading-relaxed">
+          <p class="text-xs tracking-wider text-gray-500">SIAデジタルテクノロジー株式会社</p>
+          <p class="mt-1 text-base font-bold tracking-wide text-gray-900">
+            <span class="mr-2 text-xs font-medium text-gray-600">代表取締役</span>劉 亜烜
+          </p>
+        </div>
+        <img
+          src="/images/representative-liu-yaxuan.webp"
+          alt="SIAデジタルテクノロジー株式会社 代表取締役 劉 亜烜"
+          width="96"
+          height="108"
+          class="h-[108px] w-[96px] shrink-0 rounded border border-gray-200 object-cover object-top"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <!-- 4. 代表者略歴（写真は重複掲載しない） -->
+    <section id="representative" aria-labelledby="representative-bio-heading" class="mt-14 border-t border-gray-200 pt-12 md:mt-16 md:pt-14">
+      <div class="grid gap-4 md:grid-cols-[200px_1fr] md:gap-10">
+        <div>
+          <p class="text-xs font-semibold tracking-[0.2em] text-[#0bbbb5] uppercase">Profile</p>
+          <h2 id="representative-bio-heading" class="mt-1.5 text-lg font-bold text-gray-900">
+            代表者略歴
+          </h2>
+        </div>
+        <div class="text-[15px] leading-[1.95] text-gray-700">
+          <p class="font-bold text-gray-900">劉 亜烜（リュウ アケン）／代表取締役</p>
+          <p class="mt-3">
+            2004年に大学を卒業後、携程旅行網（Ctrip）に入社。その後、盛大計算機に移り、コンピュータおよび通信技術に関する発明特許4件に携わる。2014年にアリババに入社し、クラウドコンピューティング、IoT、人工知能など複数のプロダクトのゼロからの立ち上げに参画。2021年に上海優刻得科技（UCloud）に入社し、人工知能事業を統括。その後、日本で創業。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SIAという社名（企業理念ページの S/I/A 三行と同一文案） -->
+    <section aria-labelledby="sia-name-heading" class="mt-14 border-t border-gray-200 pt-12 md:mt-16 md:pt-14">
+      <div class="grid gap-4 md:grid-cols-[200px_1fr] md:gap-10">
+        <div>
+          <p class="text-xs font-semibold tracking-[0.2em] text-[#0bbbb5] uppercase">Corporate Name</p>
+          <h2 id="sia-name-heading" class="mt-1.5 text-lg font-bold text-gray-900">
+            SIAという社名
+          </h2>
+        </div>
+        <div class="prose-body space-y-2.5 text-[15px] text-gray-700">
+          <p class="!mb-0"><strong>S– To serve the public&nbsp;</strong><em>社会への貢献</em></p>
+          <p class="!mb-0"><strong>I- Independent research and development&nbsp;</strong><em>独立した思考、独立した研究開発を意味します</em></p>
+          <p class="!mb-0"><strong>A- A grade product&nbsp;</strong><em>商品が最高レベルであることを意味します</em></p>
+        </div>
+      </div>
+    </section>
   </main>
 </Base>

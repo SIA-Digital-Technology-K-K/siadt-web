@@ -20,7 +20,7 @@ export const organization = {
   taxID: '3120001247658',
   iso6523Code: '0188:3120001247658',
   numberOfEmployees: 3,
-  founder: '劉 亜烜（リュウ アケン）',
+  founder: '劉 亜烜',
   capital: '15,000,000円',
   capitalNumber: 15000000,
   description:
