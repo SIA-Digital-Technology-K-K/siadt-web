@@ -1,13 +1,40 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import { articleSchema, siteUrl } from '../data/site';
 
 const pdf = '/files/SIA_AI_DX_Whitepaper_Pro_2026.pdf';
+const pageUrl = `${siteUrl}/AI-DX${encodeURIComponent('白書')}/`;
+const whitepaperJsonLd = [
+  ...articleSchema({
+    url: pageUrl,
+    headline: '【無料公開】AI × DX で中小企業の利益を最大化する（2026年版白書）',
+    description:
+      '中小企業がAIとDXで利益を最大化するための無料白書。公式サイト・IT基盤から店舗AI、生成AIまで、現場に落とせる導入の考え方をまとめました。',
+    image: '/images/888.webp',
+    datePublished: '2026-01-15',
+    dateModified: '2026-11-11',
+    keywords: ['中小企業DX', 'AI活用白書', '段階的デジタル化', '店舗AI', '生成AI導入'],
+  }),
+  {
+    '@type': 'DigitalDocument',
+    '@id': `${siteUrl}${pdf}`,
+    name: 'AI × DX で中小企業の利益を最大化する（2026年版白書 PDF）',
+    encodingFormat: 'application/pdf',
+    url: `${siteUrl}${pdf}`,
+    inLanguage: 'ja',
+    publisher: { '@id': `${siteUrl}/#organization` },
+  },
+];
 ---
 
 <Base
-  title="【無料公開】AI × DX で中小企業の利益を最大化する｜白書"
-  description="中小企業がAIとDXで利益を最大化するための無料白書。公式サイト・IT基盤から店舗AI、生成AIまで、現場に落とせる導入の考え方をまとめました。"
+  title="【無料公開】AI × DX で中小企業の利益を最大化する｜中小企業DX白書 – SIAデジタルテクノロジー"
+  description="中小企業がAIとDXで利益を最大化するための無料白書（PDF公開）。公式サイト・IT基盤から店舗AI、生成AIまで、現場に落とせる段階的導入の考え方をまとめました。"
+  keywords="中小企業DX 白書,AI導入 ガイド,中小企業 デジタル化,店舗AI,生成AI 業務効率化,SIAデジタルテクノロジー"
+  ogImage="/images/888.webp"
+  ogType="article"
+  jsonLd={whitepaperJsonLd}
 >
   <PageHero title="【無料公開】AI × DX で中小企業の利益を最大化する" />
   <main class="mx-auto max-w-4xl px-4 py-14">

@@ -1,9 +1,27 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import { serviceSchema, services } from '../data/site';
+
+const service = services.find((s) => s.url.endsWith('/中小企業向けIT基盤サービス/'))!;
+const itFaqs = [
+  {
+    q: '企業公式サイト制作の費用はいくらですか？',
+    a: '基本5ページ（トップ・会社紹介・製品・サービス・連絡先等）を含み税込49,000円から承っております。6ページ目以降は税込5,000円／ページで追加可能です（ドメイン・サーバー実費は別途）。',
+  },
+  {
+    q: '紙・電話・Excel中心の業務でも相談できますか？',
+    a: 'はい。無理に大規模システムを入れるのではなく、現状の業務フローや人員体制に合わせて、法人メール整備や段階的なデジタル化からご支援します。',
+  },
+];
 ---
 
-<Base title="中小企業向けIT基盤サービス｜公式サイト・DX支援 – SIA Digital Technology" description="創業期・成長期の中小企業向けIT基盤。公式サイト制作、ドメイン・法人メール、段階的DX、決済導入、LINE公式、EC出店を無理のない形で支援します。">
+<Base
+  title="中小企業向けIT基盤サービス｜公式サイト制作4.9万円〜・段階的DX支援 – SIA Digital Technology"
+  description="創業期・成長期の中小企業向けIT基盤支援。公式サイト制作（税込49,000円〜）、ドメイン・法人メール、段階的DX、キャッシュレス決済導入、LINE公式、EC構築を無理のない形で支援します。"
+  keywords="中小企業 IT基盤,企業ホームページ制作 格安 大阪,中小企業DX 支援,法人メール設定,キャッシュレス導入支援,SIAデジタルテクノロジー"
+  jsonLd={serviceSchema({ service, faqs: itFaqs })}
+>
   <PageHero title="中小企業向けIT基盤サービス" />
   <main class="mx-auto max-w-4xl px-4 py-14">
     <div class="prose-body">

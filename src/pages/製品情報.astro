@@ -1,9 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import { products, siteUrl } from '../data/site';
+
+const productListJsonLd = {
+  '@type': 'ItemList',
+  '@id': `${siteUrl}/${encodeURIComponent('製品情報')}/#list`,
+  name: 'SIAデジタルテクノロジー株式会社 製品一覧',
+  itemListElement: products.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: p.name,
+    url: p.url,
+    description: p.description,
+  })),
+};
 ---
 
-<Base title="製品情報｜AIプロダクト一覧 – SIA Digital Technology" description="SIA Studio、TalentEye、帳場、SIA AI Assist、AIエッジサーバー、店舗向け万引き防止・客流分析、自動車ディーラー向けAI、個人向けAI製品などの製品情報。">
+<Base
+  title="製品情報｜自社開発AIプロダクト一覧（SIA帳場・TalentEye・Studio・AI Assist・エッジAI）"
+  description="SIAデジタルテクノロジー株式会社のAI製品一覧。AI経理「SIA帳場」、AI採用「SIA TalentEye」、生成AI制作「SIA Studio」、社内AI「SIA AI Assist」、AIエッジ計算サーバー、店舗AIなど。"
+  keywords="SIAデジタルテクノロジー 製品,SIA帳場,SIA TalentEye,SIA Studio,SIA AI Assist,AIエッジサーバー"
+  jsonLd={productListJsonLd}
+>
   <PageHero title="製品情報" />
   <main class="mx-auto max-w-4xl px-4 py-14">
     <div class="prose-body">

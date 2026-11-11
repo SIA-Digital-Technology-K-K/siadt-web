@@ -2,9 +2,28 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import ConsultButton from '../components/ConsultButton.astro';
+import { serviceSchema, services } from '../data/site';
+
+const service = services.find((s) => s.url.endsWith('/shop/'))!;
+const shopFaqs = [
+  {
+    q: '既存の防犯カメラをそのまま使えますか？',
+    a: 'はい。現在店舗に設置されている監視カメラ設備と連携できるため、カメラをすべて入れ替える新規ハードウェア投資を抑えて導入可能です。',
+  },
+  {
+    q: '来店客の個人情報・プライバシーは保護されますか？',
+    a: '客流分析では顔認証による個人特定は行わず、匿名化処理のうえで性別・年代推定や滞在時間・動線の傾向のみを可視化します。',
+  },
+];
 ---
 
-<Base title="小売店舗向けAIシステム｜万引き防止・客流分析 – SIA Digital Technology" description="既存の監視カメラとAIで、小売店の万引き疑い行動を検知し、来店客の動線・属性・滞在時間を可視化します。新たなカメラ投資は不要です。">
+<Base
+  title="小売店舗向けAIシステム｜既存カメラで万引き防止・客流分析 – SIA Digital Technology"
+  description="既存の監視カメラとAI映像解析で、小売店の万引き・不審行動を即時検知し、来店客の動線・属性・滞在時間を匿名可視化。新たなカメラ入れ替え投資を抑えて導入できます。"
+  keywords="小売店 AI防犯,万引き防止 AIカメラ,客流分析 AI,既存カメラ AI解析,店舗DX,SIAデジタルテクノロジー"
+  ogImage="/images/shop6.webp"
+  jsonLd={serviceSchema({ service, faqs: shopFaqs })}
+>
   <PageHero title="小売店舗向けAIシステム" />
   <main class="mx-auto max-w-4xl px-4 py-14">
     <div class="prose-body">

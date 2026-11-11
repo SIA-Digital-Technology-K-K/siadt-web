@@ -2,9 +2,23 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import ConsultButton from '../components/ConsultButton.astro';
+import { serviceSchema, services } from '../data/site';
+
+const service = services.find((s) => s.url.endsWith('/car/'))!;
+const carFaqs = [
+  {
+    q: '何台のカメラまで接続できますか？',
+    a: '小型AIエッジサーバー1台につき最大6台の既設カメラを同時接続し、来客動線・滞在時間・注目車種ランキング・ヒートマップをリアルタイム解析できます。',
+  },
+];
 ---
 
-<Base title="自動車向けAI分析システム｜ディーラー店舗 – SIA Digital Technology" description="自動車販売店の既存カメラとAIエッジサーバーで、来客動線・滞在時間・注目車種・ヒートマップを可視化するスマートショールーム。最大6台のカメラに対応。">
+<Base
+  title="自動車販売店・ディーラー向けAI分析システム｜スマートショールーム – SIA Digital Technology"
+  description="自動車販売店の既存カメラと小型AIエッジサーバー（最大6台接続）で、来客動線・滞在時間・注目車種ランキング・ヒートマップを可視化するスマートショールームソリューション。"
+  keywords="自動車ディーラー AI分析,ショールーム 来店分析,ヒートマップ AIカメラ,エッジAI 店舗,SIAデジタルテクノロジー"
+  jsonLd={serviceSchema({ service, faqs: carFaqs })}
+>
   <PageHero title="自動車向けAI分析システム" />
   <main class="mx-auto max-w-4xl px-4 py-14">
     <div class="prose-body">

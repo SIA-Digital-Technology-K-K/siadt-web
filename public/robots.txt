@@ -1,12 +1,30 @@
 # https://siadt.jp
+# SIAデジタルテクノロジー株式会社（SIA Digital Technology Co., Ltd.）
+# 検索エンジンおよび生成AI・AI検索クローラーのクロール・引用を歓迎します
+
 User-agent: *
 Allow: /
+Disallow: /thanks/
+Disallow: /recruit/test/
 
-# 検索エンジンおよび生成AIのクローラーを許可する
+# 主要検索エンジン
 User-agent: Googlebot
 Allow: /
 
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# 生成AI・AI検索エンジン（AIO / GEO / LLM Citation 対応）
 User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
 Allow: /
 
 User-agent: GPTBot
@@ -21,10 +39,19 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
 User-agent: anthropic-ai
 Allow: /
 
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
 Allow: /
 
 User-agent: Applebot
@@ -33,13 +60,34 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
+User-agent: Amazonbot
+Allow: /
+
+User-agent: MistraliAI-User
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: PhindBot
+Allow: /
+
+User-agent: AndiBot
+Allow: /
+
+User-agent: ExaBot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
 User-agent: Bytespider
 Allow: /
 
 User-agent: CCBot
-Allow: /
-
-User-agent: Amazonbot
 Allow: /
 
 User-agent: meta-externalagent
@@ -49,4 +97,7 @@ User-agent: FacebookBot
 Allow: /
 
 Sitemap: https://siadt.jp/sitemap-index.xml
-# LLM向け概要: https://siadt.jp/llms.txt
+
+# LLM向け構造化ファクトシート（llms.txt 標準）
+# Summary: https://siadt.jp/llms.txt
+# Full Knowledge Base: https://siadt.jp/llms-full.txt

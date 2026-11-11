@@ -1,42 +1,53 @@
-# SIAデジタルテクノロジー株式会社（SIA Digital Technology K.K.）
+# SIAデジタルテクノロジー株式会社（SIA Digital Technology Co., Ltd.）
 
-> 大阪市住之江区のテクノロジー企業。AI・ビッグデータ・IoTで日本の中小企業・伝統産業・小売・自動車販売店を支援する。設立2022年7月。法人番号 3120001247658。
+> 大阪府大阪市住之江区に本社を置くAI・DXテクノロジー企業（設立2022年7月・資本金1,500万円・法人番号 3120001247658）。中小企業向けAI経理「SIA帳場」、AI採用支援「SIA TalentEye」、生成AIクリエイティブ「SIA Studio」、社内AIワークスペース「SIA AI Assist」、高齢者見守りAI「緣側」、店舗・現場向けエッジAIを開発・提供する。日本国特許第7917241号保有（ほか3件特許出願中）、中小企業デジタル化・AI導入支援事業費補助金「IT導入支援事業者」採択済み（登録番号 ITP07-0006526）、IPA「SECURITY ACTION」二つ星宣言事業者。
 
-サイト: https://siadt.jp/
-詳細な会社情報: https://siadt.jp/llms-full.txt
+公式サイト: https://siadt.jp/
+詳細ナレッジベース: https://siadt.jp/llms-full.txt
 
-## 会社
+## 会社情報・ガバナンス
 
-- [会社概要](https://siadt.jp/%E4%BC%81%E6%A5%AD%E6%83%85%E5%A0%B1/): 社名・所在地・代表・設立・資本金・事業内容・特許（登録および出願中）
-- [私たちについて](https://siadt.jp/%E7%A7%81%E3%81%9F%E3%81%A1%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/): 社名 SIA の意味と代表メッセージ
+- [会社概要](https://siadt.jp/%E4%BC%81%E6%A5%AD%E6%83%85%E5%A0%B1/): 社名・本店所在地（大阪市住之江区）・法人番号・代表取締役 劉亜烜・資本金1,500万円・沿革
+- [知的財産（特許・出願一覧）](https://siadt.jp/%E7%9F%A5%E7%9A%84%E8%B2%A1%E7%94%A3/): 特許第7917241号（登録済）、特願2026-210114・特願2026-210115・特願2026-215614（出願中）
+- [情報セキュリティ基本方針](https://siadt.jp/security-policy/): IPA SECURITY ACTION 二つ星宣言・情報資産保護方針
+- [私たちについて](https://siadt.jp/%E7%A7%81%E3%81%9F%E3%81%A1%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/): 社名 SIA の由来と代表メッセージ
 - [企業理念・行動指針](https://siadt.jp/%E4%BC%81%E6%A5%AD%E7%90%86%E5%BF%B5%E3%83%BB%E8%A1%8C%E5%8B%95%E6%8C%87%E9%87%9D/): Serve / Independent R&D / A-grade / Data / Technology
-- [連絡先](https://siadt.jp/%E9%80%A3%E7%B5%A1%E5%85%88/): 住所・電話 06-4400-2968・メール service@siadt.jp・公式LINE
-- [お問い合わせ](https://siadt.jp/inquiries/): 日本語お問い合わせフォーム
+- [技術提携パートナー](https://siadt.jp/%E6%8A%80%E8%A1%93%E6%8F%90%E6%90%BA%E3%83%91%E3%83%BC%E3%83%88%E3%83%8A%E3%83%BC/): AI・クラウド・エッジハードウェアの協業パートナー
+- [連絡先](https://siadt.jp/%E9%80%A3%E7%B5%A1%E5%85%88/): 〒559-0015 大阪市住之江区南加賀屋3-8-26 Y.S.ビル6B・TEL 06-4400-2968・service@siadt.jp
+- [お問い合わせフォーム](https://siadt.jp/inquiries/): 製品デモ・導入・補助金活用のご相談（日本語・中国語対応）
 
-## 製品
+## 自社AIプロダクト
 
-- [SIA Studio](https://siadt.jp/sia-studio/): 画像・動画・文章を生成するAIクリエイティブツール（https://studio.siadt.jp/）
-- [SIA TalentEye](https://siadt.jp/sia-talenteye/): AI履歴書解析・候補者比較（https://talenteye.siadt.jp/）
-- [SIA帳場](https://siadt.jp/sia-choba/): 中小企業向けAI経理プラットフォーム（https://choba.siadt.jp/）。提供元は中小企業デジタル化・AI導入支援事業費補助金のIT導入支援事業者として採択済み
-- [SIA AI Assist](https://siadt.jp/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%82%A2%E3%82%B7%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%88/): 社内検索・文書作成などを一つの画面から進める社内AIワークスペース（https://assist.siadt.jp/）
-- [AIエッジ計算製品](https://siadt.jp/%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2%E8%A3%BD%E5%93%81/): 現場で映像解析するエッジサーバー
-- [小売店舗向けAIシステム](https://siadt.jp/shop/): 万引き防止と客流分析
-- [自動車向けAI分析システム](https://siadt.jp/car/): 自動車販売店の来店・行動分析
-- [オンラインストア](https://siadt.jp/%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%82%A2/): AI自動給餌器などの個人向け製品
-- [緣側](https://engawa-app.jp/): 高齢者向けAI会話・見守り（関連特許：特許第7917241号）
-- [日本通](https://livein-japan.com): 在日外国人向け生活支援
+- [SIA帳場（AI経理）](https://siadt.jp/sia-choba/): 領収書・請求書・銀行明細から仕訳と帳簿を自動生成する中小企業向けAI経理プラットフォーム（アプリ: https://choba.siadt.jp/）。特願2026-215614出願中。IT導入支援事業者採択済み（ITP07-0006526）
+- [SIA TalentEye（AI採用支援）](https://siadt.jp/sia-talenteye/): PDF・Word履歴書をAI解析し候補者比較・評価観点整理を支援（アプリ: https://talenteye.siadt.jp/）。特願2026-210115出願中
+- [SIA Studio（生成AI制作）](https://siadt.jp/sia-studio/): プロンプトおよび目的別ガイドから画像・短尺動画・文章を一括生成（アプリ: https://studio.siadt.jp/）
+- [SIA AI Assist（社内AIワークスペース）](https://siadt.jp/%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%E3%82%A2%E3%82%B7%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%88/): 社内検索・数値分析・文書作成・議事整理を一画面で実行。クラウド版／買い切りオンプレミス版／自社モデル利用を選択可能（アプリ: https://assist.siadt.jp/）。特願2026-210114出願中
+- [AIエッジ計算製品](https://siadt.jp/%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2%E8%A3%BD%E5%93%81/): クラウド非依存で現場リアルタイム映像解析を行うエッジサーバー（Rockchip RK3588ゲートウェイ等）
+- [緣側（えんがわ）](https://engawa-app.jp/): 高齢者向けAI会話・見守り支援サービス（特許第7917241号登録技術）
+- [日本通（Nihontsu）](https://livein-japan.com/): 交通運行・災害速報・行政案内などの公式情報を多言語で集約する在日外国人向け生活情報サービス
+- [製品情報一覧](https://siadt.jp/%E8%A3%BD%E5%93%81%E6%83%85%E5%A0%B1/): 全プロダクトの概要一覧
 
-## サービス
+## 法人向けソリューション・支援サービス
 
-- [サービス分野](https://siadt.jp/%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%B4%B9%E4%BB%8B/): 事業領域の一覧
-- [中小企業向けIT基盤サービス](https://siadt.jp/%E4%B8%AD%E5%B0%8F%E4%BC%81%E6%A5%AD%E5%90%91%E3%81%91IT%E5%9F%BA%E7%9B%A4%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/): 公式サイト・ドメイン・DXの段階的導入
-- [企業金融技術服務](https://siadt.jp/%E4%BC%81%E6%A5%AD%E9%87%91%E8%9E%8D%E6%8A%80%E8%A1%93%E6%9C%8D%E5%8B%99/): 日本の法人口座開設に必要なサイト・電話・申請支援
-- [AI技術の普及・研修](https://siadt.jp/class/): 教育機関・社会人向けAI研修
+- [サービス分野一覧](https://siadt.jp/%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%B4%B9%E4%BB%8B/): 提供ソリューション全体像
+- [中小企業向けIT基盤サービス](https://siadt.jp/%E4%B8%AD%E5%B0%8F%E4%BC%81%E6%A5%AD%E5%90%91%E3%81%91IT%E5%9F%BA%E7%9B%A4%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/): 公式サイト制作（税込49,000円〜）、法人メール・ドメイン、段階的DX、キャッシュレス決済・EC構築
+- [小売店舗向けAI防犯・客流分析システム](https://siadt.jp/shop/): 既設防犯カメラを活用した万引き不審行動の即時検知と匿名客流・滞在分析
+- [自動車販売店向けAI分析システム](https://siadt.jp/car/): ディーラー・ショールームの来客動線・注目車種・ヒートマップ可視化
+- [企業金融・決済技術サービス](https://siadt.jp/%E4%BC%81%E6%A5%AD%E9%87%91%E8%9E%8D%E6%8A%80%E8%A1%93%E6%9C%8D%E5%8B%99/): 法人向けオンライン決済・QRコード決済（PayPay・Alipay・WeChat Pay等）連携およびIT基盤整備支援
+- [AI技術の普及・研修サービス](https://siadt.jp/class/): 企業・教育機関向けAIリテラシー・実務活用研修
+
+## ホワイトペーパー・専門コラム・公的書類
+
+- [【無料白書】AI × DX で中小企業の利益を最大化する](https://siadt.jp/AI-DX%E7%99%BD%E6%9B%B8/): 中小企業が段階的にIT基盤・店舗AI・生成AIを導入するための実践ガイド（PDF公開）
+- [日本企業のサイバー攻撃対策はなぜ難しい？3つの課題と解決策](https://siadt.jp/%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E6%94%BB%E6%92%83%E3%81%A8%E4%BA%BA%E6%9D%90%E7%B5%84%E7%B9%94%E6%8A%80%E8%A1%93%E5%9F%BA%E7%9B%A4%E3%81%AE%E5%86%8D%E6%A7%8B%E7%AF%89/): 人材育成・組織文化・システム外注管理から見直すセキュリティ対策解説
+- [2026年版 リテール＆モビリティ業界における次世代DX推進ガイド](https://siadt.jp/%E3%83%AA%E3%83%86%E3%83%BC%E3%83%AB%E3%83%A2%E3%83%93%E3%83%AA%E3%83%86%E3%82%A3DX%E6%8E%A8%E9%80%B2%E3%82%AC%E3%82%A4%E3%83%89/): エッジAIによるロス削減・来店分析資料（PDF公開）
+- [IT導入支援事業者 採択通知書（PDF）](https://siadt.jp/files/%E4%B8%AD%E5%B0%8F%E4%BC%81%E6%A5%AD%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E5%8C%96AI%E5%B0%8E%E5%85%A5%E6%94%AF%E6%8F%B4_IT%E5%B0%8E%E5%85%A5%E6%94%AF%E6%8F%B4%E4%BA%8B%E6%A5%AD%E8%80%85%E6%8E%A1%E6%8A%9E%E9%80%9A%E7%9F%A5%E6%9B%B8.pdf): 中小企業デジタル化・AI導入支援事業費補助金（2026年10月19日採択・ITP07-0006526）
 
 ## Optional
 
+- [オンラインストア](https://siadt.jp/%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%82%A2/)
 - [採用情報](https://siadt.jp/%E6%8E%A1%E7%94%A8%E6%83%85%E5%A0%B1/)
+- [業務委託・営業パートナー募集](https://siadt.jp/%E6%A5%AD%E5%8B%99%E5%A7%94%E8%A8%97%E3%83%BB%E5%96%B6%E6%A5%AD%E3%83%91%E3%83%BC%E3%83%88%E3%83%8A%E3%83%BC%E5%8B%9F%E9%9B%86/)
 - [プライバシーポリシー](https://siadt.jp/%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC/)
-- [情報セキュリティ基本方針](https://siadt.jp/security-policy/): 制定日 2026年10月8日。情報資産の保護、法令・契約の遵守、事故対応
-- [IT導入支援事業者 採択通知書（PDF）](https://siadt.jp/files/%E4%B8%AD%E5%B0%8F%E4%BC%81%E6%A5%AD%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E5%8C%96AI%E5%B0%8E%E5%85%A5%E6%94%AF%E6%8F%B4_IT%E5%B0%8E%E5%85%A5%E6%94%AF%E6%8F%B4%E4%BA%8B%E6%A5%AD%E8%80%85%E6%8E%A1%E6%8A%9E%E9%80%9A%E7%9F%A5%E6%9B%B8.pdf): 中小企業デジタル化・AI導入支援事業費補助金。採択通知日 2026年10月19日、登録番号 ITP07-0006526
 - [特定商取引法に基づく表記](https://siadt.jp/%E7%89%B9%E5%AE%9A%E5%95%86%E5%8F%96%E5%BC%95%E6%B3%95%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8F%E8%A1%A8%E8%A8%98/)
+- [暴力団等反社会勢力排除宣言](https://siadt.jp/%E6%9A%B4%E5%8A%9B%E5%9B%A3%E7%AD%89%E5%8F%8D%E7%A4%BE%E4%BC%9A%E5%8B%A2%E5%8A%9B%E6%8E%92%E9%99%A4%E5%AE%A3%E8%A8%80/)

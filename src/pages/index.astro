@@ -1,17 +1,169 @@
 ---
 import Base from '../layouts/Base.astro';
+import { faqSchema, products, siteUrl } from '../data/site';
+
+const productCards = [
+  {
+    icon: '/images/service-img3.webp',
+    label: 'SIA 帳場',
+    blurb: '領収書・請求書から仕訳と帳簿を自動生成するAI経理。',
+    note: '特願2026-215614出願中 ／ IT導入支援事業者採択',
+    href: '/sia-choba/',
+  },
+  {
+    icon: '/images/service-img2.webp',
+    label: 'SIA TalentEye',
+    blurb: 'PDF・Word履歴書を解析し候補者比較を支援するAI採用。',
+    note: '特願2026-210115出願中',
+    href: '/sia-talenteye/',
+  },
+  {
+    icon: '/images/service-img4.webp',
+    label: 'SIA AI Assist',
+    blurb: '社内検索・分析・文書作成を一画面で行う社内AI基盤。',
+    note: '特願2026-210114出願中 ／ クラウド・オンプレ対応',
+    href: '/人工知能アシスタント/',
+  },
+  {
+    icon: '/images/service-img1.webp',
+    label: 'SIA Studio',
+    blurb: 'プロンプトから画像・短尺動画・文章を一括生成。',
+    note: '法人・個人向け生成AI制作ツール',
+    href: '/sia-studio/',
+  },
+  {
+    icon: '/images/service-engawa.webp',
+    label: '緣側（えんがわ）',
+    blurb: '自然なAI会話を通じて高齢者の日々の安否を見守る支援サービス。',
+    note: '日本国 特許第7917241号（登録済）実装プロダクト',
+    href: 'https://engawa-app.jp/',
+    external: true,
+    highlight: true,
+  },
+  {
+    icon: '/images/service-nihontsu.webp',
+    label: '日本通（Nihontsu）',
+    blurb: '交通運行・災害速報・行政案内などの公式情報を多言語で集約。',
+    note: '在日外国人向け公式生活情報サービス（登録不要・無料）',
+    href: 'https://livein-japan.com/',
+    external: true,
+  },
+];
+
+const industrySolutions = [
+  {
+    target: '創業期・中小企業全般向け',
+    title: '中小企業向けIT基盤・段階的DX整備',
+    desc: '公式サイト制作（税込49,000円〜）、ドメイン・法人メール設定、キャッシュレス決済・EC導入、業務システム開発。',
+    href: '/中小企業向けIT基盤サービス/',
+  },
+  {
+    target: '小売店・商業施設向け',
+    title: '既設カメラ活用の防犯・客流AI解析',
+    desc: '既存の防犯カメラ設備をそのまま活かし、万引き不審行動の即時通知と匿名化された来店属性・滞在時間を可視化。',
+    href: '/shop/',
+  },
+  {
+    target: '自動車販売店・ディーラー向け',
+    title: 'ショールーム来店動線・注目車種分析',
+    desc: '小型AIエッジサーバー（最大6台カメラ接続）で、展示車の注目度ランキング・ヒートマップ・遠隔巡回を実現。',
+    href: '/car/',
+  },
+  {
+    target: 'EC・店舗・法人決済向け',
+    title: '企業金融・キャッシュレス決済技術サービス',
+    desc: 'PayPay・Alipay・WeChat Pay等のマルチ決済導入・システム連携をはじめ、企業金融に関わるIT技術基盤を実務支援。',
+    href: '/企業金融技術服務/',
+  },
+];
+
+const clientVoices = [
+  {
+    industry: '専門商社・卸売業',
+    meta: '大阪府 ／ 従業員15名規模 ／ 管理部門ご担当者様',
+    solution: 'AI経理「SIA 帳場」',
+    solutionHref: '/sia-choba/',
+    challenge: '紙の領収書とPDF請求書が混在し、毎月末の手入力と勘定科目の確認作業に多くの時間を取られていた。',
+    voice:
+      '既存の会計ソフトを無理に入れ替えるのではなく、今の運用を残したまま証憑の読み取りと仕訳の下書きから試せたのが現実的でした。IT専任者がいない社内でも画面が分かりやすく、月次の経理確認負担が確実に軽くなっています。',
+    result: '月次の証憑整理・仕訳入力にかかる確認工数を大幅に削減',
+  },
+  {
+    industry: '小売・専門店運営',
+    meta: '関西圏・複数店舗展開 ／ 店舗運営統括責任者様',
+    solution: '小売店舗向けAI解析システム',
+    solutionHref: '/shop/',
+    challenge: '防犯カメラは設置済みだったが録画を見返す余裕がなく、万引き対策や時間帯別の客流把握が現場の勘頼みになっていた。',
+    voice:
+      'カメラ設備を一式入れ替えると初期投資が合わないと悩んでいましたが、既設カメラをそのまま活かしてエッジ側で解析する構成を提案いただきました。個人を特定せずプライバシーに配慮しながら混雑時間帯や動線が数値で見えるようになり、売場改善の議論が具体的になりました。',
+    result: '既設カメラ流用で初期費用を抑え、防犯通知と客流データ可視化を実現',
+  },
+  {
+    industry: '貿易・サービス業（新設法人）',
+    meta: '大阪府 ／ 従業員8名規模 ／ 代表取締役様',
+    solution: '中小企業IT基盤整備・社内AI導入',
+    solutionHref: '/中小企業向けIT基盤サービス/',
+    challenge: '創業後の公式サイト・法人メール等の基礎IT整備と、少人数でのバックオフィス業務効率化を同時に進める必要があった。',
+    voice:
+      '専門用語を並べるのではなく、当社の事業規模と予算に合わせて「今すぐ整えるべき基盤」と「後から段階的に導入するAIツール」を明確に切り分けてくれました。料金体系も最初から税込で明示されており、導入後のちょっとした運用相談にも丁寧に対応してもらえるので心強く感じています。',
+    result: '約1ヶ月でコーポレートIT基盤を整備し、少人数体制での定型事務を省力化',
+  },
+];
+
+const techPartners = [
+  { name: 'DeepEleph（深象智能）', img: '/images/partner-deepeleph.webp' },
+  { name: 'Chosen Technology', img: '/images/partner-chosen.webp' },
+  { name: 'Emdoor DIGI', img: '/images/partner-emdoor.webp' },
+];
+
+const homeFaqs = [
+  {
+    q: 'SIAデジタルテクノロジー株式会社はどのような製品・サービスを提供していますか？',
+    a: '大阪市住之江区に本社を置くAI・DX開発企業（法人番号：3120001247658）です。AI経理「SIA 帳場」（特願2026-215614）、AI採用「SIA TalentEye」（特願2026-210115）、社内AI「SIA AI Assist」（特願2026-210114）、生成AI制作「SIA Studio」、高齢者見守りAI「緣側」（特許第7917241号）、多言語公式情報サービス「日本通」、および現場設置型エッジAI製品を自社開発・提供しています。',
+  },
+  {
+    q: '社内にITやAIの専任担当者がいなくても導入できますか？',
+    a: 'はい。ご相談いただく企業様の多くはIT専任者が不在の中小企業様です。紙・電話・Excel中心の業務環境や既設カメラ設備を活かしながら、現場に無理なく定着する段階的なデジタル化をご提案いたします。',
+  },
+  {
+    q: '補助金を活用した導入や、データを社外に出さないオンプレミス運用は可能ですか？',
+    a: '当社は「中小企業デジタル化・AI導入支援事業費補助金」のIT導入支援事業者（登録番号：ITP07-0006526）に採択されており、対象製品の補助金活用相談に対応しています。また、社内AI「SIA AI Assist」の買い切りオンプレミス版や、カメラ映像を外部送信しないエッジAIサーバーも選択可能です。',
+  },
+  {
+    q: '初回相談や見積りに費用はかかりますか？対応エリアはどこですか？',
+    a: '初回のご相談・ヒアリング・概算お見積りは無料です。大阪市住之江区の本社（TEL：06-4400-2968）を拠点に関西圏での対面打ち合わせはもちろん、オンラインにて日本全国の企業様に対応しております（日本語・中国語対応）。',
+  },
+];
+
+const homeJsonLd = [
+  {
+    '@type': 'ItemList',
+    '@id': `${siteUrl}/#featured-products`,
+    name: 'SIAデジタルテクノロジー株式会社 自社開発AI製品一覧',
+    itemListElement: products.map((p, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      name: p.name,
+      url: p.url,
+      description: p.description,
+    })),
+  },
+  faqSchema(homeFaqs),
+];
 ---
 
 <Base
-  title="SIAデジタルテクノロジー株式会社｜大阪のAI・DX企業"
-  description="SIAデジタルテクノロジー株式会社（大阪市住之江区）は、AI・IoT・DXで中小企業と伝統産業を支援します。SIA Studio、帳場、TalentEye、店舗AI、エッジ計算を提供。"
+  title="SIAデジタルテクノロジー株式会社｜大阪の自社開発AIプロダクト・中小企業DX支援"
+  description="大阪市住之江区のSIAデジタルテクノロジー株式会社（法人番号3120001247658）。特許第7917241号登録済・IT導入支援事業者採択済（ITP07-0006526）。AI経理「SIA帳場」、AI採用「SIA TalentEye」、社内AI「SIA AI Assist」、生成AI「SIA Studio」、高齢者見守りAI「緣側」、店舗エッジAIを開発・提供。"
+  keywords="SIAデジタルテクノロジー,SIA Digital Technology,大阪 AI開発,中小企業DX,SIA帳場,AI経理,SIA TalentEye,AI採用,SIA Studio,SIA AI Assist,緣側,見守りAI 特許,エッジAI,IT導入支援事業者"
+  jsonLd={homeJsonLd}
 >
   <main class="bg-ink text-white">
-    <!-- ヒーロー -->
-    <section class="relative flex min-h-[560px] items-end overflow-hidden md:min-h-[720px] md:items-center">
+    <!-- 1. Hero（頂部メイン画像は維持、H1に明確な事業・地域キーワードを配置） -->
+    <section class="relative flex min-h-[560px] items-end overflow-hidden md:min-h-[680px] md:items-center">
       <img
         src="/images/hero-robot-girl.webp"
-        alt="AIロボットと子ども"
+        alt="大阪発の自社開発AIプロダクトと中小企業DX支援 — SIAデジタルテクノロジー株式会社"
         class="absolute inset-0 h-full w-full object-cover object-center"
         width="1024"
         height="1024"
@@ -19,181 +171,163 @@ import Base from '../layouts/Base.astro';
       />
       <div
         class="absolute inset-0"
-        style="background:linear-gradient(to top,rgba(4,0,10,0.92) 0%,rgba(4,0,10,0.55) 42%,rgba(4,0,10,0.2) 100%)"
+        style="background:linear-gradient(to top,rgba(4,0,10,0.92) 0%,rgba(4,0,10,0.6) 46%,rgba(4,0,10,0.24) 100%)"
         aria-hidden="true"
       ></div>
       <div class="relative z-10 mx-auto w-full max-w-6xl px-4 pb-16 pt-40 md:pb-20 md:pt-24">
         <div class="max-w-2xl">
-          <p class="text-sm font-semibold tracking-wider text-accent">SIA Digital Technology</p>
+          <p class="text-sm font-semibold tracking-wider text-accent">
+            日本の伝統を守り、日本の未来を創る — SIA Digital Technology
+          </p>
           <h1 class="mt-3 text-3xl font-bold leading-snug text-white md:text-5xl">
-            日本の伝統を守り、日本の未来を創る <span class="text-accent">AI</span>
+            大阪発・自社開発<span class="text-accent">AIプロダクト</span>と<br />中小企業の段階的<span class="text-accent">DX支援</span>
           </h1>
-          <p class="mt-4 text-lg italic text-gray-200">Preserving Japan’s traditions, creating Japan’s future</p>
+          <p class="mt-4 max-w-xl text-sm leading-relaxed text-gray-200 sm:text-base">
+            AI経理・AI採用・社内AI・生成AI制作・高齢者見守りAIから店舗エッジ解析まで、IT専任者がいない現場でも無理なく定着するシステムを開発・提供しています。
+          </p>
           <div class="mt-8">
-            <a href="/私たちについて/" class="btn btn-accent">会社を知る</a>
+            <a href="/inquiries/" class="btn btn-accent">無料相談・お問い合わせ</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 会社紹介 -->
-    <section class="mx-auto grid max-w-6xl gap-10 px-4 py-20 lg:grid-cols-2 lg:gap-14">
-      <div>
-        <img src="/images/meeting.webp" alt="SIAデジタルテクノロジーのチームミーティング" class="w-full max-w-lg rounded-xl" width="1536" height="1024" loading="lazy" />
-        <div class="mt-8 grid gap-8 sm:grid-cols-2">
-          <div>
-            <div class="flex items-center gap-3">
-              <span class="rounded-full border border-accent/30 p-2.5">
-                <img src="/images/about-img2.webp" alt="" class="h-6 w-6" width="24" height="24" loading="lazy" aria-hidden="true" />
+    <!-- 2. 公的認定・知的財産・セキュリティ・国内法人エビデンス -->
+    <section aria-label="公的認定・知的財産・セキュリティ体制" class="border-y border-white/10 bg-panel/90">
+      <div class="mx-auto max-w-6xl px-4 py-8">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <a
+            href="/sia-choba/#it-support-provider"
+            class="group flex flex-col justify-between rounded-xl border border-white/10 bg-ink/80 p-4 transition hover:border-accent/60"
+          >
+            <div>
+              <span class="inline-block rounded bg-accent/15 px-2 py-0.5 text-[11px] font-bold text-accent">
+                公的補助金制度 採択済
               </span>
-              <h3 class="font-bold text-white">Certified Team</h3>
+              <h2 class="mt-2 text-sm font-bold text-white group-hover:text-accent">
+                IT導入支援事業者 採択
+              </h2>
+              <p class="mt-1 text-xs leading-relaxed text-gray-300">
+                中小企業デジタル化・AI導入支援事業費補助金（登録番号：ITP07-0006526）
+              </p>
             </div>
-            <p class="mt-3 text-sm leading-relaxed text-gray-300">創業期や事業拡大の段階にある伝統事業者のAI・DX導入を支援します。</p>
-            <p class="mt-2 text-sm leading-relaxed text-gray-300">私たちは、中小企業向けに、現実的で無理のないIT・DX基盤支援を提供します。サービスを提供しています。</p>
-          </div>
-          <div>
-            <div class="flex items-center gap-3">
-              <span class="rounded-full border border-accent/30 p-2.5">
-                <img src="/images/about-img3.webp" alt="" class="h-6 w-6" width="24" height="24" loading="lazy" aria-hidden="true" />
-              </span>
-              <h3 class="font-bold text-white">Trusted Company</h3>
-            </div>
-            <p class="mt-3 text-sm leading-relaxed text-gray-300">企業の成長段階に寄り添いながら、IT・AI活用を段階的に進化させていきます。</p>
-            <p class="mt-2 text-sm leading-relaxed text-gray-300">ITやDXの専門担当者がいない企業様にも、安心してご相談いただける存在として、信頼できるパートナーとして長期支援します。</p>
-          </div>
-        </div>
-        <div class="mt-8">
-          <a href="/企業情報/" class="btn btn-accent">MORE</a>
-        </div>
-      </div>
-      <div>
-        <h2 class="text-2xl font-bold leading-snug text-white md:text-3xl">
-          SIAデジタルテクノロジー株式会社について
-        </h2>
-        <p class="mt-6 leading-relaxed text-gray-300">
-          ＳＩＡデジタルテクノロジー株式会社の技術は、未来を象徴する革新的なソリューションを提供します。AI・ビッグデータ・IoTなど最先端の技術を活用し、経済や社会の持続的発展に貢献しています。SIAはデジタル革新を通じて、人々の生活を豊かにし、より良い未来を共に創り上げることを目指します。高齢者見守り支援に関する発明は特許第7917241号として日本国に登録されており、生成AI協調、日本語採用候補者評価および会計処理支援に関する発明も特許出願中です。
-        </p>
-        <p class="mt-4 leading-relaxed text-gray-300">
-          弊社のスタッフは、Microsoft、Alibaba、Tencentをはじめとする世界トップクラスのAIテクノロジーおよびクラウドコンピューティング企業での経験を持ち、それぞれが約20年にわたる専門的な知識と実績を備えています。
-        </p>
-        <div class="relative mt-10 min-h-80 overflow-hidden rounded-xl">
-          <img src="/images/經驗-1.webp" alt="AI・クラウド分野で約20年の実務経験を持つチーム" class="absolute inset-0 h-full w-full object-cover" width="1024" height="585" loading="lazy" />
-          <div class="absolute bottom-0 right-6 bg-accent px-6 py-4 text-center text-ink" style="border-top:8px solid #04000b;border-left:8px solid #04000b;border-right:8px solid #04000b">
-            <div class="text-3xl font-bold">20</div>
-            <div class="text-xs font-semibold">YEARS OF<br />EXPERIENCE</div>
-          </div>
-        </div>
-      </div>
-    </section>
+            <span class="mt-3 text-[11px] font-semibold text-accent">採択通知書を確認 →</span>
+          </a>
 
-    <!-- お客様の声 -->
-    <section class="mx-auto max-w-6xl px-4 py-20">
-      <div class="grid gap-6 md:grid-cols-2">
-        <h2 class="text-2xl font-bold text-white md:text-3xl">
-          お客様の声 / <span class="text-accent">Customer feedback</span>
-        </h2>
-        <p class="leading-relaxed text-gray-300">
-          実際に当社のサービスをご導入いただいたお客様の事例をご紹介しています。<br
-          />業種や規模の異なる企業が、どのような課題を抱え、どのように解決へとつなげてきたのか。現場の声を通じて、当社の取り組みと価値をご覧ください
-        </p>
-      </div>
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
-        {
-          [
-            {
-              img: '/images/偷.webp',
-              name: '山田 恒一',
-              role: '小売業 営業企画部 部長',
-              text: '導入前は、データが分散しており、意思決定に時間がかかっていました。御社のシステムを導入してからは、必要な情報を即座に把握できるようになり、営業戦略の精度が大きく向上しました。「現場で本当に使える」点が、何より評価できるポイントです。',
-            },
-            {
-              img: '/images/tou2.webp',
-              name: '伊東 まみ',
-              role: 'フィットネスクラブ マネージャー',
-              text: 'システム導入というと複雑なイメージがありましたが、初期設計から運用まで非常に丁寧にサポートしていただき、安心して進めることができました。数値の「見える化」によって、社内での共通認識が生まれ、組織全体の判断スピードが確実に上がったと感じています。',
-            },
-            {
-              img: '/images/tou4.webp',
-              name: '森岡 浩',
-              role: '飲食業 店長',
-              text: '技術力だけでなく、日本のビジネス文化や意思決定プロセスを深く理解されている点に、大きな信頼を感じました。短期的な成果だけでなく、長期的な運用を前提とした提案をしていただけるため、今後も継続的に相談したいパートナーです。',
-            },
-          ].map((t) => (
-            <article class="rounded-xl p-7" style="background:linear-gradient(225deg,rgb(24,24,24) 57%,rgba(101,252,242,0.31) 100%)">
-              <div class="flex items-center gap-4 border-b border-white/10 pb-5">
-                <img src={t.img} alt={t.name} class="h-16 w-16 rounded-full border-4 border-white/10 object-cover" width="64" height="64" loading="lazy" />
-                <div>
-                  <h3 class="font-bold text-white">{t.name}</h3>
-                  <p class="mt-1 text-xs text-gray-400">{t.role}</p>
-                  <img src="/images/review-img4.webp" alt="評価5つ星" class="mt-2 h-3.5 w-auto" width="88" height="14" loading="lazy" />
-                </div>
+          <a
+            href="/知的財産/"
+            class="group flex flex-col justify-between rounded-xl border border-white/10 bg-ink/80 p-4 transition hover:border-accent/60"
+          >
+            <div>
+              <span class="inline-block rounded bg-accent/15 px-2 py-0.5 text-[11px] font-bold text-accent">
+                自社R&amp;D・知的財産
+              </span>
+              <h2 class="mt-2 text-sm font-bold text-white group-hover:text-accent">
+                特許第7917241号 ほか知財4件
+              </h2>
+              <p class="mt-1 text-xs leading-relaxed text-gray-300">
+                見守りAIで登録特許1件保有、業務AI領域で計3件を特許庁へ出願中
+              </p>
+            </div>
+            <span class="mt-3 text-[11px] font-semibold text-accent">特許証・出願一覧を確認 →</span>
+          </a>
+
+          <a
+            href="/security-policy/"
+            class="group flex flex-col justify-between rounded-xl border border-white/10 bg-ink/80 p-4 transition hover:border-accent/60"
+          >
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <span class="inline-block rounded bg-accent/15 px-2 py-0.5 text-[11px] font-bold text-accent">
+                  情報セキュリティ宣言
+                </span>
+                <h2 class="mt-2 text-sm font-bold text-white group-hover:text-accent">
+                  IPA SECURITY ACTION 二つ星
+                </h2>
               </div>
-              <p class="mt-5 text-sm leading-relaxed text-gray-300">{t.text}</p>
-            </article>
-          ))
-        }
-      </div>
-      <div class="mt-14 flex justify-center">
-        <a href="/私たちについて/" class="btn btn-accent">会社を知る</a>
+              <img
+                src="/images/security-action-two-star.png"
+                alt="IPA SECURITY ACTION 二つ星"
+                width="38"
+                height="38"
+                class="h-9 w-9 shrink-0 rounded-xs bg-white p-0.5 object-contain"
+                loading="lazy"
+              />
+            </div>
+            <p class="mt-1 text-xs leading-relaxed text-gray-300">
+              情報セキュリティ基本方針を策定・公開。オンプレミス・エッジ運用にも対応
+            </p>
+            <span class="mt-3 text-[11px] font-semibold text-accent">基本方針を確認 →</span>
+          </a>
+
+          <a
+            href="/企業情報/"
+            class="group flex flex-col justify-between rounded-xl border border-white/10 bg-ink/80 p-4 transition hover:border-accent/60"
+          >
+            <div>
+              <span class="inline-block rounded bg-accent/15 px-2 py-0.5 text-[11px] font-bold text-accent">
+                日本国内法人・大阪本社
+              </span>
+              <h2 class="mt-2 text-sm font-bold text-white group-hover:text-accent">
+                大阪市住之江区・2022年7月設立
+              </h2>
+              <p class="mt-1 text-xs leading-relaxed text-gray-300">
+                法人番号：3120001247658 ／ 税込料金・特定商取引法表記を明示
+              </p>
+            </div>
+            <span class="mt-3 text-[11px] font-semibold text-accent">会社概要を確認 →</span>
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- サービス -->
-    <section class="relative overflow-hidden bg-black">
-      <img src="/images/service-img5.webp" alt="" class="absolute inset-0 h-full w-full object-cover opacity-60" loading="lazy" aria-hidden="true" />
-      <div class="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-4 py-24 lg:grid-cols-5">
-        <div class="lg:col-span-2">
-          <h2 class="text-2xl font-bold text-white md:text-3xl">
-            最適なサービスをご提供します<span class="text-accent">Services</span>
-          </h2>
-          <p class="mt-6 text-gray-300">S– to serve the public&nbsp;社会への貢献。</p>
-          <p class="mt-3 text-gray-300">I- Independent research and development&nbsp;それは、独立した思考、独立した研究開発を意味します。</p>
-          <p class="mt-3 text-gray-300">A- A grade product&nbsp;その商品が最高レベルであることを意味します.</p>
-          <div class="mt-8">
-            <a href="/ソリューション紹介/" class="btn btn-accent">MORE</a>
+    <!-- 3A. 製品から探す：自社開発AIプロダクト（特許・出願技術との対応を明確化） -->
+    <section class="relative overflow-hidden bg-black py-20">
+      <img src="/images/service-img5.webp" alt="" class="absolute inset-0 h-full w-full object-cover opacity-50" loading="lazy" aria-hidden="true" />
+      <div class="relative z-10 mx-auto max-w-6xl px-4">
+        <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <p class="text-xs font-semibold tracking-widest text-accent uppercase">AI Products — 製品から探す</p>
+            <h2 class="mt-2 text-2xl font-bold text-white md:text-3xl">
+              自社開発AIプロダクト一覧
+            </h2>
+            <p class="mt-2 max-w-2xl text-sm leading-relaxed text-gray-300">
+              当社が独自に企画・研究開発しているソフトウェアおよびエッジAIハードウェア製品です。登録特許および特許出願技術を実務プロダクトとして実装しています。
+            </p>
           </div>
+          <a href="/製品情報/" class="shrink-0 text-sm font-semibold text-accent hover:underline">
+            製品情報一覧ページへ →
+          </a>
         </div>
-        <div class="grid gap-5 sm:grid-cols-2 lg:col-span-3">
+
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {
-            [
-              {
-                icon: '/images/service-img1.webp',
-                label: 'SIA Studio',
-                blurb: 'プロンプトから画像・動画・文章を生成。',
-                href: '/sia-studio/',
-              },
-              {
-                icon: '/images/service-img2.webp',
-                label: 'SIA TalentEye',
-                blurb: 'AIで履歴書選考をより効率的に。',
-                href: '/sia-talenteye/',
-              },
-              {
-                icon: '/images/service-img3.webp',
-                label: 'SIA 帳場',
-                blurb: 'AI経理。補助金対応のIT導入支援事業者。',
-                href: '/sia-choba/',
-              },
-              {
-                icon: '/images/service-img4.webp',
-                label: 'SIA AI Assist',
-                blurb: '仕事の相談を、いつでも。',
-                href: '/人工知能アシスタント/',
-              },
-            ].map((s) => (
+            productCards.map((p) => (
               <a
-                href={s.href}
-                class="group rounded-xl p-7 transition hover:-translate-y-1"
-                style="background:linear-gradient(225deg,rgb(24,24,24) 57%,rgba(101,252,242,0.31) 100%)"
+                href={p.href}
+                target={p.external ? '_blank' : undefined}
+                rel={p.external ? 'noopener' : undefined}
+                class:list={[
+                  'group flex flex-col justify-between rounded-xl border p-6 transition hover:-translate-y-0.5',
+                  p.highlight
+                    ? 'border-accent/50 hover:border-accent'
+                    : 'border-white/12 hover:border-accent/50',
+                ]}
+                style="background:linear-gradient(225deg,rgb(22,22,26) 60%,rgba(101,252,242,0.22) 100%)"
               >
-                <img src={s.icon} alt="" class="h-10 w-10" width="40" height="40" loading="lazy" aria-hidden="true" />
-                <h3 class="mt-4 text-lg font-bold text-white group-hover:text-accent">{s.label}</h3>
-                <p class="mt-2 truncate text-sm text-gray-300">{s.blurb}</p>
-                <div class="mt-6 flex justify-end">
-                  <span class="rounded-lg bg-ink p-3">
-                    <img src="/images/services-img5.webp" alt="" class="h-4 w-4" width="16" height="16" loading="lazy" aria-hidden="true" />
-                  </span>
+                <div>
+                  <div class="flex items-center justify-between gap-3">
+                    <img src={p.icon} alt="" class="h-9 w-9 rounded object-contain" width="36" height="36" loading="lazy" aria-hidden="true" />
+                    <span class="text-xs font-medium text-accent">
+                      {p.external ? '公式サイト ↗' : '詳細 →'}
+                    </span>
+                  </div>
+                  <h3 class="mt-4 text-lg font-bold text-white group-hover:text-accent">{p.label}</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-gray-200">{p.blurb}</p>
                 </div>
+                <p class="mt-4 border-t border-white/10 pt-3 text-[11px] font-medium text-gray-400">
+                  {p.note}
+                </p>
               </a>
             ))
           }
@@ -201,56 +335,236 @@ import Base from '../layouts/Base.astro';
       </div>
     </section>
 
-    <!-- お問い合わせストリップ -->
-    <section class="mx-auto max-w-6xl px-4 py-16">
-      <div class="grid items-center gap-8 rounded-3xl bg-highlight p-8 md:grid-cols-3 md:p-10">
-        <div class="flex items-center gap-4">
-          <span class="rounded-full border border-white/40 p-3">
-            <img src="/images/客服33.webp" alt="" class="h-8 w-8" width="32" height="32" loading="lazy" aria-hidden="true" />
-          </span>
+    <!-- 3B. 業種・課題から探す：現場別の導入支援ソリューション（製品ブロックと明確に役割を分離） -->
+    <section class="border-y border-white/10 bg-panel/60 py-16">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <p class="text-xs font-semibold tracking-wide text-white">GET A FREE CONSULTATION</p>
-            <p class="mt-1 text-lg font-bold text-white">+81 06-4400-2968</p>
+            <p class="text-xs font-semibold tracking-widest text-accent uppercase">Solutions by Industry — 業種・課題から探す</p>
+            <h2 class="mt-1 text-xl font-bold text-white md:text-2xl">
+              業種・現場課題別の導入支援プラン
+            </h2>
+            <p class="mt-1.5 text-sm text-gray-300">
+              「何からデジタル化すべきか迷っている」企業様向けに、業種・フェーズ別の実践支援メニューをご用意しています。
+            </p>
           </div>
+          <a href="/ソリューション紹介/" class="shrink-0 text-sm font-semibold text-accent hover:underline">
+            サービス分野一覧へ →
+          </a>
         </div>
-        <p class="text-white md:border-l md:border-white/30 md:pl-8">
-          私たちは、専門的な技術を通じて、貴社の事業発展をお手伝いしたいと考えております。どうぞお気軽にお問い合わせください。
-        </p>
-        <div class="md:text-right">
-          <a href="/inquiries/" class="btn btn-accent">お問い合わせ</a>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          {
+            industrySolutions.map((s) => (
+              <a
+                href={s.href}
+                class="group flex flex-col justify-between rounded-xl border border-white/10 bg-ink p-5 transition hover:border-accent/60"
+              >
+                <div>
+                  <span class="text-[11px] font-bold text-accent">{s.target}</span>
+                  <h3 class="mt-1 text-base font-bold text-white group-hover:text-accent">{s.title}</h3>
+                  <p class="mt-2 text-xs leading-relaxed text-gray-300">{s.desc}</p>
+                </div>
+                <span class="mt-3 text-xs font-semibold text-gray-400 group-hover:text-accent">
+                  プラン内容・料金を見る →
+                </span>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <!-- 資料・考え方 -->
-    <section class="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-24 pt-4 lg:grid-cols-5">
-      <div class="grid gap-6 sm:grid-cols-2 lg:col-span-3 lg:items-stretch">
-        <a href="/AI-DX白書/" class="group flex h-full flex-col overflow-hidden rounded-xl transition hover:-translate-y-1">
-          <img src="/images/888.webp" alt="白書：AIとDXで中小企業の利益を最大化する" class="aspect-[15/8] w-full object-cover" width="1200" height="640" loading="lazy" />
-          <div class="flex flex-1 flex-col bg-highlight p-6">
-            <h3 class="min-h-[4.5rem] font-bold text-white group-hover:text-accent">【無料公開】（PDF）AI × DX で中小企業の利益を最大化する</h3>
-            <p class="mt-2 flex-1 text-sm text-gray-300">デジタルテクノロジーによる最…</p>
-            <p class="mt-3 text-sm text-accent">Learn More</p>
-          </div>
-        </a>
-        <a href="/サイバー攻撃と人材組織技術基盤の再構築/" class="group flex h-full flex-col overflow-hidden rounded-xl transition hover:-translate-y-1">
-          <img src="/images/cyber-hr-rebuild.jpg" alt="日本企業のサイバー攻撃対策はなぜ難しい？大企業の被害から考える3つの課題と解決策" class="aspect-[15/8] w-full object-cover" width="1280" height="720" loading="lazy" />
-          <div class="flex flex-1 flex-col bg-highlight p-6">
-            <h3 class="min-h-[4.5rem] font-bold text-white group-hover:text-accent">日本企業のサイバー攻撃対策はなぜ難しい？大企業の被害から考える3つの課題と解決策</h3>
-            <p class="mt-2 flex-1 text-sm text-gray-300">教育・人材育成、組織文化、システム外注…</p>
-            <p class="mt-3 text-sm text-accent">Learn More</p>
-          </div>
-        </a>
-      </div>
-      <div class="lg:col-span-2">
-        <h2 class="text-2xl font-bold text-white md:text-3xl">
-          私たちが大切にしている考え方 <span class="text-accent">AI</span>
-        </h2>
-        <p class="mt-6 leading-relaxed text-gray-300">
-          AIと共に未来を創るパートナーであるという意味を込めています。AIを“使われる存在”ではなく、“使いこなす存在”になる。そしてAIとの協働によって、一人が「1000」の価値を生み出せる可能性を持つ。私たちはそのような思想のもと、テクノロジーと人間の創造力を掛け合わせ、新しい価値創造に挑戦しています。
+    <!-- 4. 導入・ご相談企業様の声 ＋ 実名公開の技術提携パートナー -->
+    <section class="mx-auto max-w-6xl px-4 py-20">
+      <div class="grid gap-6 md:grid-cols-2 md:items-end">
+        <div>
+          <p class="text-xs font-semibold tracking-widest text-accent uppercase">Voice &amp; Partners</p>
+          <h2 class="mt-2 text-2xl font-bold text-white md:text-3xl">
+            ご導入・ご相談企業様の声
+          </h2>
+        </div>
+        <p class="text-sm leading-relaxed text-gray-300">
+          IT専任者がいない企業様や、既存設備・現在の業務手順を活かしながら段階的にデジタル化を進めたい経営者様・実務担当者様からのお声です。
         </p>
-        <div class="mt-8">
-          <a href="/私たちについて/" class="btn btn-accent">会社を知る</a>
+      </div>
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-3">
+        {
+          clientVoices.map((item) => (
+            <article class="flex flex-col justify-between rounded-2xl border border-white/12 bg-panel p-6">
+              <div>
+                <div class="border-b border-white/10 pb-4">
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <span class="rounded-md bg-accent/15 px-2.5 py-1 text-xs font-bold text-accent">
+                      {item.industry}
+                    </span>
+                    <a href={item.solutionHref} class="text-xs font-medium text-gray-300 underline decoration-white/30 underline-offset-4 hover:text-accent">
+                      {item.solution}
+                    </a>
+                  </div>
+                  <p class="mt-2 text-xs text-gray-400">{item.meta}</p>
+                </div>
+
+                <div class="mt-4 rounded-lg border border-white/8 bg-ink/70 p-3 text-xs leading-relaxed text-gray-300">
+                  <span class="font-bold text-white">導入前の課題：</span>
+                  {item.challenge}
+                </div>
+
+                <blockquote class="mt-4 text-sm leading-relaxed text-gray-200">
+                  「{item.voice}」
+                </blockquote>
+              </div>
+
+              <div class="mt-5 border-t border-white/10 pt-3.5">
+                <p class="flex items-start gap-2 text-xs font-semibold text-accent">
+                  <span aria-hidden="true">✓</span>
+                  <span>導入後の変化：{item.result}</span>
+                </p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="mt-5 text-xs leading-relaxed text-gray-400">
+        ※お取引先様との守秘義務契約およびプライバシー保護の観点から、社名・個人名は非公開とし、業種・従業員規模およびご発言の趣旨を損なわない範囲で編集のうえ掲載しております。
+      </p>
+
+      <!-- 実名公開の技術提携パートナー（検証可能な企業ロゴ） -->
+      <div class="mt-12 rounded-2xl border border-white/10 bg-panel/60 p-6">
+        <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+          <div>
+            <h3 class="text-sm font-bold text-white">技術提携・ハードウェア協業パートナー</h3>
+            <p class="mt-1 text-xs text-gray-400">
+              AIアルゴリズム・エッジコンピューティング領域で協業するパートナー企業（実名公開）
+            </p>
+          </div>
+          <a href="/技術提携パートナー/" class="text-xs font-semibold text-accent hover:underline">
+            提携パートナー詳細 →
+          </a>
+        </div>
+        <div class="mt-5 grid grid-cols-3 gap-4">
+          {
+            techPartners.map((tp) => (
+              <div class="flex items-center justify-center rounded-xl bg-white px-4 py-3">
+                <img
+                  src={tp.img}
+                  alt={tp.name}
+                  class="h-10 w-auto object-contain sm:h-12"
+                  width="240"
+                  height="90"
+                  loading="lazy"
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 会社紹介（素材写真を排し、検証可能な事実を明記 ＋ 白書・コラム） -->
+    <section class="border-t border-white/10 bg-panel/40 py-20">
+      <div class="mx-auto grid max-w-6xl items-start gap-12 px-4 lg:grid-cols-12">
+        <div class="lg:col-span-6">
+          <p class="text-xs font-semibold tracking-widest text-accent uppercase">About Us</p>
+          <h2 class="mt-2 text-2xl font-bold leading-snug text-white md:text-3xl">
+            現場の実務に根ざしたAI技術を、<br />大阪から日本の中小企業へ
+          </h2>
+          <p class="mt-5 text-sm leading-relaxed text-gray-300">
+            SIAデジタルテクノロジー株式会社（本社：大阪市住之江区南加賀屋3-8-26 Y.S.ビル6B、法人番号：3120001247658、2022年7月設立）は、AIを「人に取って代わるもの」ではなく「現場の経験と創造力を引き出すパートナー」と位置づけ、少人数の組織でも無理なく使いこなせる製品を自社で研究開発しています。
+          </p>
+          <p class="mt-4 text-sm leading-relaxed text-gray-300">
+            高齢者見守り支援AI「緣側」に実装された<strong>特許第7917241号</strong>（登録済）をはじめ、社内AI協調（<strong>特願2026-210114</strong>）、日本語採用候補者評価（<strong>特願2026-210115</strong>）、会計処理支援（<strong>特願2026-215614</strong>）の特許出願技術を核に、確かな根拠のあるシステムと誠実な運用支援をお届けしてまいります。
+          </p>
+
+          <div class="mt-6 flex flex-wrap items-center gap-5 text-sm font-semibold">
+            <a href="/企業情報/" class="text-accent underline underline-offset-4 hover:text-white">
+              会社概要・沿革を見る →
+            </a>
+            <a href="/知的財産/" class="text-gray-300 underline underline-offset-4 hover:text-accent">
+              特許・知的財産一覧 →
+            </a>
+            <a href="/私たちについて/" class="text-gray-300 underline underline-offset-4 hover:text-accent">
+              私たちについて →
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2 lg:col-span-6">
+          <a href="/AI-DX白書/" class="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-panel transition hover:-translate-y-0.5 hover:border-accent/50">
+            <img src="/images/888.webp" alt="白書：AIとDXで中小企業の利益を最大化する" class="aspect-[16/10] w-full object-cover" width="1200" height="640" loading="lazy" />
+            <div class="flex flex-1 flex-col p-5">
+              <span class="text-[11px] font-semibold text-accent">無料公開ホワイトペーパー（PDF）</span>
+              <h3 class="mt-1.5 text-sm font-bold leading-snug text-white group-hover:text-accent">
+                AI × DX で中小企業の利益を最大化する
+              </h3>
+              <p class="mt-2 flex-1 text-xs leading-relaxed text-gray-300">
+                基礎IT整備から店舗AI・生成AI導入までの段階的ロードマップ。
+              </p>
+              <p class="mt-3 text-xs font-semibold text-accent">白書を読む →</p>
+            </div>
+          </a>
+
+          <a href="/サイバー攻撃と人材組織技術基盤の再構築/" class="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-panel transition hover:-translate-y-0.5 hover:border-accent/50">
+            <img src="/images/cyber-hr-rebuild.jpg" alt="日本企業のサイバー攻撃対策はなぜ難しい？3つの課題と解決策" class="aspect-[16/10] w-full object-cover" width="1280" height="720" loading="lazy" />
+            <div class="flex flex-1 flex-col p-5">
+              <span class="text-[11px] font-semibold text-accent">セキュリティ・技術基盤コラム</span>
+              <h3 class="mt-1.5 text-sm font-bold leading-snug text-white group-hover:text-accent">
+                日本企業のサイバー攻撃対策はなぜ難しい？3つの課題と解決策
+              </h3>
+              <p class="mt-2 flex-1 text-xs leading-relaxed text-gray-300">
+                人材育成・組織文化・外注管理から見直す中小企業の実践対策。
+              </p>
+              <p class="mt-3 text-xs font-semibold text-accent">記事を読む →</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. よくあるご質問（FAQPage 構造化データ出力対応） -->
+    <section class="mx-auto max-w-4xl px-4 py-20">
+      <div class="text-center">
+        <p class="text-xs font-semibold tracking-widest text-accent uppercase">FAQ</p>
+        <h2 class="mt-2 text-2xl font-bold text-white md:text-3xl">よくあるご質問</h2>
+      </div>
+      <div class="mt-10 space-y-4">
+        {
+          homeFaqs.map((f) => (
+            <details class="group rounded-xl border border-white/12 bg-panel p-5 open:border-accent/50">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-white">
+                <span>Q. {f.q}</span>
+                <span class="shrink-0 text-accent transition group-open:rotate-45">＋</span>
+              </summary>
+              <p class="mt-3 border-t border-white/10 pt-3 text-sm leading-relaxed text-gray-300">
+                {f.a}
+              </p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- 7. ページ末尾 相談CTA -->
+    <section class="mx-auto max-w-6xl px-4 pb-20">
+      <div class="grid items-center gap-8 rounded-3xl bg-highlight p-8 md:grid-cols-3 md:p-10">
+        <div class="flex items-center gap-4">
+          <span class="shrink-0 rounded-full border border-white/40 p-3">
+            <img src="/images/客服33.webp" alt="" class="h-8 w-8" width="32" height="32" loading="lazy" aria-hidden="true" />
+          </span>
+          <div>
+            <p class="text-xs font-semibold tracking-wide text-white/90">お電話でのご相談（平日 10:00–17:00）</p>
+            <a href="tel:0644002968" class="mt-1 block text-2xl font-bold tracking-wide text-white hover:text-accent">
+              06-4400-2968
+            </a>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed text-white md:border-l md:border-white/30 md:pl-8">
+          「何から手をつけるべきか分からない」という段階からのご相談も歓迎しております。製品デモや導入・補助金活用のご相談など、お気軽にお問い合わせください。
+        </p>
+        <div class="md:text-right">
+          <a href="/inquiries/" class="btn btn-accent">無料相談フォームへ</a>
         </div>
       </div>
     </section>
