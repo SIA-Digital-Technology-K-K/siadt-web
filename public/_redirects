@@ -1,7 +1,8 @@
 # siadt.jp 旧 URL → 新 URL の 301 リダイレクト（Netlify 標準機能）
 # 日本語パスは percent-encoding で記載
 
-# サイトマップ（人間用）→ 自動生成 sitemap
+# サイトマップ（人間用・一般的な別名）→ 自動生成 sitemap
+/sitemap.xml  /sitemap-index.xml  301!
 /%E3%82%B5%E3%82%A4%E3%83%88%E3%83%9E%E3%83%83%E3%83%97/  /sitemap-index.xml  301!
 
 # 旧オンラインストア（WordPress / 2025年9月版）
