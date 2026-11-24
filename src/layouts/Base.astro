@@ -224,6 +224,13 @@ const social = [
 <!doctype html>
 <html lang={lang}>
   <head>
+    <!-- Google tag（gtm.js；設定はコンテナ側。gtag('config') は付けない） -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=G-LQX050E2ZN"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
@@ -258,13 +265,6 @@ const social = [
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbs} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LQX050E2ZN"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-LQX050E2ZN');
-    </script>
   </head>
   <body class="bg-white text-gray-800 antialiased">
     <header class="bg-ink text-white">
