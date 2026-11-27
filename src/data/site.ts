@@ -396,30 +396,45 @@ export function articleSchema(opts: {
   return nodes;
 }
 
+const brandSchema = {
+  '@type': 'Brand',
+  name: 'SIAデジタルテクノロジー',
+  url: siteUrl,
+  logo: organization.logo,
+};
+
+/**
+ * 製品ページ向け JSON-LD。
+ * - SaaS（applicationCategory あり）は SoftwareApplication のみにし、
+ *   Google Merchant / Product Snippet の物理商品要件（review・送料・返品）を誤適用させない。
+ * - brand は Brand 型で明示（Organization の @id 参照のみだと GSC で型エラーになる）。
+ * - 実在しないレビュー／評価は追加しない（Google スパムポリシー違反のため）。
+ */
 export function productSchema(opts: {
   product: (typeof products)[number];
   faqs?: Faq[];
 }) {
   const { product, faqs = [] } = opts;
   const org = { '@id': `${siteUrl}/#organization` };
+  const isSoftware = 'applicationCategory' in product && Boolean(product.applicationCategory);
   const nodes: Record<string, unknown>[] = [
     {
-      '@type': 'applicationCategory' in product && product.applicationCategory ? ['Product', 'SoftwareApplication'] : 'Product',
+      '@type': isSoftware ? 'SoftwareApplication' : 'Product',
       '@id': product.id,
       name: product.name,
       description: product.description,
       url: product.url,
       image: 'image' in product ? product.image : undefined,
-      brand: org,
+      brand: brandSchema,
       manufacturer: org,
       provider: org,
       inLanguage: 'ja',
       ...('award' in product && product.award ? { award: product.award } : {}),
       ...('featureList' in product && product.featureList ? { featureList: product.featureList } : {}),
       ...('appUrl' in product && product.appUrl ? { sameAs: product.appUrl } : {}),
-      ...('applicationCategory' in product && product.applicationCategory
+      ...(isSoftware
         ? {
-            applicationCategory: product.applicationCategory,
+            applicationCategory: (product as { applicationCategory: string }).applicationCategory,
             operatingSystem: 'Web',
             offers: {
               '@type': 'Offer',
@@ -429,6 +444,7 @@ export function productSchema(opts: {
               url: 'appUrl' in product && product.appUrl ? product.appUrl : product.url,
               availability: 'https://schema.org/InStock',
               seller: org,
+              category: 'Digital',
             },
           }
         : {}),
