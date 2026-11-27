@@ -2,24 +2,89 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import products from '../data/products.json';
+import { organization, siteUrl } from '../data/site';
+
+const tokushohoUrl = `${siteUrl}/特定商取引法に基づく表記/`;
+
+const storeJsonLd = products.map((p) => ({
+  '@type': 'Product',
+  '@id': `${siteUrl}/オンラインストア/#${p.id}`,
+  name: p.name,
+  description: `${p.name}。${p.features.join('、')}。${p.warranty}`,
+  image: `${siteUrl}${p.image}`,
+  sku: p.id,
+  brand: {
+    '@type': 'Brand',
+    name: 'SIAデジタルテクノロジー',
+    url: siteUrl,
+    logo: organization.logo,
+  },
+  manufacturer: {
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
+    name: organization.name,
+  },
+  offers: {
+    '@type': 'Offer',
+    url: p.stripePaymentLink === 'STRIPE_LINK_TODO' ? `${siteUrl}/オンラインストア/` : p.stripePaymentLink,
+    priceCurrency: 'JPY',
+    price: String(p.price),
+    priceValidUntil: '2027-12-31',
+    availability: 'https://schema.org/InStock',
+    itemCondition: 'https://schema.org/NewCondition',
+    seller: {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: organization.name,
+    },
+    // 特定商取引法表記に基づく送料・配送（1万円以上で送料無料／発送は営業日2〜7日）
+    shippingDetails: {
+      '@type': 'OfferShippingDetails',
+      shippingRate: {
+        '@type': 'MonetaryAmount',
+        value: '0',
+        currency: 'JPY',
+      },
+      shippingDestination: {
+        '@type': 'DefinedRegion',
+        addressCountry: 'JP',
+      },
+      deliveryTime: {
+        '@type': 'ShippingDeliveryTime',
+        handlingTime: {
+          '@type': 'QuantitativeValue',
+          minValue: 2,
+          maxValue: 7,
+          unitCode: 'DAY',
+        },
+        transitTime: {
+          '@type': 'QuantitativeValue',
+          minValue: 1,
+          maxValue: 5,
+          unitCode: 'DAY',
+        },
+      },
+    },
+    // 特定商取引法表記に基づく返品ポリシー（お届けから14日以内・返送料はお客様負担）
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      applicableCountry: 'JP',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+      merchantReturnDays: 14,
+      returnMethod: 'https://schema.org/ReturnByMail',
+      returnFees: 'https://schema.org/ReturnFeesCustomerResponsibility',
+      refundType: 'https://schema.org/FullRefund',
+      returnPolicyCountry: 'JP',
+      merchantReturnLink: tokushohoUrl,
+    },
+  },
+}));
 ---
 
 <Base
   title="オンラインストア｜AI自動給餌器 – SIA Digital Technology"
   description="SIAデジタルテクノロジーのオンラインストア。AI搭載の自動給餌器など個人向け製品をStripe決済で購入できます。大阪発送、特定商取引法表記あり。"
-  jsonLd={products.map((p) => ({
-    '@type': 'Product',
-    name: p.name,
-    image: `https://siadt.jp${p.image}`,
-    brand: { '@id': 'https://siadt.jp/#organization' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'JPY',
-      price: String(p.price),
-      availability: 'https://schema.org/InStock',
-      url: p.stripePaymentLink,
-    },
-  }))}
+  jsonLd={storeJsonLd}
 >
   <PageHero title="オンラインストア" />
   <main class="mx-auto max-w-5xl px-4 py-14">
@@ -66,6 +131,7 @@ import products from '../data/products.json';
 
     <p class="mt-12 text-center text-sm text-gray-500">
       お支払いはクレジットカード決済（Stripe）をご利用いただけます。ご購入前に<a href="/特定商取引法に基づく表記/" class="underline">特定商取引法に基づく表記</a>および<a href="/プライバシーポリシー/" class="underline">プライバシーポリシー</a>をご確認ください。
+      1万円以上のご注文は送料無料、通常はご注文受付後営業日2～7日以内に発送いたします。
     </p>
   </main>
 </Base>

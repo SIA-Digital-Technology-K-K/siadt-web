@@ -117,7 +117,12 @@ const structuredData = {
       })),
       knowsAbout: organization.knowsAbout,
       areaServed: { '@type': 'Country', name: 'Japan' },
-      brand: products.map((p) => ({ '@type': 'Brand', name: p.name, url: p.url })),
+      brand: {
+        '@type': 'Brand',
+        name: 'SIAデジタルテクノロジー',
+        url: siteUrl,
+        logo: organization.logo,
+      },
       owns: [...products.map((p) => ({ '@id': p.id })), ...patentSchema().map((p) => ({ '@id': p['@id'] }))],
       makesOffer: services.map((s) => ({
         '@type': 'Offer',
